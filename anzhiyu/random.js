@@ -1,3 +1,3 @@
-var posts=["2024/10/26/Markdown/","2024/08/31/hello-world/"];function toRandomPost(){
+var posts=["2024/10/26/Markdown/","2024/08/31/hello-world/","2024/11/10/雅思/"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };
