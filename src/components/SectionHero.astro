@@ -1,0 +1,22 @@
+---
+import { SECTION_META, type Section } from '../lib/sections';
+
+interface Props {
+  section: Section;
+}
+
+const { section } = Astro.props;
+const meta = SECTION_META[section];
+---
+
+<section class="py-12 sm:py-16 border-b border-[var(--color-border)]" style={`background: linear-gradient(135deg, ${meta.color}08, ${meta.color}03)`}>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <span class="text-3xl mb-3 block">{meta.icon}</span>
+    <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-heading)] mb-3">
+      {meta.label}
+    </h1>
+    <p class="text-lg text-[var(--color-text-light)] max-w-2xl">
+      {meta.description}
+    </p>
+  </div>
+</section>

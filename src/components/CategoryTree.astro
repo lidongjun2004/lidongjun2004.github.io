@@ -1,0 +1,45 @@
+---
+interface Props {
+  categories: Map<string, Map<string, any>>;
+  currentCategory?: string[];
+  sectionSlug: string;
+}
+
+interface TreeNode {
+  count: number;
+  children: Map<string, TreeNode>;
+}
+
+const { categories, currentCategory = [], sectionSlug } = Astro.props;
+
+// Build tree from flat category arrays
+function buildTree(posts: { category: string[] }[]): TreeNode {
+  const root: TreeNode = { count: 0, children: new Map() };
+  for (const post of posts) {
+    let node = root;
+    for (const part of post.category) {
+      if (!node.children.has(part)) {
+        node.children.set(part, { count: 0, children: new Map() });
+      }
+      node = node.children.get(part)!;
+      node.count++;
+    }
+  }
+  return root;
+}
+---
+
+<nav class="space-y-1">
+  <a
+    href={`/${sectionSlug}/`}
+    class:list={[
+      "block px-3 py-1.5 rounded-lg text-sm transition-colors",
+      currentCategory.length === 0
+        ? "bg-[var(--color-card)] text-[var(--color-heading)] font-medium shadow-sm"
+        : "text-[var(--color-text-light)] hover:text-[var(--color-heading)] hover:bg-[var(--color-card)]/60",
+    ]}
+  >
+    All Posts
+  </a>
+  <slot />
+</nav>

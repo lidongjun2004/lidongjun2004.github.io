@@ -1,0 +1,105 @@
+---
+import { SECTION_META, type Section } from '../lib/sections';
+
+const sections = Object.entries(SECTION_META) as [Section, (typeof SECTION_META)[Section]][];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-[var(--color-bg)]/80 backdrop-blur-md border-b border-[var(--color-border)]">
+  <nav class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="/" class="text-xl font-semibold text-[var(--color-heading)] hover:opacity-100">
+      L.D.J
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-1">
+      {sections.map(([slug, meta]) => (
+        <li>
+          <a
+            href={`/${slug}/`}
+            class:list={[
+              "px-3 py-1.5 rounded-lg text-sm transition-colors",
+              currentPath.startsWith(`/${slug}`)
+                ? "bg-[var(--color-card)] text-[var(--color-heading)] shadow-sm font-medium"
+                : "text-[var(--color-text-light)] hover:text-[var(--color-heading)] hover:bg-[var(--color-card)]/60",
+            ]}
+          >
+            {meta.label}
+          </a>
+        </li>
+      ))}
+      <li class="ml-2 pl-2 border-l border-[var(--color-border)]">
+        <a
+          href="/tags/"
+          class:list={[
+            "px-3 py-1.5 rounded-lg text-sm transition-colors",
+            currentPath.startsWith("/tags")
+              ? "bg-[var(--color-card)] text-[var(--color-heading)] shadow-sm font-medium"
+              : "text-[var(--color-text-light)] hover:text-[var(--color-heading)]",
+          ]}
+        >
+          Tags
+        </a>
+      </li>
+      <li>
+        <a
+          href="/about/"
+          class:list={[
+            "px-3 py-1.5 rounded-lg text-sm transition-colors",
+            currentPath.startsWith("/about")
+              ? "bg-[var(--color-card)] text-[var(--color-heading)] shadow-sm font-medium"
+              : "text-[var(--color-text-light)] hover:text-[var(--color-heading)]",
+          ]}
+        >
+          About
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile menu button -->
+    <button
+      id="menu-toggle"
+      class="md:hidden p-2 rounded-lg text-[var(--color-text-light)] hover:bg-[var(--color-card)]"
+      aria-label="Toggle menu"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+    <ul class="px-4 py-3 space-y-1">
+      {sections.map(([slug, meta]) => (
+        <li>
+          <a
+            href={`/${slug}/`}
+            class:list={[
+              "block px-3 py-2 rounded-lg text-sm transition-colors",
+              currentPath.startsWith(`/${slug}`)
+                ? "bg-[var(--color-card)] text-[var(--color-heading)] font-medium"
+                : "text-[var(--color-text-light)] hover:text-[var(--color-heading)]",
+            ]}
+          >
+            <span class="mr-2">{meta.icon}</span>{meta.label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-1 mt-1 border-t border-[var(--color-border)]">
+        <a href="/tags/" class="block px-3 py-2 rounded-lg text-sm text-[var(--color-text-light)] hover:text-[var(--color-heading)]">Tags</a>
+      </li>
+      <li>
+        <a href="/about/" class="block px-3 py-2 rounded-lg text-sm text-[var(--color-text-light)] hover:text-[var(--color-heading)]">About</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

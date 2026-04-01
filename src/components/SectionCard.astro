@@ -1,0 +1,29 @@
+---
+interface Props {
+  slug: string;
+  label: string;
+  description: string;
+  color: string;
+  icon: string;
+  count: number;
+}
+
+const { slug, label, description, color, icon, count } = Astro.props;
+---
+
+<a
+  href={`/${slug}/`}
+  class="group block bg-[var(--color-card)] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 border border-[var(--color-border)]"
+  style={`border-top: 3px solid ${color}`}
+>
+  <div class="text-2xl mb-3">{icon}</div>
+  <h3 class="text-lg font-semibold text-[var(--color-heading)] mb-1 group-hover:opacity-80 transition-opacity">
+    {label}
+  </h3>
+  <p class="text-sm text-[var(--color-text-light)] mb-3 line-clamp-2">
+    {description}
+  </p>
+  <span class="text-xs text-[var(--color-text-light)]">
+    {count} {count === 1 ? 'post' : 'posts'}
+  </span>
+</a>

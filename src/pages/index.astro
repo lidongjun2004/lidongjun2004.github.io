@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HomeHero from '../components/HomeHero.astro';
+import SectionCard from '../components/SectionCard.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+import { SECTIONS, SECTION_META } from '../lib/sections';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const recentPosts = sortedPosts.slice(0, 6);
+
+const sectionCounts = Object.fromEntries(
+  SECTIONS.map((s) => [s, allPosts.filter((p) => p.data.section === s).length])
+);
+---
+
+<BaseLayout title="Home">
+  <Header slot="header" />
+
+  <HomeHero />
+
+  <!-- Section cards -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+    <h2 class="text-2xl font-bold text-[var(--color-heading)] mb-6">Explore</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {SECTIONS.map((slug) => {
+        const meta = SECTION_META[slug];
+        return (
+          <SectionCard
+            slug={slug}
+            label={meta.label}
+            description={meta.description}
+            color={meta.color}
+            icon={meta.icon}
+            count={sectionCounts[slug] ?? 0}
+          />
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Recent posts -->
+  {recentPosts.length > 0 && (
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+      <h2 class="text-2xl font-bold text-[var(--color-heading)] mb-6">Recent Posts</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {recentPosts.map((post) => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.date}
+            section={post.data.section}
+            category={post.data.category}
+            tags={post.data.tags}
+            slug={post.id}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <Footer slot="footer" />
+</BaseLayout>
