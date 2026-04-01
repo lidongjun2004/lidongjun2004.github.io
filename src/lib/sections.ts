@@ -1,4 +1,4 @@
-export const SECTIONS = ['tech-stack', 'career', 'academics', 'love-interests', 'plan-think'] as const;
+export const SECTIONS = ['tech-stack', 'career', 'academics', 'love-interests', 'plan-think', 'health-fitness'] as const;
 export type Section = (typeof SECTIONS)[number];
 
 export const SECTION_META: Record<Section, { label: string; description: string; color: string; icon: string }> = {
@@ -31,5 +31,11 @@ export const SECTION_META: Record<Section, { label: string; description: string;
     description: 'Goals, reflections, and thoughts about the future.',
     color: '#a78bfa',
     icon: '🧭',
+  },
+  'health-fitness': {
+    label: 'Health & Fitness',
+    description: 'Exercise, nutrition, and building a healthy lifestyle.',
+    color: '#facc15',
+    icon: '💪',
   },
 };
