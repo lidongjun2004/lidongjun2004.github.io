@@ -2,102 +2,178 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import FolderView from '../../components/FolderView.astro';
 import TagList from '../../components/TagList.astro';
 import { getCollection, render } from 'astro:content';
 import { SECTION_META } from '../../lib/sections';
+import { getSection, isIndex, listChildren, getUrl } from '../../lib/content-utils';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts', ({ data }) => !data.draft);
-  return posts.map((post) => ({
-    params: { section: post.data.section, slug: post.id },
-    props: { post },
-  }));
+  const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+
+  return allPosts
+    .filter((post) => {
+      // Exclude section-level _index (handled by [section]/index.astro)
+      const parts = post.id.split('/');
+      return !(parts.length === 2 && parts[1] === '_index');
+    })
+    .map((post) => {
+      const section = getSection(post.id);
+      const rest = post.id.slice(section.length + 1);
+      const slug = isIndex(post.id) ? rest.replace(/\/_index$/, '') : rest;
+
+      return {
+        params: { section, slug },
+        props: { post, isFolder: isIndex(post.id) },
+      };
+    });
 }
 
-const { post } = Astro.props;
+const { post, isFolder } = Astro.props;
 const { Content } = await render(post);
-const { title, description, date, updated, section, category, tags } = post.data;
+const section = getSection(post.id);
 const meta = SECTION_META[section];
-const dateStr = date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
-const updatedStr = updated?.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+const { title, description, date, updated, tags } = post.data;
 
-// Get prev/next posts in same section
-const allPosts = await getCollection('posts', ({ data }) => data.section === section && !data.draft);
-const sorted = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-const idx = sorted.findIndex((p) => p.id === post.id);
-const prev = idx < sorted.length - 1 ? sorted[idx + 1] : null;
-const next = idx > 0 ? sorted[idx - 1] : null;
+// Build breadcrumb from the path
+const pathParts = post.id.split('/');
+const breadcrumbs: { label: string; href: string }[] = [
+  { label: 'Home', href: '/' },
+  { label: meta.label, href: `/${section}/` },
+];
+// Add intermediate folder breadcrumbs
+for (let i = 1; i < pathParts.length - 1; i++) {
+  const partPath = pathParts.slice(0, i + 1).join('/');
+  breadcrumbs.push({
+    label: pathParts[i],
+    href: `/${partPath}/`,
+  });
+}
+
+// For folder pages, get children
+let folderChildren = { folders: [] as any[], docs: [] as any[] };
+if (isFolder) {
+  const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+  const folderPath = post.id.replace(/\/_index$/, '');
+  folderChildren = listChildren(allPosts, folderPath);
+}
+
+// For doc pages, get prev/next in same parent directory
+let prev: any = null;
+let next: any = null;
+if (!isFolder && date) {
+  const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+  const parentPath = pathParts.slice(0, -1).join('/');
+  const siblings = allPosts
+    .filter((p) => {
+      if (isIndex(p.id)) return false;
+      const pParts = p.id.split('/');
+      const pParent = pParts.slice(0, -1).join('/');
+      return pParent === parentPath;
+    })
+    .sort((a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0));
+
+  const idx = siblings.findIndex((p) => p.id === post.id);
+  if (idx < siblings.length - 1) prev = siblings[idx + 1];
+  if (idx > 0) next = siblings[idx - 1];
+}
+
+const dateStr = date?.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+const updatedStr = updated?.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <BaseLayout title={title} description={description}>
   <Header slot="header" />
 
-  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
-    <!-- Breadcrumb -->
-    <nav class="text-sm text-[var(--color-text-light)] mb-6 flex items-center gap-1.5 flex-wrap">
-      <a href="/" class="hover:text-[var(--color-heading)]">Home</a>
-      <span>/</span>
-      <a href={`/${section}/`} class="hover:text-[var(--color-heading)]" style={`color: ${meta.color}`}>
-        {meta.label}
-      </a>
-      {category.map((cat) => (
-        <>
-          <span>/</span>
-          <span>{cat}</span>
-        </>
-      ))}
-    </nav>
-
-    <!-- Title -->
-    <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-heading)] mb-4 leading-tight">
-      {title}
-    </h1>
-
-    <!-- Meta -->
-    <div class="flex flex-wrap items-center gap-3 text-sm text-[var(--color-text-light)] mb-6">
-      <time datetime={date.toISOString()}>{dateStr}</time>
-      {updatedStr && (
-        <span class="text-xs">(updated {updatedStr})</span>
-      )}
-      <span class="text-xs">Views: <span id="busuanzi_value_page_pv">--</span></span>
+  {isFolder ? (
+    <!-- Folder page -->
+    <section
+      class="py-10 sm:py-14 border-b border-[var(--color-border)]"
+      style={`background: linear-gradient(135deg, ${meta.color}06, ${meta.color}02)`}
+    >
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <nav class="text-sm text-[var(--color-text-light)] mb-4 flex items-center gap-1.5 flex-wrap">
+          {breadcrumbs.map((bc, i) => (
+            <>
+              {i > 0 && <span>/</span>}
+              <a href={bc.href} class="hover:text-[var(--color-heading)]">{bc.label}</a>
+            </>
+          ))}
+        </nav>
+        <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-heading)] mb-2">
+          📁 {title}
+        </h1>
+        {description && (
+          <p class="text-lg text-[var(--color-text-light)]">{description}</p>
+        )}
+      </div>
+    </section>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+      <div class="prose mb-10">
+        <Content />
+      </div>
+      <FolderView folders={folderChildren.folders} docs={folderChildren.docs} />
     </div>
+  ) : (
+    <!-- Document page -->
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+      <nav class="text-sm text-[var(--color-text-light)] mb-6 flex items-center gap-1.5 flex-wrap">
+        {breadcrumbs.map((bc, i) => (
+          <>
+            {i > 0 && <span>/</span>}
+            <a href={bc.href} class="hover:text-[var(--color-heading)]">{bc.label}</a>
+          </>
+        ))}
+      </nav>
 
-    <!-- Tags -->
-    <div class="mb-8">
-      <TagList tags={tags} />
-    </div>
+      <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-heading)] mb-4 leading-tight">
+        {title}
+      </h1>
 
-    <!-- Content -->
-    <div class="prose">
-      <Content />
-    </div>
+      <div class="flex flex-wrap items-center gap-3 text-sm text-[var(--color-text-light)] mb-6">
+        {dateStr && <time datetime={date!.toISOString()}>{dateStr}</time>}
+        {updatedStr && <span class="text-xs">(updated {updatedStr})</span>}
+        <span class="text-xs">Views: <span id="busuanzi_value_page_pv">--</span></span>
+      </div>
 
-    <!-- Prev / Next -->
-    <nav class="mt-16 pt-8 border-t border-[var(--color-border)] grid grid-cols-1 sm:grid-cols-2 gap-4">
-      {prev && (
-        <a
-          href={`/${section}/${prev.id}/`}
-          class="group block bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-sm transition-shadow"
-        >
-          <span class="text-xs text-[var(--color-text-light)]">Previous</span>
-          <p class="text-sm font-medium text-[var(--color-heading)] group-hover:opacity-75 transition-opacity mt-1">
-            {prev.data.title}
-          </p>
-        </a>
+      {tags && tags.length > 0 && (
+        <div class="mb-8">
+          <TagList tags={tags} />
+        </div>
       )}
-      {next && (
-        <a
-          href={`/${section}/${next.id}/`}
-          class:list={["group block bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-sm transition-shadow text-right", !prev && "sm:col-start-2"]}
-        >
-          <span class="text-xs text-[var(--color-text-light)]">Next</span>
-          <p class="text-sm font-medium text-[var(--color-heading)] group-hover:opacity-75 transition-opacity mt-1">
-            {next.data.title}
-          </p>
-        </a>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      {(prev || next) && (
+        <nav class="mt-16 pt-8 border-t border-[var(--color-border)] grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {prev && (
+            <a
+              href={getUrl(prev.id)}
+              class="group block bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-sm transition-shadow"
+            >
+              <span class="text-xs text-[var(--color-text-light)]">Previous</span>
+              <p class="text-sm font-medium text-[var(--color-heading)] group-hover:opacity-75 transition-opacity mt-1">
+                {prev.data.title}
+              </p>
+            </a>
+          )}
+          {next && (
+            <a
+              href={getUrl(next.id)}
+              class:list={["group block bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-sm transition-shadow text-right", !prev && "sm:col-start-2"]}
+            >
+              <span class="text-xs text-[var(--color-text-light)]">Next</span>
+              <p class="text-sm font-medium text-[var(--color-heading)] group-hover:opacity-75 transition-opacity mt-1">
+                {next.data.title}
+              </p>
+            </a>
+          )}
+        </nav>
       )}
-    </nav>
-  </article>
+    </article>
+  )}
 
   <Footer slot="footer" />
 </BaseLayout>

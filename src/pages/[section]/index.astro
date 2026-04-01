@@ -2,10 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import SectionHero from '../../components/SectionHero.astro';
-import PostCard from '../../components/PostCard.astro';
-import { getCollection } from 'astro:content';
+import FolderView from '../../components/FolderView.astro';
+import { getCollection, render } from 'astro:content';
 import { SECTIONS, SECTION_META, type Section } from '../../lib/sections';
+import { isIndex, listChildren } from '../../lib/content-utils';
 
 export function getStaticPaths() {
   return SECTIONS.map((section) => ({ params: { section } }));
@@ -14,83 +14,45 @@ export function getStaticPaths() {
 const { section } = Astro.params as { section: Section };
 const meta = SECTION_META[section];
 
-const posts = await getCollection('posts', ({ data }) => data.section === section && !data.draft);
-const sorted = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
 
-// Build category tree for sidebar
-const categoryTree = new Map<string, { count: number; children: Map<string, number> }>();
-for (const post of posts) {
-  const cats = post.data.category;
-  if (cats.length > 0) {
-    const top = cats[0];
-    if (!categoryTree.has(top)) {
-      categoryTree.set(top, { count: 0, children: new Map() });
-    }
-    const node = categoryTree.get(top)!;
-    node.count++;
-    if (cats.length > 1) {
-      const sub = cats[1];
-      node.children.set(sub, (node.children.get(sub) ?? 0) + 1);
-    }
-  }
+// Find this section's _index.md
+const indexPost = allPosts.find((p) => p.id === `${section}/_index`);
+let IndexContent: any = null;
+if (indexPost) {
+  const rendered = await render(indexPost);
+  IndexContent = rendered.Content;
 }
+
+// List direct children
+const { folders, docs } = listChildren(allPosts, section);
 ---
 
-<BaseLayout title={meta.label} description={meta.description}>
+<BaseLayout title={meta.label} description={indexPost?.data.description ?? meta.description}>
   <Header slot="header" />
 
-  <SectionHero section={section} />
+  <section
+    class="py-12 sm:py-16 border-b border-[var(--color-border)]"
+    style={`background: linear-gradient(135deg, ${meta.color}08, ${meta.color}03)`}
+  >
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <span class="text-3xl mb-3 block">{meta.icon}</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-heading)] mb-3">
+        {meta.label}
+      </h1>
+      <p class="text-lg text-[var(--color-text-light)] max-w-2xl" set:html={meta.description} />
+    </div>
+  </section>
 
   <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
-    <div class="flex flex-col md:flex-row gap-8">
-      <!-- Sidebar: Category tree -->
-      {categoryTree.size > 0 && (
-        <aside class="md:w-56 shrink-0">
-          <h3 class="text-sm font-semibold text-[var(--color-heading)] mb-3 uppercase tracking-wider">Categories</h3>
-          <nav class="space-y-1">
-            {[...categoryTree.entries()].map(([name, node]) => (
-              <div>
-                <div class="flex items-center justify-between px-3 py-1.5 text-sm text-[var(--color-text)] rounded-lg hover:bg-[var(--color-card)] transition-colors">
-                  <span class="font-medium">{name}</span>
-                  <span class="text-xs text-[var(--color-text-light)]">{node.count}</span>
-                </div>
-                {node.children.size > 0 && (
-                  <div class="ml-4 space-y-0.5">
-                    {[...node.children.entries()].map(([sub, count]) => (
-                      <div class="flex items-center justify-between px-3 py-1 text-sm text-[var(--color-text-light)] rounded-lg hover:bg-[var(--color-card)] transition-colors">
-                        <span>{sub}</span>
-                        <span class="text-xs">{count}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
-        </aside>
-      )}
-
-      <!-- Post list -->
-      <div class="flex-1">
-        {sorted.length === 0 ? (
-          <p class="text-[var(--color-text-light)] text-center py-12">No posts yet. Stay tuned!</p>
-        ) : (
-          <div class="grid grid-cols-1 gap-4">
-            {sorted.map((post) => (
-              <PostCard
-                title={post.data.title}
-                description={post.data.description}
-                date={post.data.date}
-                section={post.data.section}
-                category={post.data.category}
-                tags={post.data.tags}
-                slug={post.id}
-              />
-            ))}
-          </div>
-        )}
+    {/* Render _index.md content if it has a body */}
+    {IndexContent && (
+      <div class="prose mb-10">
+        <IndexContent />
       </div>
-    </div>
+    )}
+
+    <FolderView folders={folders} docs={docs} />
   </div>
 
   <Footer slot="footer" />

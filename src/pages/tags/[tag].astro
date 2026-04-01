@@ -4,12 +4,14 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import PostCard from '../../components/PostCard.astro';
 import { getCollection } from 'astro:content';
+import { isIndex, getSection } from '../../lib/content-utils';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+  const contentPosts = allPosts.filter((p) => !isIndex(p.id) && p.data.date);
 
   const tags = new Set<string>();
-  for (const post of allPosts) {
+  for (const post of contentPosts) {
     for (const tag of post.data.tags) {
       tags.add(tag);
     }
@@ -19,9 +21,9 @@ export async function getStaticPaths() {
     params: { tag },
     props: {
       tag,
-      posts: allPosts
+      posts: contentPosts
         .filter((p) => p.data.tags.includes(tag))
-        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+        .sort((a, b) => b.data.date!.getTime() - a.data.date!.getTime()),
     },
   }));
 }
@@ -49,7 +51,7 @@ const { tag, posts } = Astro.props;
           title={post.data.title}
           description={post.data.description}
           date={post.data.date}
-          section={post.data.section}
+          section={getSection(post.id)}
           category={post.data.category}
           tags={post.data.tags}
           slug={post.id}

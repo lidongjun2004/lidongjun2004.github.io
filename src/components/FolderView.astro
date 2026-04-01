@@ -1,0 +1,89 @@
+---
+import { SECTION_META } from '../lib/sections';
+import { getSection, getUrl } from '../lib/content-utils';
+
+interface FolderEntry {
+  name: string;
+  path: string;
+  post: any;
+}
+
+interface Props {
+  folders: FolderEntry[];
+  docs: any[];
+}
+
+const { folders, docs } = Astro.props;
+---
+
+<div class="space-y-3">
+  {/* Folders */}
+  {folders.map((folder) => {
+    const section = getSection(folder.post.id);
+    const meta = SECTION_META[section];
+    return (
+      <a
+        href={getUrl(folder.post.id)}
+        class="group flex items-center gap-3 bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+      >
+        <span class="text-xl shrink-0">📁</span>
+        <div class="min-w-0 flex-1">
+          <h3 class="font-semibold text-[var(--color-heading)] group-hover:opacity-75 transition-opacity">
+            {folder.post.data.title || folder.name}
+          </h3>
+          {folder.post.data.description && (
+            <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">
+              {folder.post.data.description}
+            </p>
+          )}
+        </div>
+        <span class="text-[var(--color-text-light)] text-sm shrink-0">→</span>
+      </a>
+    );
+  })}
+
+  {/* Documents */}
+  {docs.map((doc) => {
+    const section = getSection(doc.id);
+    const meta = SECTION_META[section];
+    const dateStr = doc.data.date?.toLocaleDateString('zh-CN', {
+      year: 'numeric', month: 'long', day: 'numeric',
+    });
+    return (
+      <a
+        href={getUrl(doc.id)}
+        class="group flex items-center gap-3 bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+      >
+        <span class="text-xl shrink-0">📄</span>
+        <div class="min-w-0 flex-1">
+          <h3 class="font-semibold text-[var(--color-heading)] group-hover:opacity-75 transition-opacity">
+            {doc.data.title}
+          </h3>
+          {doc.data.description && (
+            <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">
+              {doc.data.description}
+            </p>
+          )}
+        </div>
+        <div class="shrink-0 text-right">
+          {dateStr && <time class="text-xs text-[var(--color-text-light)]">{dateStr}</time>}
+          {doc.data.tags?.length > 0 && (
+            <div class="flex gap-1 mt-1 justify-end">
+              {doc.data.tags.slice(0, 2).map((tag: string) => (
+                <span class="text-xs px-1.5 py-0.5 rounded-full bg-gray-100 text-[var(--color-text-light)]">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </a>
+    );
+  })}
+
+  {folders.length === 0 && docs.length === 0 && (
+    <p class="text-[var(--color-text-light)] text-center py-8">
+      No content yet. Stay tuned!
+    </p>
+  )}
+</div>
