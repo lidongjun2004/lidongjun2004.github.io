@@ -27,14 +27,6 @@ const passwordHash = createHash('sha256').update(password).digest('hex');
 </div>
 
 <div id="private-content" class="hidden">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-4 flex justify-end">
-    <button
-      id="logout-btn"
-      class="text-sm px-3 py-1.5 rounded-lg border border-[var(--color-border)] text-[var(--color-text-light)] hover:text-[var(--color-heading)] hover:bg-[var(--color-card)] transition-colors"
-    >
-      Logout
-    </button>
-  </div>
   <slot />
 </div>
 
@@ -80,10 +72,5 @@ const passwordHash = createHash('sha256').update(password).digest('hex');
 
   document.getElementById('pwd-input').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') document.getElementById('pwd-btn').click();
-  });
-
-  document.getElementById('logout-btn').addEventListener('click', () => {
-    localStorage.removeItem(STORAGE_KEY);
-    showGate();
   });
 </script>
