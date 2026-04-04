@@ -5,11 +5,10 @@ import Footer from '../components/Footer.astro';
 import HomeHero from '../components/HomeHero.astro';
 import SectionCard from '../components/SectionCard.astro';
 import PostCard from '../components/PostCard.astro';
-import { getCollection } from 'astro:content';
 import { SECTIONS, SECTION_META } from '../lib/sections';
-import { isIndex, getSection } from '../lib/content-utils';
+import { isIndex, getSection, getPublicPosts } from '../lib/content-utils';
 
-const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const allPosts = await getPublicPosts();
 const contentPosts = allPosts.filter((p) => !isIndex(p.id) && p.data.date);
 const sortedPosts = contentPosts.sort((a, b) => b.data.date!.getTime() - a.data.date!.getTime());
 const recentPosts = sortedPosts.slice(0, 6);

@@ -4,12 +4,12 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import FolderView from '../../components/FolderView.astro';
 import TagList from '../../components/TagList.astro';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import { SECTION_META } from '../../lib/sections';
-import { getSection, isIndex, listChildren, getUrl } from '../../lib/content-utils';
+import { getSection, isIndex, listChildren, getUrl, getAllPosts, getPublicPosts } from '../../lib/content-utils';
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+  const allPosts = await getAllPosts();
 
   return allPosts
     .filter((post) => {
@@ -53,7 +53,7 @@ for (let i = 1; i < pathParts.length - 1; i++) {
 // For folder pages, get children
 let folderChildren = { folders: [] as any[], docs: [] as any[] };
 if (isFolder) {
-  const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+  const allPosts = await getPublicPosts();
   const folderPath = post.id.replace(/\/_index$/, '');
   folderChildren = listChildren(allPosts, folderPath);
 }
@@ -62,7 +62,7 @@ if (isFolder) {
 let prev: any = null;
 let next: any = null;
 if (!isFolder && date) {
-  const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+  const allPosts = await getPublicPosts();
   const parentPath = pathParts.slice(0, -1).join('/');
   const siblings = allPosts
     .filter((p) => {

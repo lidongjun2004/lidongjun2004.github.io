@@ -2,10 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { getCollection } from 'astro:content';
-import { isIndex } from '../../lib/content-utils';
+import { isIndex, getPublicPosts } from '../../lib/content-utils';
 
-const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const allPosts = await getPublicPosts();
 const contentPosts = allPosts.filter((p) => !isIndex(p.id));
 
 // Build tag -> count map

@@ -1,5 +1,16 @@
 import type { Section } from './sections';
 import { SECTIONS } from './sections';
+import { getCollection } from 'astro:content';
+
+/** 获取公开文章（排除 draft 和 private），用于所有列表页 */
+export async function getPublicPosts() {
+  return getCollection('posts', ({ data }) => !data.draft && !data.private);
+}
+
+/** 获取所有非 draft 文章（含 private），用于 getStaticPaths 生成页面 */
+export async function getAllPosts() {
+  return getCollection('posts', ({ data }) => !data.draft);
+}
 
 /** Extract the section (top-level directory) from a post id */
 export function getSection(id: string): Section {

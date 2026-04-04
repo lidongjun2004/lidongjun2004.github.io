@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import { getSection, isIndex, getUrl } from '../lib/content-utils';
+import { SECTION_META } from '../lib/sections';
+import { createHash } from 'crypto';
+
+// Build-time: hash the password and embed only the hash
+const password = import.meta.env.PRIVATE_PASSWORD || 'changeme';
+const passwordHash = createHash('sha256').update(password).digest('hex');
+
+// Get all private posts
+const allPosts = await getCollection('posts', ({ data }) => !data.draft && data.private);
+const contentPosts = allPosts.filter((p) => !isIndex(p.id));
+
+// Group by section
+const sections = new Map<string, typeof contentPosts>();
+for (const post of contentPosts) {
+  const section = getSection(post.id);
+  if (!sections.has(section)) sections.set(section, []);
+  sections.get(section)!.push(post);
+}
+// Sort each group by date
+for (const posts of sections.values()) {
+  posts.sort((a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0));
+}
+---
+
+<BaseLayout title="Private" description="Private posts">
+  <Header slot="header" />
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <!-- Password gate -->
+    <div id="gate" class="text-center py-20">
+      <div class="text-4xl mb-6">🔒</div>
+      <h1 class="text-2xl font-bold text-[var(--color-heading)] mb-4">Private Area</h1>
+      <p class="text-[var(--color-text-light)] mb-6">Enter password to view private posts.</p>
+      <div class="flex items-center justify-center gap-3 max-w-xs mx-auto">
+        <input
+          type="password"
+          id="pwd-input"
+          placeholder="Password"
+          class="flex-1 px-4 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+        <button
+          id="pwd-btn"
+          class="px-5 py-2 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
+        >
+          Enter
+        </button>
+      </div>
+      <p id="pwd-error" class="text-red-500 text-sm mt-3 hidden">Incorrect password.</p>
+    </div>
+
+    <!-- Private content (hidden until authenticated) -->
+    <div id="content" class="hidden">
+      <div class="flex items-center justify-between mb-8">
+        <h1 class="text-2xl font-bold text-[var(--color-heading)]">
+          🔓 Private Posts
+          <span class="text-lg font-normal text-[var(--color-text-light)] ml-2">
+            ({contentPosts.length})
+          </span>
+        </h1>
+        <button
+          id="logout-btn"
+          class="text-sm px-3 py-1.5 rounded-lg border border-[var(--color-border)] text-[var(--color-text-light)] hover:text-[var(--color-heading)] hover:bg-[var(--color-card)] transition-colors"
+        >
+          Logout
+        </button>
+      </div>
+
+      {contentPosts.length === 0 ? (
+        <p class="text-[var(--color-text-light)] text-center py-12">No private posts yet.</p>
+      ) : (
+        <div class="space-y-8">
+          {[...sections.entries()].map(([section, posts]) => {
+            const meta = SECTION_META[section as keyof typeof SECTION_META];
+            return (
+              <div>
+                <h2 class="text-lg font-semibold text-[var(--color-heading)] mb-3 flex items-center gap-2">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-white text-xs font-medium"
+                    style={`background-color: ${meta?.color ?? '#666'}`}
+                  >
+                    {meta?.icon} {meta?.label ?? section}
+                  </span>
+                </h2>
+                <div class="space-y-2">
+                  {posts.map((post) => {
+                    const dateStr = post.data.date?.toLocaleDateString('zh-CN', {
+                      year: 'numeric', month: 'long', day: 'numeric',
+                    });
+                    return (
+                      <a
+                        href={getUrl(post.id)}
+                        class="group flex items-center gap-3 bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                      >
+                        <span class="text-xl shrink-0">📄</span>
+                        <div class="min-w-0 flex-1">
+                          <h3 class="font-semibold text-[var(--color-heading)] group-hover:opacity-75 transition-opacity">
+                            {post.data.title}
+                          </h3>
+                          {post.data.description && (
+                            <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">
+                              {post.data.description}
+                            </p>
+                          )}
+                        </div>
+                        <div class="shrink-0 text-right">
+                          {dateStr && (
+                            <time class="text-xs text-[var(--color-text-light)]">{dateStr}</time>
+                          )}
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script define:vars={{ passwordHash }}>
+  const STORAGE_KEY = 'private_auth';
+
+  async function sha256(text) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function showContent() {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('content').classList.remove('hidden');
+  }
+
+  function showGate() {
+    document.getElementById('gate').style.display = 'block';
+    document.getElementById('content').classList.add('hidden');
+  }
+
+  // Check if already authenticated
+  if (localStorage.getItem(STORAGE_KEY) === passwordHash) {
+    showContent();
+  }
+
+  // Password submit
+  document.getElementById('pwd-btn').addEventListener('click', async () => {
+    const input = document.getElementById('pwd-input');
+    const hash = await sha256(input.value);
+    if (hash === passwordHash) {
+      localStorage.setItem(STORAGE_KEY, passwordHash);
+      showContent();
+    } else {
+      document.getElementById('pwd-error').classList.remove('hidden');
+      input.value = '';
+      setTimeout(() => {
+        document.getElementById('pwd-error').classList.add('hidden');
+      }, 2000);
+    }
+  });
+
+  // Enter key support
+  document.getElementById('pwd-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      document.getElementById('pwd-btn').click();
+    }
+  });
+
+  // Logout
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    localStorage.removeItem(STORAGE_KEY);
+    showGate();
+  });
+</script>

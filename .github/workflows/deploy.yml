@@ -26,6 +26,8 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+        env:
+          PRIVATE_PASSWORD: ${{ secrets.PRIVATE_PASSWORD }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
