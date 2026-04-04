@@ -31,12 +31,12 @@ export function getSlug(id: string): string {
 }
 
 /** Get the browsable URL path for a post or folder */
-export function getUrl(id: string): string {
+export function getUrl(id: string, prefix: string = ''): string {
   if (isIndex(id)) {
     const path = id.replace(/\/_index$/, '');
-    return `/${path}/`;
+    return `${prefix}/${path}/`;
   }
-  return `/${id}/`;
+  return `${prefix}/${id}/`;
 }
 
 interface FolderEntry {

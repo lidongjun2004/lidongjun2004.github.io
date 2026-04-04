@@ -6,13 +6,14 @@ interface Props {
   color: string;
   icon: string;
   count: number;
+  urlPrefix?: string;
 }
 
-const { slug, label, description, color, icon, count } = Astro.props;
+const { slug, label, description, color, icon, count, urlPrefix = '' } = Astro.props;
 ---
 
 <a
-  href={`/${slug}/`}
+  href={`${urlPrefix}/${slug}/`}
   class="group block bg-[var(--color-card)] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 border border-[var(--color-border)]"
   style={`border-top: 3px solid ${color}`}
 >

@@ -11,9 +11,10 @@ interface FolderEntry {
 interface Props {
   folders: FolderEntry[];
   docs: any[];
+  urlPrefix?: string;
 }
 
-const { folders, docs } = Astro.props;
+const { folders, docs, urlPrefix = '' } = Astro.props;
 ---
 
 <div class="space-y-3">
@@ -23,13 +24,16 @@ const { folders, docs } = Astro.props;
     const meta = SECTION_META[section];
     return (
       <a
-        href={getUrl(folder.post.id)}
+        href={getUrl(folder.post.id, urlPrefix)}
         class="group flex items-center gap-3 bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
       >
         <span class="text-xl shrink-0">📁</span>
         <div class="min-w-0 flex-1">
           <h3 class="font-semibold text-[var(--color-heading)] group-hover:opacity-75 transition-opacity">
             {folder.post.data.title || folder.name}
+            {folder.post.data.private && (
+              <span class="ml-2 text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-medium align-middle">Private</span>
+            )}
           </h3>
           {folder.post.data.description && (
             <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">
@@ -51,13 +55,16 @@ const { folders, docs } = Astro.props;
     });
     return (
       <a
-        href={getUrl(doc.id)}
+        href={getUrl(doc.id, urlPrefix)}
         class="group flex items-center gap-3 bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
       >
         <span class="text-xl shrink-0">📄</span>
         <div class="min-w-0 flex-1">
           <h3 class="font-semibold text-[var(--color-heading)] group-hover:opacity-75 transition-opacity">
             {doc.data.title}
+            {doc.data.private && (
+              <span class="ml-2 text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-medium align-middle">Private</span>
+            )}
           </h3>
           {doc.data.description && (
             <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">

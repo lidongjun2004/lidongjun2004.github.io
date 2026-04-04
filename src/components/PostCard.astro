@@ -9,9 +9,11 @@ interface Props {
   category: string[];
   tags: string[];
   slug: string;
+  urlPrefix?: string;
+  isPrivate?: boolean;
 }
 
-const { title, description, date, section, category, tags, slug } = Astro.props;
+const { title, description, date, section, category, tags, slug, urlPrefix = '', isPrivate = false } = Astro.props;
 const meta = SECTION_META[section];
 const dateStr = date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
@@ -29,9 +31,14 @@ const dateStr = date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long
         {category.join(' / ')}
       </span>
     )}
+    {isPrivate && (
+      <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-medium">
+        Private
+      </span>
+    )}
   </div>
 
-  <a href={`/${slug}/`} class="block group">
+  <a href={`${urlPrefix}/${slug}/`} class="block group">
     <h3 class="text-lg font-semibold text-[var(--color-heading)] mb-2 group-hover:opacity-75 transition-opacity">
       {title}
     </h3>

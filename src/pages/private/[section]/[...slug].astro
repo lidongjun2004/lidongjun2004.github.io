@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import FolderView from '../../../components/FolderView.astro';
+import TagList from '../../../components/TagList.astro';
+import PrivateGate from '../../../components/PrivateGate.astro';
+import { render } from 'astro:content';
+import { SECTION_META } from '../../../lib/sections';
+import { getSection, isIndex, listChildren, getUrl, getAllPosts } from '../../../lib/content-utils';
+
+const PREFIX = '/private';
+
+export async function getStaticPaths() {
+  const allPosts = await getAllPosts();
+
+  return allPosts
+    .filter((post) => {
+      const parts = post.id.split('/');
+      return !(parts.length === 2 && parts[1] === '_index');
+    })
+    .map((post) => {
+      const section = getSection(post.id);
+      const rest = post.id.slice(section.length + 1);
+      const slug = isIndex(post.id) ? rest.replace(/\/_index$/, '') : rest;
+
+      return {
+        params: { section, slug },
+        props: { post, isFolder: isIndex(post.id) },
+      };
+    });
+}
+
+const { post, isFolder } = Astro.props;
+const { Content } = await render(post);
+const section = getSection(post.id);
+const meta = SECTION_META[section];
+const { title, description, date, updated, tags } = post.data;
+
+// Build breadcrumb with /private prefix
+const pathParts = post.id.split('/');
+const breadcrumbs: { label: string; href: string }[] = [
+  { label: 'Home', href: `${PREFIX}/` },
+  { label: meta.label, href: `${PREFIX}/${section}/` },
+];
+for (let i = 1; i < pathParts.length - 1; i++) {
+  const partPath = pathParts.slice(0, i + 1).join('/');
+  breadcrumbs.push({
+    label: pathParts[i],
+    href: `${PREFIX}/${partPath}/`,
+  });
+}
+
+// For folder pages, get children (including private)
+let folderChildren = { folders: [] as any[], docs: [] as any[] };
+if (isFolder) {
+  const allPosts = await getAllPosts();
+  const folderPath = post.id.replace(/\/_index$/, '');
+  folderChildren = listChildren(allPosts, folderPath);
+}
+
+// For doc pages, get prev/next (including private)
+let prev: any = null;
+let next: any = null;
+if (!isFolder && date) {
+  const allPosts = await getAllPosts();
+  const parentPath = pathParts.slice(0, -1).join('/');
+  const siblings = allPosts
+    .filter((p) => {
+      if (isIndex(p.id)) return false;
+      const pParts = p.id.split('/');
+      const pParent = pParts.slice(0, -1).join('/');
+      return pParent === parentPath;
+    })
+    .sort((a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0));
+
+  const idx = siblings.findIndex((p) => p.id === post.id);
+  if (idx < siblings.length - 1) prev = siblings[idx + 1];
+  if (idx > 0) next = siblings[idx - 1];
+}
+
+const dateStr = date?.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+const updatedStr = updated?.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout title={title} description={description}>
+  <Header slot="header" />
+
+  <PrivateGate>
+    {isFolder ? (
+      <!-- Folder page -->
+      <section
+        class="py-10 sm:py-14 border-b border-[var(--color-border)]"
+        style={`background: linear-gradient(135deg, ${meta.color}06, ${meta.color}02)`}
+      >
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+          <nav class="text-sm text-[var(--color-text-light)] mb-4 flex items-center gap-1.5 flex-wrap">
+            {breadcrumbs.map((bc, i) => (
+              <>
+                {i > 0 && <span>/</span>}
+                <a href={bc.href} class="hover:text-[var(--color-heading)]">{bc.label}</a>
+              </>
+            ))}
+          </nav>
+          <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-heading)] mb-2">
+            📁 {title}
+          </h1>
+          {description && (
+            <p class="text-lg text-[var(--color-text-light)]">{description}</p>
+          )}
+        </div>
+      </section>
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+        <div class="prose mb-10">
+          <Content />
+        </div>
+        <FolderView folders={folderChildren.folders} docs={folderChildren.docs} urlPrefix={PREFIX} />
+      </div>
+    ) : (
+      <!-- Document page -->
+      <article class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+        <nav class="text-sm text-[var(--color-text-light)] mb-6 flex items-center gap-1.5 flex-wrap">
+          {breadcrumbs.map((bc, i) => (
+            <>
+              {i > 0 && <span>/</span>}
+              <a href={bc.href} class="hover:text-[var(--color-heading)]">{bc.label}</a>
+            </>
+          ))}
+        </nav>
+
+        <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-heading)] mb-4 leading-tight">
+          {title}
+        </h1>
+
+        <div class="flex flex-wrap items-center gap-3 text-sm text-[var(--color-text-light)] mb-6">
+          {dateStr && <time datetime={date!.toISOString()}>{dateStr}</time>}
+          {updatedStr && <span class="text-xs">(updated {updatedStr})</span>}
+          {post.data.private && (
+            <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-medium">Private</span>
+          )}
+        </div>
+
+        {tags && tags.length > 0 && (
+          <div class="mb-8">
+            <TagList tags={tags} />
+          </div>
+        )}
+
+        <div class="prose">
+          <Content />
+        </div>
+
+        {(prev || next) && (
+          <nav class="mt-16 pt-8 border-t border-[var(--color-border)] grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {prev && (
+              <a
+                href={getUrl(prev.id, PREFIX)}
+                class="group block bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-sm transition-shadow"
+              >
+                <span class="text-xs text-[var(--color-text-light)]">Previous</span>
+                <p class="text-sm font-medium text-[var(--color-heading)] group-hover:opacity-75 transition-opacity mt-1">
+                  {prev.data.title}
+                </p>
+              </a>
+            )}
+            {next && (
+              <a
+                href={getUrl(next.id, PREFIX)}
+                class:list={["group block bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-sm transition-shadow text-right", !prev && "sm:col-start-2"]}
+              >
+                <span class="text-xs text-[var(--color-text-light)]">Next</span>
+                <p class="text-sm font-medium text-[var(--color-heading)] group-hover:opacity-75 transition-opacity mt-1">
+                  {next.data.title}
+                </p>
+              </a>
+            )}
+          </nav>
+        )}
+      </article>
+    )}
+  </PrivateGate>
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,89 @@
+---
+import { createHash } from 'crypto';
+
+const password = import.meta.env.PRIVATE_PASSWORD || 'changeme';
+const passwordHash = createHash('sha256').update(password).digest('hex');
+---
+
+<div id="private-gate" class="text-center py-20">
+  <div class="text-4xl mb-6">🔒</div>
+  <h1 class="text-2xl font-bold text-[var(--color-heading)] mb-4">Private Area</h1>
+  <p class="text-[var(--color-text-light)] mb-6">Enter password to view private content.</p>
+  <div class="flex items-center justify-center gap-3 max-w-xs mx-auto">
+    <input
+      type="password"
+      id="pwd-input"
+      placeholder="Password"
+      class="flex-1 px-4 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-blue-400"
+    />
+    <button
+      id="pwd-btn"
+      class="px-5 py-2 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
+    >
+      Enter
+    </button>
+  </div>
+  <p id="pwd-error" class="text-red-500 text-sm mt-3 hidden">Incorrect password.</p>
+</div>
+
+<div id="private-content" class="hidden">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-4 flex justify-end">
+    <button
+      id="logout-btn"
+      class="text-sm px-3 py-1.5 rounded-lg border border-[var(--color-border)] text-[var(--color-text-light)] hover:text-[var(--color-heading)] hover:bg-[var(--color-card)] transition-colors"
+    >
+      Logout
+    </button>
+  </div>
+  <slot />
+</div>
+
+<script define:vars={{ passwordHash }}>
+  const STORAGE_KEY = 'private_auth';
+
+  async function sha256(text) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function showContent() {
+    document.getElementById('private-gate').style.display = 'none';
+    document.getElementById('private-content').classList.remove('hidden');
+  }
+
+  function showGate() {
+    document.getElementById('private-gate').style.display = 'block';
+    document.getElementById('private-content').classList.add('hidden');
+  }
+
+  if (localStorage.getItem(STORAGE_KEY) === passwordHash) {
+    showContent();
+  }
+
+  document.getElementById('pwd-btn').addEventListener('click', async () => {
+    const input = document.getElementById('pwd-input');
+    const hash = await sha256(input.value);
+    if (hash === passwordHash) {
+      localStorage.setItem(STORAGE_KEY, passwordHash);
+      showContent();
+    } else {
+      document.getElementById('pwd-error').classList.remove('hidden');
+      input.value = '';
+      setTimeout(() => {
+        document.getElementById('pwd-error').classList.add('hidden');
+      }, 2000);
+    }
+  });
+
+  document.getElementById('pwd-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('pwd-btn').click();
+  });
+
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    localStorage.removeItem(STORAGE_KEY);
+    showGate();
+  });
+</script>

@@ -3,11 +3,12 @@ import { SECTION_META, type Section } from '../lib/sections';
 
 const sections = Object.entries(SECTION_META) as [Section, (typeof SECTION_META)[Section]][];
 const currentPath = Astro.url.pathname;
+const prefix = currentPath.startsWith('/private') ? '/private' : '';
 ---
 
 <header class="sticky top-0 z-50 bg-[var(--color-bg)]/80 backdrop-blur-md border-b border-[var(--color-border)]">
   <nav class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <a href="/" class="text-xl font-semibold text-[var(--color-heading)] hover:opacity-100">
+    <a href={`${prefix}/`} class="text-xl font-semibold text-[var(--color-heading)] hover:opacity-100">
       L.D.J 的私家工坊
     </a>
 
@@ -16,7 +17,7 @@ const currentPath = Astro.url.pathname;
       {sections.map(([slug, meta]) => (
         <li>
           <a
-            href={`/${slug}/`}
+            href={`${prefix}/${slug}/`}
             class:list={[
               "px-3 py-1.5 rounded-lg text-sm transition-colors",
               currentPath.startsWith(`/${slug}`)
@@ -74,7 +75,7 @@ const currentPath = Astro.url.pathname;
       {sections.map(([slug, meta]) => (
         <li>
           <a
-            href={`/${slug}/`}
+            href={`${prefix}/${slug}/`}
             class:list={[
               "block px-3 py-2 rounded-lg text-sm transition-colors",
               currentPath.startsWith(`/${slug}`)
