@@ -8,12 +8,12 @@ const prefix = currentPath.startsWith('/private') ? '/private' : '';
 
 <header class="sticky top-0 z-50 bg-[var(--color-bg)]/80 backdrop-blur-md border-b border-[var(--color-border)]">
   <nav class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <a href={`${prefix}/`} class="text-xl font-semibold text-[var(--color-heading)] hover:opacity-100">
+    <a href={`${prefix}/`} class="shrink-0 text-xl font-semibold text-[var(--color-heading)] hover:opacity-100">
       L.D.J 的私家工坊
     </a>
 
     <!-- Desktop nav -->
-    <ul class="hidden md:flex items-center gap-1">
+    <ul class="hidden md:flex items-center gap-1 whitespace-nowrap">
       {sections.map(([slug, meta]) => (
         <li>
           <a
