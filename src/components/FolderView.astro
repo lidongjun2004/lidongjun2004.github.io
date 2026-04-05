@@ -47,10 +47,9 @@ const folderChildCounts = Object.fromEntries(
           </h3>
           {(() => {
             const counts = folderChildCounts[folder.path];
-            const parts: string[] = [];
-            if (counts?.folders > 0) parts.push(`${counts.folders} ${counts.folders === 1 ? 'folder' : 'folders'}`);
-            if (counts?.posts > 0) parts.push(`${counts.posts} ${counts.posts === 1 ? 'post' : 'posts'}`);
-            const text = parts.length > 0 ? parts.join(', ') : '0 posts';
+            const fc = counts?.folders ?? 0;
+            const pc = counts?.posts ?? 0;
+            const text = `${fc} ${fc === 1 ? 'folder' : 'folders'}, ${pc} ${pc === 1 ? 'post' : 'posts'}`;
             return (
               <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">{text}</p>
             );
