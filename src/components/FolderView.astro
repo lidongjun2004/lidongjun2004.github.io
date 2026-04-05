@@ -1,6 +1,7 @@
 ---
 import { SECTION_META } from '../lib/sections';
-import { getSection, getUrl } from '../lib/content-utils';
+import { getSection, getUrl, listChildren } from '../lib/content-utils';
+import { getPublicPosts } from '../lib/content-utils';
 
 interface FolderEntry {
   name: string;
@@ -15,6 +16,15 @@ interface Props {
 }
 
 const { folders, docs, urlPrefix = '' } = Astro.props;
+
+// Pre-compute children counts for each folder
+const allPosts = await getPublicPosts();
+const folderChildCounts = Object.fromEntries(
+  folders.map((folder) => {
+    const { folders: subFolders, docs: subDocs } = listChildren(allPosts, folder.path);
+    return [folder.path, { folders: subFolders.length, posts: subDocs.length }];
+  })
+);
 ---
 
 <div class="space-y-3">
@@ -35,11 +45,16 @@ const { folders, docs, urlPrefix = '' } = Astro.props;
               <span class="ml-2 text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-medium align-middle">Private</span>
             )}
           </h3>
-          {folder.post.data.description && (
-            <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">
-              {folder.post.data.description}
-            </p>
-          )}
+          {(() => {
+            const counts = folderChildCounts[folder.path];
+            const parts: string[] = [];
+            if (counts?.folders > 0) parts.push(`${counts.folders} ${counts.folders === 1 ? 'folder' : 'folders'}`);
+            if (counts?.posts > 0) parts.push(`${counts.posts} ${counts.posts === 1 ? 'post' : 'posts'}`);
+            const text = parts.length > 0 ? parts.join(', ') : '0 posts';
+            return (
+              <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">{text}</p>
+            );
+          })()}
         </div>
         <span class="text-[var(--color-text-light)] text-sm shrink-0">→</span>
       </a>

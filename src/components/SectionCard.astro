@@ -5,11 +5,17 @@ interface Props {
   description: string;
   color: string;
   icon: string;
-  count: number;
+  folderCount: number;
+  postCount: number;
   urlPrefix?: string;
 }
 
-const { slug, label, description, color, icon, count, urlPrefix = '' } = Astro.props;
+const { slug, label, description, color, icon, folderCount, postCount, urlPrefix = '' } = Astro.props;
+
+const parts: string[] = [];
+if (folderCount > 0) parts.push(`${folderCount} ${folderCount === 1 ? 'folder' : 'folders'}`);
+if (postCount > 0) parts.push(`${postCount} ${postCount === 1 ? 'post' : 'posts'}`);
+const countText = parts.length > 0 ? parts.join(', ') : '0 posts';
 ---
 
 <a
@@ -23,6 +29,6 @@ const { slug, label, description, color, icon, count, urlPrefix = '' } = Astro.p
   </h3>
   <p class="text-sm text-[var(--color-text-light)] mb-3 line-clamp-2" set:html={description} />
   <span class="text-xs text-[var(--color-text-light)]">
-    {count} {count === 1 ? 'post' : 'posts'}
+    {countText}
   </span>
 </a>
