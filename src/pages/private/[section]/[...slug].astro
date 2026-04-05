@@ -43,10 +43,12 @@ const breadcrumbs: { label: string; href: string }[] = [
   { label: 'Home', href: `${PREFIX}/` },
   { label: meta.label, href: `${PREFIX}/${section}/` },
 ];
+const allPostsForBreadcrumbs = await getAllPosts();
 for (let i = 1; i < pathParts.length - 1; i++) {
   const partPath = pathParts.slice(0, i + 1).join('/');
+  const folderIndex = allPostsForBreadcrumbs.find((p) => p.id === `${partPath}/_index`);
   breadcrumbs.push({
-    label: pathParts[i],
+    label: folderIndex?.data?.title ?? pathParts[i],
     href: `${PREFIX}/${partPath}/`,
   });
 }
