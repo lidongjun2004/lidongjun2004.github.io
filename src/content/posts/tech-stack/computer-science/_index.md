@@ -1,4 +1,4 @@
 ---
-title: "Computer Science (Basic)"
-description: "Computer Science (Basic)"
+title: "Computer Science"
+description: "Computer Science"
 ---
