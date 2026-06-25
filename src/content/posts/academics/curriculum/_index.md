@@ -1,5 +1,5 @@
 ---
-title: "课程表 · Curriculum"
+title: "校内课程 · Curriculum"
 description: "按年级归档的 BUAA 课程笔记与应试复习"
 ---
 
