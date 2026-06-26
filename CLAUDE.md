@@ -13,6 +13,8 @@
 - **数学公式**：`remark-math` + `rehype-katex`，KaTeX 的 CSS 由 `BaseLayout.astro` 从 CDN 引入
 - **包管理**：pnpm（见 `package.json` 的 `packageManager` 字段，Node ≥ 22.12）
 - **部署**：push 到 `main` → GitHub Actions（`.github/workflows/deploy.yml`）自动 `pnpm build` 并发布到 GitHub Pages
+- **评论**：giscus（评论存 GitHub Discussions），由 `BaseLayout` 统一注入到每个页面，纯静态零后端（详见「九、站点功能模块」）
+- **更新足迹**：`/changelog` 时间轴页，合并「文章发布」与「站点演进」两类事件（详见「九、站点功能模块」）
 
 ## 二、常用命令
 
@@ -48,7 +50,19 @@ src/content/posts/tech-stack/math/game-theory/lecture-1-overview.md
 | `plan-think` | Plan & Think | 计划与思考 |
 | `health-fitness` | Health & Fitness | 健康与健身 |
 
+### 不同性质的文章放哪（归类决策）
+
+下笔前先按「这篇是什么性质」对号入座，别让通用技术知识和课程笔记混放：
+
+- **通用技术知识 / 认知沉淀**（能脱离具体课程独立成立的知识单元，如「贝叶斯决策」「SVM」「Go 并发」）→ `tech-stack`，按**学科 / 主题**建目录（`artificial-intelligence/ml-fundamentals/`、`math/` 等），不按课程。
+- **课程笔记 / 应试复习**（面向某门课、某场考试，含「第几讲」「考点清单」「回忆版」）→ `academics/curriculum/<年级>/<课程名>/`（年级如 `junior`，课程名可用中文，如 `academics/curriculum/junior/知识图谱/`）。
+- **职业相关**（实习、求职、职场反思、行业观察）→ `career`。
+- **生活 / 兴趣 / 情感**（爱好、随笔、体验）→ `love-interests`。
+- **目标 / 规划 / 长期思考**（计划、复盘、方法论）→ `plan-think`。
+- **健康 / 健身**（训练、饮食、身体管理）→ `health-fitness`。
+
 > **`tech-stack` 的核心定位（owner 反复强调）**：这里沉淀的是**按知识体系组织的技术能力与认知**，不是「某门课的笔记本」。
+>
 > - 目录按**学科/主题**切分（如 `artificial-intelligence/ml-fundamentals/`、`math/`），文章是「贝叶斯决策」「SVM」这种**知识单元**，能脱离任何具体课程独立成立。
 > - **不要按课程建目录**（不要出现 `pattern-recognition/`、`第几讲` 这种课程结构），也**不要带「课程笔记」语气/标签**。即使内容来源是某门课，也要重写成通用知识沉淀后再归入对应学科主题。
 > - **课程笔记 / 应试复习** → 放 `academics`（那里才是「学校 / 课程」视角）。同一份课程材料可以两边各有产物：`academics` 放面向考试的复习，`tech-stack` 放提炼后的通用知识。
@@ -68,7 +82,6 @@ schema 定义在 `src/content.config.ts`。字段：
 | `section` | enum | 可选（路由实际按路径推导，一般不用手填） |
 | `cover` | string | 可选封面 |
 | `draft` | boolean | `true` = 不构建、不出现在任何页面 |
-| `private` | boolean | `true` = 不出现在公开列表（私密区有独立密码门，对应 CI 的 `PRIVATE_PASSWORD` secret） |
 
 **叶子文章最小 frontmatter**：`title` + `description` + `date`（再按需加 `tags`）。
 
@@ -117,6 +130,29 @@ schema 定义在 `src/content.config.ts`。字段：
 | `src/lib/sections.ts` | section 列表与展示元信息（新增分类改这里） |
 | `src/lib/content-utils.ts` | 取文章、推导 section/slug/URL、列子项、排序 |
 | `src/pages/[section]/[...slug].astro` | 文章页 / 文件夹页的渲染逻辑（含面包屑、上一/下一篇） |
-| `src/layouts/BaseLayout.astro` | 全站 HTML 骨架（含 KaTeX CSS 引入） |
+| `src/layouts/BaseLayout.astro` | 全站 HTML 骨架（含 KaTeX CSS 引入、评论区统一注入） |
+| `src/components/Comments.astro` | giscus 评论区组件 |
+| `src/pages/changelog.astro` | 更新足迹时间轴页 |
+| `src/data/site-updates.ts` | Changelog 的「站点演进」事件数据源（手写） |
 | `astro.config.mjs` | 站点配置、remark/rehype 插件 |
 | `.github/workflows/deploy.yml` | CI 构建 + GitHub Pages 部署 |
+
+## 九、站点功能模块
+
+除了文章内容，站点有两个需要知道维护方式的功能模块。
+
+### 评论区（giscus）
+
+- **形态**：纯客户端 giscus，评论数据存在本仓的 **GitHub Discussions**（`Announcements` 分类，按页面 `pathname` 映射），静态站零后端。
+- **挂载点**：组件 `src/components/Comments.astro`，由 `BaseLayout` 统一注入，所以**每个页面**（首页 / Tags / About / 分类落地页 / 文章 / Changelog）底部都有评论区。改一处即全站生效，**不要**再往单个页面手动加 `<Comments />`（会重复）。
+- **主题**：固定 `light`，跟全站亮色调一致（不用 giscus 默认的 `preferred_color_scheme`，否则暗色系统访客会看到黑框嵌在亮色页里）。
+- **配置值**（`data-repo-id` / `data-category-id` 等）直接写在组件里；若换仓库或分类，去 giscus.app 重新生成后替换。
+- **新评论通知**：靠 GitHub 原生能力（仓库 Watch / Discussions 通知 / 手机 App），不在代码里实现。
+
+### 更新足迹（Changelog）
+
+- **页面**：`src/pages/changelog.astro`，路由 `/changelog`，Header 桌面 + 移动端均有入口。
+- **数据合并**：一条时间轴按日期倒序合并两类事件——
+  - **文章发布 / 更新**：自动从 content collection 读，每篇文章的 `date` 生成一条「📝 发布」，若有 `updated` 且与 `date` 不同则额外生成一条「🔄 更新」。**零维护**，写文章就自动上时间线。
+  - **站点演进**：手写在 `src/data/site-updates.ts`，每条 `{ date, title, description?, icon? }`。**给博客加重要功能时，在该文件顶部加一条**（数组顺序不影响排序，页面按日期重排，但习惯上新条目放最前）。
+- **为什么站点演进要手写**：CI 的 `actions/checkout@v4` 默认只拉 1 个 commit，构建时拿不到完整 git 历史，无法自动生成；且原始 commit message 对访客不友好。手写可控且措辞得体。

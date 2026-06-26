@@ -32,11 +32,18 @@ posts/
 │           └── ielts/
 ├── career/                              # Career
 ├── academics/                           # Academics
+│   └── curriculum/                      # Course notes & exam review
 ├── love-interests/                      # Love & Interests
 ├── plan-think/                          # Plan & Think
-│   └── about-family/
 └── health-fitness/                      # Health & Fitness
 ```
+
+## Features
+
+- **Nested content** — arbitrarily nested folders under each section; URLs mirror the file path.
+- **Math** — KaTeX rendering via `remark-math` + `rehype-katex`.
+- **Comments** — [giscus](https://giscus.app/) on every page, backed by GitHub Discussions (no backend).
+- **Changelog** — a `/changelog` timeline merging post publications with site milestones.
 
 ## Commands
 
