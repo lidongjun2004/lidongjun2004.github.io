@@ -4,7 +4,6 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import FolderView from '../../components/FolderView.astro';
 import TagList from '../../components/TagList.astro';
-import Comments from '../../components/Comments.astro';
 import { render } from 'astro:content';
 import { SECTION_META } from '../../lib/sections';
 import { getSection, isIndex, listChildren, getUrl, getAllPosts, getPublicPosts } from '../../lib/content-utils';
@@ -175,8 +174,6 @@ const updatedStr = updated?.toLocaleDateString('zh-CN', { year: 'numeric', month
           )}
         </nav>
       )}
-
-      <Comments />
     </article>
   )}
 

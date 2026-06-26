@@ -6,6 +6,7 @@ interface Props {
 
 const { title, description = "积极乐观、活力无穷、永远攀登。" } = Astro.props;
 import "../styles/global.css";
+import Comments from "../components/Comments.astro";
 ---
 
 <!doctype html>
@@ -26,6 +27,9 @@ import "../styles/global.css";
     <slot name="header" />
     <main class="flex-1">
       <slot />
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 pb-10">
+        <Comments />
+      </div>
     </main>
     <slot name="footer" />
   </body>
