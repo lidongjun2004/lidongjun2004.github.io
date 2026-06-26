@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SECTION_META } from '../lib/sections';
+import { getSection, getUrl, isIndex, getPublicPosts } from '../lib/content-utils';
+import { SITE_UPDATES } from '../data/site-updates';
+
+type TimelineItem = {
+  date: Date;
+  kind: 'post' | 'site';
+  title: string;
+  description?: string;
+  href?: string;
+  icon?: string;
+  color?: string;
+  label?: string;
+  isUpdate?: boolean;
+};
+
+const allPosts = await getPublicPosts();
+const postItems: TimelineItem[] = allPosts
+  .filter((p) => !isIndex(p.id) && p.data.date)
+  .flatMap((p) => {
+    const section = getSection(p.id);
+    const meta = SECTION_META[section];
+    const base = {
+      kind: 'post' as const,
+      title: p.data.title,
+      description: p.data.description,
+      href: getUrl(p.id),
+      color: meta.color,
+      label: meta.label,
+    };
+    const events: TimelineItem[] = [{ ...base, date: p.data.date!, icon: '📝' }];
+    if (p.data.updated && p.data.updated.getTime() !== p.data.date!.getTime()) {
+      events.push({ ...base, date: p.data.updated, icon: '🔄', isUpdate: true });
+    }
+    return events;
+  });
+
+const siteItems: TimelineItem[] = SITE_UPDATES.map((u) => ({
+  date: new Date(u.date),
+  kind: 'site',
+  title: u.title,
+  description: u.description,
+  icon: u.icon ?? '✨',
+}));
+
+const timeline = [...postItems, ...siteItems].sort(
+  (a, b) => b.date.getTime() - a.date.getTime()
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout title="Changelog" description="博客的更新与成长足迹">
+  <Header slot="header" />
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-heading)] mb-2">更新足迹</h1>
+      <p class="text-[var(--color-text-light)]">这个博客一路怎么长大的——发布的文章，和站点本身的演进。</p>
+    </div>
+
+    <ol class="relative border-l border-[var(--color-border)] ml-3">
+      {timeline.map((item) => (
+        <li class="mb-8 ml-6">
+          <span class="absolute -left-3 flex items-center justify-center w-6 h-6 rounded-full bg-[var(--color-card)] border border-[var(--color-border)] text-xs">
+            {item.icon}
+          </span>
+          <div class="flex flex-wrap items-center gap-2 mb-1">
+            <time class="text-xs text-[var(--color-text-light)]">{fmt(item.date)}</time>
+            {item.kind === 'post' && item.label && (
+              <span
+                class="inline-flex items-center px-2 py-0.5 rounded-full text-white text-xs font-medium"
+                style={`background-color: ${item.color}`}
+              >
+                {item.label}
+              </span>
+            )}
+            {item.isUpdate && (
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-gray-100 text-[var(--color-text-light)] text-xs font-medium">
+                更新
+              </span>
+            )}
+            {item.kind === 'site' && (
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-xs font-medium">
+                站点
+              </span>
+            )}
+          </div>
+          {item.href ? (
+            <a href={item.href} class="group block">
+              <h3 class="font-semibold text-[var(--color-heading)] group-hover:opacity-75 transition-opacity">
+                {item.title}
+              </h3>
+            </a>
+          ) : (
+            <h3 class="font-semibold text-[var(--color-heading)]">{item.title}</h3>
+          )}
+          {item.description && (
+            <p class="text-sm text-[var(--color-text-light)] mt-0.5">{item.description}</p>
+          )}
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

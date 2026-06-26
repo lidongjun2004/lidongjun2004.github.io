@@ -54,6 +54,19 @@ const currentPath = Astro.url.pathname;
           About
         </a>
       </li>
+      <li>
+        <a
+          href="/changelog/"
+          class:list={[
+            "px-3 py-1.5 rounded-lg text-sm transition-colors",
+            currentPath.startsWith("/changelog")
+              ? "bg-[var(--color-card)] text-[var(--color-heading)] shadow-sm font-medium"
+              : "text-[var(--color-text-light)] hover:text-[var(--color-heading)]",
+          ]}
+        >
+          Changelog
+        </a>
+      </li>
     </ul>
 
     <!-- Mobile menu button -->
@@ -91,6 +104,9 @@ const currentPath = Astro.url.pathname;
       </li>
       <li>
         <a href="/about/" class="block px-3 py-2 rounded-lg text-sm text-[var(--color-text-light)] hover:text-[var(--color-heading)]">About</a>
+      </li>
+      <li>
+        <a href="/changelog/" class="block px-3 py-2 rounded-lg text-sm text-[var(--color-text-light)] hover:text-[var(--color-heading)]">Changelog</a>
       </li>
     </ul>
   </div>
