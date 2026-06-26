@@ -10,10 +10,9 @@ interface Props {
   tags: string[];
   slug: string;
   urlPrefix?: string;
-  isPrivate?: boolean;
 }
 
-const { title, description, date, section, category, tags, slug, urlPrefix = '', isPrivate = false } = Astro.props;
+const { title, description, date, section, category, tags, slug, urlPrefix = '' } = Astro.props;
 const meta = SECTION_META[section];
 const dateStr = date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
@@ -29,11 +28,6 @@ const dateStr = date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long
     {category.length > 0 && (
       <span class="text-[var(--color-text-light)]">
         {category.join(' / ')}
-      </span>
-    )}
-    {isPrivate && (
-      <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-medium">
-        Private
       </span>
     )}
   </div>

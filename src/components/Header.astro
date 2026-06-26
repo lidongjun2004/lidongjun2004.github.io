@@ -3,12 +3,11 @@ import { SECTION_META, type Section } from '../lib/sections';
 
 const sections = Object.entries(SECTION_META) as [Section, (typeof SECTION_META)[Section]][];
 const currentPath = Astro.url.pathname;
-const prefix = currentPath.startsWith('/private') ? '/private' : '';
 ---
 
 <header class="sticky top-0 z-50 bg-[var(--color-bg)]/80 backdrop-blur-md border-b border-[var(--color-border)]">
   <nav class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <a href={`${prefix}/`} class="shrink-0 text-xl font-semibold text-[var(--color-heading)] hover:opacity-100">
+    <a href="/" class="shrink-0 text-xl font-semibold text-[var(--color-heading)] hover:opacity-100">
       L.D.J 的私家工坊
     </a>
 
@@ -17,7 +16,7 @@ const prefix = currentPath.startsWith('/private') ? '/private' : '';
       {sections.map(([slug, meta]) => (
         <li>
           <a
-            href={`${prefix}/${slug}/`}
+            href={`/${slug}/`}
             class:list={[
               "px-3 py-1.5 rounded-lg text-sm transition-colors",
               currentPath.startsWith(`/${slug}`)
@@ -55,16 +54,6 @@ const prefix = currentPath.startsWith('/private') ? '/private' : '';
           About
         </a>
       </li>
-      {prefix && (
-        <li class="ml-1">
-          <button
-            id="logout-btn"
-            class="px-3 py-1.5 rounded-lg text-sm text-red-500 hover:text-red-600 hover:bg-red-50 transition-colors"
-          >
-            Logout
-          </button>
-        </li>
-      )}
     </ul>
 
     <!-- Mobile menu button -->
@@ -85,7 +74,7 @@ const prefix = currentPath.startsWith('/private') ? '/private' : '';
       {sections.map(([slug, meta]) => (
         <li>
           <a
-            href={`${prefix}/${slug}/`}
+            href={`/${slug}/`}
             class:list={[
               "block px-3 py-2 rounded-lg text-sm transition-colors",
               currentPath.startsWith(`/${slug}`)
@@ -103,16 +92,6 @@ const prefix = currentPath.startsWith('/private') ? '/private' : '';
       <li>
         <a href="/about/" class="block px-3 py-2 rounded-lg text-sm text-[var(--color-text-light)] hover:text-[var(--color-heading)]">About</a>
       </li>
-      {prefix && (
-        <li class="pt-1 mt-1 border-t border-[var(--color-border)]">
-          <button
-            id="logout-btn-mobile"
-            class="block w-full text-left px-3 py-2 rounded-lg text-sm text-red-500 hover:text-red-600"
-          >
-            Logout
-          </button>
-        </li>
-      )}
     </ul>
   </div>
 </header>
@@ -123,12 +102,4 @@ const prefix = currentPath.startsWith('/private') ? '/private' : '';
   toggle?.addEventListener('click', () => {
     menu?.classList.toggle('hidden');
   });
-
-  // Logout buttons (only exist in /private/ pages)
-  function handleLogout() {
-    localStorage.removeItem('private_auth');
-    window.location.href = '/';
-  }
-  document.getElementById('logout-btn')?.addEventListener('click', handleLogout);
-  document.getElementById('logout-btn-mobile')?.addEventListener('click', handleLogout);
 </script>

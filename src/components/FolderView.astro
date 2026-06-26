@@ -41,9 +41,6 @@ const folderChildCounts = Object.fromEntries(
         <div class="min-w-0 flex-1">
           <h3 class="font-semibold text-[var(--color-heading)] group-hover:opacity-75 transition-opacity">
             {folder.post.data.title || folder.name}
-            {folder.post.data.private && (
-              <span class="ml-2 text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-medium align-middle">Private</span>
-            )}
           </h3>
           {(() => {
             const counts = folderChildCounts[folder.path];
@@ -76,9 +73,6 @@ const folderChildCounts = Object.fromEntries(
         <div class="min-w-0 flex-1">
           <h3 class="font-semibold text-[var(--color-heading)] group-hover:opacity-75 transition-opacity">
             {doc.data.title}
-            {doc.data.private && (
-              <span class="ml-2 text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-medium align-middle">Private</span>
-            )}
           </h3>
           {doc.data.description && (
             <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">
