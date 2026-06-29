@@ -32,7 +32,12 @@ posts/
 │           └── ielts/
 ├── career/                              # Career
 ├── academics/                           # Academics
-│   └── curriculum/                      # Course notes & exam review
+│   ├── curriculum/                      # Course notes & exam review (by year / semester)
+│   │   ├── freshman/                    # fall / spring
+│   │   ├── sophomore/                   # fall / spring
+│   │   ├── junior/                      # fall / spring
+│   │   └── senior/                      # fall / spring
+│   └── research/                        # Research (WIP)
 ├── love-interests/                      # Love & Interests
 ├── plan-think/                          # Plan & Think
 └── health-fitness/                      # Health & Fitness

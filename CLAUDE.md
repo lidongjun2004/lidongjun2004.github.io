@@ -68,7 +68,7 @@ src/content/posts/tech-stack/artificial-intelligence/ml-fundamentals/bayesian-de
 下笔前先按「这篇是什么性质」对号入座，别让通用技术知识和课程笔记混放：
 
 - **已内化的技术知识 / 知识体系沉淀**（真正学过一遍、能脱离具体课程独立成立的知识单元，如「贝叶斯决策」「SVM」「Go 并发」）→ `tech-stack`，按**学科 / 主题**建目录（详见下「`tech-stack` 怎么写」）。
-- **学校事务：课程笔记 / 应试 / 竞赛 / 科研**（面向某门课、某场考试）→ `academics`；课程走 `curriculum/<年级>/<课程名>/`，目录与源目录一一对应（详见下「`academics` 怎么写」）。
+- **学校事务：课程笔记 / 应试 / 竞赛 / 科研**（面向某门课、某场考试）→ `academics`；课程走 `curriculum/<年级>/<学期>/<课程名>/`，科研走 `research/`（详见下「`academics` 怎么写」）。
 - **职业相关**（实习、求职、职场反思、行业观察）→ `career`。
 - **生活 / 兴趣 / 情感**（爱好、随笔、体验）→ `love-interests`。
 - **目标 / 规划 / 长期思考**（计划、复盘、方法论）→ `plan-think`。
@@ -78,11 +78,11 @@ src/content/posts/tech-stack/artificial-intelligence/ml-fundamentals/bayesian-de
 
 ### `academics` 怎么写（学校视角）
 
-定位：记录 owner（在校生）在学校里的各项事务——**课程、竞赛、科研**。竞赛与科研尚未开始，暂只有课程在写。
+定位：记录 owner（在校生）在学校里的各项事务——**课程、竞赛、科研**。`research/`（与 `curriculum/` 并列）已起骨架、内容待写；竞赛暂未开始。课程是目前主体。
 
-- **目录结构**：课程一律 `academics/curriculum/<年级>/<课程名>/`（年级如 `junior`；课程名用中文，与源目录同名，如 `academics/curriculum/junior/知识图谱/`）。
+- **目录结构**：课程一律 `academics/curriculum/<年级>/<学期>/<课程名>/`。年级用英文 `freshman` / `sophomore` / `junior` / `senior`，学期用 `fall` / `spring`，**课程名用中文、与源目录同名**（如 `academics/curriculum/junior/spring/知识图谱/`）。四个年级 × fall/spring 的骨架（含各级 `_index.md`）已全部建好，新课直接放进对应 `<年级>/<学期>/` 即可。
 - **源目录绑定（关键约束）**：每门课的事实来源是本机 `~/workplace/personal/college/curriculum/<年级>/<课程名>/`（PPT、作业、大作业、讲义都在那里）。写 / 改文章前**先去对应源目录核对材料**，别凭空写。
-- **目录一一对应**：blog 这边的 `<课程名>/` 与源目录的 `<课程名>/` **保持同名、内容一致**——源目录有的课程章节，这边的文章应覆盖到；课程范围变了，两边同步。owner 会频繁跨这两个文件夹核对，命名对不上就会乱。
+- **目录对应（注意层级差）**：源目录是 `<年级>/<课程名>`（**没有学期层**），blog 是 `<年级>/<学期>/<课程名>`（blog 额外按 fall/spring 再分一层）。所以对应关系是**课程名同名、内容一致**，而非两边目录树逐层全等——核对时认「课程名」这一层，别被多出来的学期层绊住。源目录有的课程章节，blog 文章应覆盖到；课程范围变了，两边同步。
 - **目标**：让 owner 本人、以及任何浏览者，**在具备前置知识的基础上能学懂这门课、较好应对考试**。所以这里**可以也应该**带课程框架——「第几讲」「考点清单」「考前速成」「回忆版」都正当（参考已有的 `00-exam-cram-checklist.md` / `07-final-exam-recall.md`）。
 - **不要**把这里的内容写成脱离课程的通用知识沉淀——那是 `tech-stack` 的活。这里忠实于课程体系本身，**哪怕那个课程体系本身糟糕、零散**，也照实记录「它是怎么讲、怎么考的」。
 
@@ -126,15 +126,28 @@ schema 定义在 `src/content.config.ts`。字段：
 - **数学公式**：行内 `$...$`，行间 `$$...$$`（KaTeX 语法）。改完务必 `pnpm build` 并确认公式真的渲染成 KaTeX（构建产物里 `class="katex"`，且没有残留的原始 `$...$` 文本）。
 - **表格 / 删除线等 GFM 语法**可直接用（Astro 默认开启 GFM）。
 - **`tech-stack` / `academics` 的写法差异**见上「三、内容怎么组织」里的两个专节——下笔前先确认归属与组织逻辑（知识体系 vs 课程体系），别写串。
+- **owner 的 `_index` 文案习惯**（落地页要贴合，别写成官腔）：
+  - **标题双语**：`中文 · English` 格式（如 `校内课程 · Curriculum`、`大三下 · Junior Spring`）。
+  - **description 写真实定位 / 主观态度**，不写正确但空洞的套话（owner 原话如「我觉得有用的，但是内容不好评价的课（完全没用的就根本不想整理）」）。
+  - **正文写「定位 + 进度」**：一句话说清这层是什么，再用 `目前进度：…` 或 `WIP：…` 标出已整理 / 待整理的状态（owner 习惯用 `WIP：科研 · Research、竞赛 · Contest` 这种列法占位未来板块）。
+  - **不要擅自把 owner 已写的 `_index` 文案改成「更规范」的措辞**——那股自嘲 / 口语的劲儿是有意的，只在内容确实过时（路径 / 进度不符）时才动，且尽量沿用原语气。
 - **Markdown lint**：本仓规范由根目录 `.markdownlint.json` 定义（基于 markdownlint 默认规则，仅关掉对「中文无空格断词 + KaTeX 行间公式」不适用的 `MD013` 行长与 `MD060` 表格 pipe 风格）。交付前确保所改 markdown 在此配置下无 lint 错误。
 
-### 新增一篇文章的 checklist
+### 新增文章 / 文件夹的 checklist
+
+每个节点都由「非正文字段」（frontmatter）+「正文」（body）构成，`title` 是唯一必填项，其余按需：
+
+- **文件夹**（`_index.md`）：`title`（必填）· `description` · 正文；子项列表由系统按目录**自动生成**，不用手写。
+- **文章**（普通 `*.md`）：`title`（必填）· `description` · `date` · `tags`（按需 `updated` / `category` / `cover`）· 正文。
+
+步骤：
 
 1. 想清楚归属的 section 与目录，必要时新建目录并放一个 `_index.md`。
-2. 若是 `academics` 课程文章，**先到 `~/workplace/personal/college/curriculum/<年级>/<课程名>/` 核对源材料**，并保持两边目录同名对应。
-3. 写 `*.md`，补全 frontmatter（至少 title / description / date）。
-4. `pnpm dev` 或 `pnpm build` 本地验证渲染（尤其有公式/表格时）。
-5. commit + push（见下）。
+2. 若是 `academics` 课程内容，**先到 `~/workplace/personal/college/curriculum/<年级>/<课程名>/` 核对源材料**，并保持两边目录同名对应。
+3. **非正文字段必须先过 owner（硬规则）**：新增任何文章 / 文件夹，先把拟定的**全部非正文字段**（文件夹的 `title` / `description`；文章的 `title` / `description` / `date` / `tags` 等）逐项列给 owner 确认，符合预期后再落地，**不擅自定稿**。
+4. 写正文。初稿交付后若 owner 有意见，按反馈继续调整，直到认可。
+5. `pnpm dev` 或 `pnpm build` 本地验证渲染（尤其有公式 / 表格时）。
+6. commit + push（见下）。
 
 ## 六、提交与部署
 
