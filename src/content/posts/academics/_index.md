@@ -3,6 +3,5 @@ title: "Academics"
 description: "BUAA 你把我害惨了"
 ---
 
-Curriculum：（部分）42 系课程的课程内容总结、考试回忆版及往年题，正在逐渐扩充中。
-
-WIP：科研 · Research、竞赛 · Contest、 学生工作 · Affair
+校内课程 · Curriculum：面向应试的（部分）42 系课程的官方/非法资料 + 知识点 + 个人主观感受
+科研 · Research：个人科研经历、成果、一些浅薄的个人思考
