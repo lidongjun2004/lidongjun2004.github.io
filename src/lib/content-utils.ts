@@ -51,6 +51,16 @@ interface ContentChildren {
 }
 
 /**
+ * Unified ordering for both folders and documents.
+ * Sort purely by file id (the path) ascending, so filename prefixes like
+ * `00-` / `01-` (and `1-freshman` / `2-sophomore` for folders) drive order.
+ * Returns a negative number if `a` should come before `b`.
+ */
+export function compareByOrder(a: any, b: any): number {
+  return String(a.id).localeCompare(String(b.id));
+}
+
+/**
  * List direct children (folders and documents) of a given directory path.
  * e.g. parentPath = "tech-stack" returns folders like "tech-stack/backend"
  * and docs like "tech-stack/go-concurrency-patterns"
@@ -82,13 +92,8 @@ export function listChildren(allPosts: any[], parentPath: string): ContentChildr
     // Deeper items are not direct children, skip
   }
 
-  // Sort folders alphabetically, docs by date (newest first)
-  folders.sort((a, b) => a.name.localeCompare(b.name));
-  docs.sort((a, b) => {
-    const da = a.data.date?.getTime() ?? 0;
-    const db = b.data.date?.getTime() ?? 0;
-    return db - da;
-  });
+  folders.sort((a, b) => compareByOrder(a.post, b.post));
+  docs.sort(compareByOrder);
 
   return { folders, docs };
 }

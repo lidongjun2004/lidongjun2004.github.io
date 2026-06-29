@@ -6,7 +6,7 @@ import FolderView from '../../components/FolderView.astro';
 import TagList from '../../components/TagList.astro';
 import { render } from 'astro:content';
 import { SECTION_META } from '../../lib/sections';
-import { getSection, isIndex, listChildren, getUrl, getAllPosts, getPublicPosts } from '../../lib/content-utils';
+import { getSection, isIndex, listChildren, getUrl, getAllPosts, getPublicPosts, compareByOrder } from '../../lib/content-utils';
 
 export async function getStaticPaths() {
   const allPosts = await getAllPosts();
@@ -63,7 +63,7 @@ if (isFolder) {
 // For doc pages, get prev/next in same parent directory
 let prev: any = null;
 let next: any = null;
-if (!isFolder && date) {
+if (!isFolder) {
   const allPosts = await getPublicPosts();
   const parentPath = pathParts.slice(0, -1).join('/');
   const siblings = allPosts
@@ -73,11 +73,12 @@ if (!isFolder && date) {
       const pParent = pParts.slice(0, -1).join('/');
       return pParent === parentPath;
     })
-    .sort((a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0));
+    .sort(compareByOrder);
 
+  // siblings are in reading order (00- before 01-): prev = the one above, next = the one below.
   const idx = siblings.findIndex((p) => p.id === post.id);
-  if (idx < siblings.length - 1) prev = siblings[idx + 1];
-  if (idx > 0) next = siblings[idx - 1];
+  if (idx > 0) prev = siblings[idx - 1];
+  if (idx < siblings.length - 1) next = siblings[idx + 1];
 }
 
 const dateStr = date?.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });

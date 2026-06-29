@@ -7,6 +7,12 @@ export interface SiteUpdate {
 
 export const SITE_UPDATES: SiteUpdate[] = [
   {
+    date: '2026-06-30',
+    title: '修正文章与目录排序',
+    description: '目录内列表与「上一篇 / 下一篇」改由文件名顺序决定，修好了系列文章方向标反、年级目录乱序的问题。',
+    icon: '🧭',
+  },
+  {
     date: '2026-06-29',
     title: '学业板块重构',
     description: '课程笔记按「年级 / 学期」重新归档，铺好大一到大四的框架；新增科研板块占位。',
