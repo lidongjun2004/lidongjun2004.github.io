@@ -1,60 +1,14 @@
 # lidongjun.com
 
-Personal blog built with [Astro](https://astro.build/).
+个人博客：<https://lidongjun.com>
 
-## Content Structure
+「积极乐观，永远攀登」的个人工坊，横跨技术、学业、职业与生活。目前包含：
 
-```text
-posts/
-├── tech-stack/                          # Tech Stack
-│   ├── math/                            # Math
-│   ├── algorithm/                       # Algorithm
-│   ├── computer-science/               # Computer Science
-│   │   ├── operating-systems/           # Operating Systems
-│   │   ├── computer-architecture/       # Computer Architecture
-│   │   ├── computer-networking/         # Computer Networking
-│   │   ├── database/                    # Database
-│   │   └── distributed-systems/         # Distributed Systems
-│   ├── programming-language/            # Programming Language
-│   │   ├── go/                          # Go
-│   │   └── python/                      # Python
-│   ├── software-engineering/            # Software Engineering
-│   │   ├── backend/                     # Backend
-│   │   ├── cloud-native/                # Cloud Native
-│   │   ├── developer-tools/             # Developer Tools
-│   │   └── observability/               # Observability
-│   ├── artificial-intelligence/         # Artificial Intelligence
-│   │   ├── ml-fundamentals/             # ML Fundamentals
-│   │   ├── ai-infra/                    # AI Infra
-│   │   └── ai-application/              # AI Application
-│   └── foreign-languages/              # Foreign Languages
-│       └── english/
-│           └── ielts/
-├── career/                              # Career
-├── academics/                           # Academics
-│   ├── curriculum/                      # Course notes & exam review (by year / semester)
-│   │   ├── freshman/                    # fall / spring
-│   │   ├── sophomore/                   # fall / spring
-│   │   ├── junior/                      # fall / spring
-│   │   └── senior/                      # fall / spring
-│   └── research/                        # Research (WIP)
-├── love-interests/                      # Love & Interests
-├── plan-think/                          # Plan & Think
-└── health-fitness/                      # Health & Fitness
-```
+- **Tech Stack · 技术栈** — 已内化的技术与知识，按学科 / 主题成体系沉淀：数学、人工智能、计算机基础、编程语言、软件工程、外语等。
+- **Academics · 学业** — 学校相关：按年级 / 学期归档的课程笔记与应试复习（目前大三下最全），以及科研（WIP）。
+- **Career · 职业** — 实习、求职与职场思考（WIP）。
+- **Love & Interests · 生活与兴趣** — 生活、爱好与情感随笔（WIP）。
+- **Plan & Think · 计划与思考** — 目标、规划、复盘与方法论（WIP）。
+- **Health & Fitness · 健康与健身** — 训练、饮食与身体管理（WIP）。
 
-## Features
-
-- **Nested content** — arbitrarily nested folders under each section; URLs mirror the file path.
-- **Math** — KaTeX rendering via `remark-math` + `rehype-katex`.
-- **Comments** — [giscus](https://giscus.app/) on every page, backed by GitHub Discussions (no backend).
-- **Changelog** — a `/changelog` timeline merging post publications with site milestones.
-
-## Commands
-
-| Command          | Action                                       |
-| :--------------- | :------------------------------------------- |
-| `pnpm install`   | Installs dependencies                        |
-| `pnpm dev`       | Starts local dev server at `localhost:4321`   |
-| `pnpm build`     | Build your production site to `./dist/`       |
-| `pnpm preview`   | Preview your build locally, before deploying  |
+站点用 [Astro](https://astro.build/) 构建，部署于 GitHub Pages。
