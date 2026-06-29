@@ -7,6 +7,12 @@ export interface SiteUpdate {
 
 export const SITE_UPDATES: SiteUpdate[] = [
   {
+    date: '2026-06-29',
+    title: '学业板块重构',
+    description: '课程笔记按「年级 / 学期」重新归档，铺好大一到大四的框架；新增科研板块占位。',
+    icon: '📚',
+  },
+  {
     date: '2026-06-26',
     title: '评论区上线全站',
     description: '接入 giscus，每个页面底部都能留言；评论存于 GitHub Discussions，保持纯静态零后端。',
