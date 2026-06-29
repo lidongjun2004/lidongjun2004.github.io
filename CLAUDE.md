@@ -4,6 +4,19 @@
 > 目标：让接班者**不用反复摸索**就能正确地往博客里加内容、改样式、提交部署。
 > `CLAUDE.md` 是指向本文件的软链接，二者内容一致。
 
+## 零、每次编辑必守的铁律（最高优先级）
+
+**每次改动收尾时，都要让本仓的两份文档与代码 / 内容保持同步——不论改动多小，都自检一遍，不跳过。**
+
+- **两份文档、两种视角，职责不混写**：
+  - `README.md` = **用户视角**（访客 / 初次接触者）：这站是什么、内容结构总览、有哪些功能、怎么本地跑。**不写**开发者内部约定、归类决策细节、协作纪律。
+  - `CLAUDE.md`（= `AGENTS.md` 软链）= **开发者 / agent 视角**（接班者）：架构、内容怎么组织、归类决策、写作约定、提交部署、协作纪律、关键文件速查。**不写**纯用户向的上手文案。
+  - 同一信息只在该归属的一侧写，另一侧最多一句指针，避免两处各写一份、日后不同步。
+- **保持最新**：本次改动若动了目录结构、section、frontmatter schema、功能模块、命令、归类规则等，**立即同步**到对应文档（结构类改 README，约定 / 决策类改 CLAUDE.md），与代码 / 内容同一次提交，别留到「之后补」。
+- **删除过时**：发现文档里与现状不符的描述（失效路径、改名的目录、移走的文章、废弃的机制），**直接删 / 改**，不保留过期残留。宁可文档短而准，不要长而旧。
+- **结构自检**：确认 `AGENTS.md` 仍是指向 `CLAUDE.md` 的软链（方向恒为 `AGENTS.md -> CLAUDE.md`）、`README.md` 存在；方向反了 / 缺软链就修正。
+- **Markdown 无 lint 错误**：两份文档及所改文章交付前都要在根目录 `.markdownlint.json` 配置下零错误。
+
 ## 一、这是什么项目
 
 `lidongjun.com` 的个人博客（同时是 `lidongjun2004.github.io`）。站点主题是「积极乐观、永远攀登」的个人工坊，内容横跨技术、学业、职业、生活几大块。
@@ -34,18 +47,18 @@ pnpm preview        # 预览构建产物
 
 `section`（顶级分类）是**由路径的第一层目录推导**的，不是靠 frontmatter 字段。目录可以任意嵌套，URL 直接等于文件路径，例如：
 
-```
-src/content/posts/tech-stack/math/game-theory/lecture-1-overview.md
-        → https://lidongjun.com/tech-stack/math/game-theory/lecture-1-overview/
+```text
+src/content/posts/tech-stack/artificial-intelligence/ml-fundamentals/bayesian-decision-theory.md
+        → https://lidongjun.com/tech-stack/artificial-intelligence/ml-fundamentals/bayesian-decision-theory/
 ```
 
 六个顶级 section（定义见 `src/lib/sections.ts`，**新增 section 必须先改这里的 `SECTIONS` 数组**）：
 
 | section | 展示名 | 用途 |
 |---|---|---|
-| `tech-stack` | Tech Stack | 按**知识体系**沉淀的技术能力与认知（Math · Code · Design · Philosophy）。**按学科/主题分类，不是课程目录** |
+| `tech-stack` | Tech Stack | **已内化**的技术栈 / 知识库，按**知识体系**沉淀（Math · Code · Design · Philosophy）；按学科 / 主题分类，**不是课程目录**（详见专节） |
 | `career` | Career | 职业相关 |
-| `academics` | Academics | 学校相关；**课程笔记 / 应试复习**归这里 |
+| `academics` | Academics | 学校相关（课程 / 竞赛 / 科研）；课程笔记**对应 `curriculum/` 源目录**、应试向（详见专节） |
 | `love-interests` | Love & Interests | 生活与兴趣 |
 | `plan-think` | Plan & Think | 计划与思考 |
 | `health-fitness` | Health & Fitness | 健康与健身 |
@@ -54,18 +67,33 @@ src/content/posts/tech-stack/math/game-theory/lecture-1-overview.md
 
 下笔前先按「这篇是什么性质」对号入座，别让通用技术知识和课程笔记混放：
 
-- **通用技术知识 / 认知沉淀**（能脱离具体课程独立成立的知识单元，如「贝叶斯决策」「SVM」「Go 并发」）→ `tech-stack`，按**学科 / 主题**建目录（`artificial-intelligence/ml-fundamentals/`、`math/` 等），不按课程。
-- **课程笔记 / 应试复习**（面向某门课、某场考试，含「第几讲」「考点清单」「回忆版」）→ `academics/curriculum/<年级>/<课程名>/`（年级如 `junior`，课程名可用中文，如 `academics/curriculum/junior/知识图谱/`）。
+- **已内化的技术知识 / 知识体系沉淀**（真正学过一遍、能脱离具体课程独立成立的知识单元，如「贝叶斯决策」「SVM」「Go 并发」）→ `tech-stack`，按**学科 / 主题**建目录（详见下「`tech-stack` 怎么写」）。
+- **学校事务：课程笔记 / 应试 / 竞赛 / 科研**（面向某门课、某场考试）→ `academics`；课程走 `curriculum/<年级>/<课程名>/`，目录与源目录一一对应（详见下「`academics` 怎么写」）。
 - **职业相关**（实习、求职、职场反思、行业观察）→ `career`。
 - **生活 / 兴趣 / 情感**（爱好、随笔、体验）→ `love-interests`。
 - **目标 / 规划 / 长期思考**（计划、复盘、方法论）→ `plan-think`。
 - **健康 / 健身**（训练、饮食、身体管理）→ `health-fitness`。
 
-> **`tech-stack` 的核心定位（owner 反复强调）**：这里沉淀的是**按知识体系组织的技术能力与认知**，不是「某门课的笔记本」。
->
-> - 目录按**学科/主题**切分（如 `artificial-intelligence/ml-fundamentals/`、`math/`），文章是「贝叶斯决策」「SVM」这种**知识单元**，能脱离任何具体课程独立成立。
-> - **不要按课程建目录**（不要出现 `pattern-recognition/`、`第几讲` 这种课程结构），也**不要带「课程笔记」语气/标签**。即使内容来源是某门课，也要重写成通用知识沉淀后再归入对应学科主题。
-> - **课程笔记 / 应试复习** → 放 `academics`（那里才是「学校 / 课程」视角）。同一份课程材料可以两边各有产物：`academics` 放面向考试的复习，`tech-stack` 放提炼后的通用知识。
+> **一句话分流**：`academics` 是「学校课程体系的投影」——这门课讲了什么、会考什么；`tech-stack` 是「我已内化的技术栈的投影」——按知识体系重新组织、能独立成立的认知。**同一份课程材料可以两边各有产物**（如「模式识别」课：`academics` 放面向考试的复习，`tech-stack/artificial-intelligence/ml-fundamentals/` 放提炼后的通用知识单元），但两边的组织逻辑、目标、写法完全不同。
+
+### `academics` 怎么写（学校视角）
+
+定位：记录 owner（在校生）在学校里的各项事务——**课程、竞赛、科研**。竞赛与科研尚未开始，暂只有课程在写。
+
+- **目录结构**：课程一律 `academics/curriculum/<年级>/<课程名>/`（年级如 `junior`；课程名用中文，与源目录同名，如 `academics/curriculum/junior/知识图谱/`）。
+- **源目录绑定（关键约束）**：每门课的事实来源是本机 `~/workplace/personal/college/curriculum/<年级>/<课程名>/`（PPT、作业、大作业、讲义都在那里）。写 / 改文章前**先去对应源目录核对材料**，别凭空写。
+- **目录一一对应**：blog 这边的 `<课程名>/` 与源目录的 `<课程名>/` **保持同名、内容一致**——源目录有的课程章节，这边的文章应覆盖到；课程范围变了，两边同步。owner 会频繁跨这两个文件夹核对，命名对不上就会乱。
+- **目标**：让 owner 本人、以及任何浏览者，**在具备前置知识的基础上能学懂这门课、较好应对考试**。所以这里**可以也应该**带课程框架——「第几讲」「考点清单」「考前速成」「回忆版」都正当（参考已有的 `00-exam-cram-checklist.md` / `07-final-exam-recall.md`）。
+- **不要**把这里的内容写成脱离课程的通用知识沉淀——那是 `tech-stack` 的活。这里忠实于课程体系本身，**哪怕那个课程体系本身糟糕、零散**，也照实记录「它是怎么讲、怎么考的」。
+
+### `tech-stack` 怎么写（知识体系视角）
+
+定位：owner **真正自己学过一遍、已掌握并内化**的技术栈 / 知识库的投影。是「我的技术认知地图」，不是「某门课的笔记本」。
+
+- **准入门槛（关键约束）**：只放**已内化**的内容——哪怕 owner 现在 point of view 不深、或日后遗忘了，也得是当初真学懂、消化过的知识单元。**没真正掌握的，不往这里放**（那种属于 academics 的应试记录，或根本还没学）。
+- **目录按学科 / 主题切分**，不按课程：`artificial-intelligence/ml-fundamentals/`、`math/`、`computer-science/` 等。文章是「贝叶斯决策」「SVM」这种**知识单元**，能脱离任何具体课程独立成立。**不要**出现 `pattern-recognition/`、`第几讲` 这类课程结构，也**不要**带「课程笔记」语气 / 标签。
+- **目标**：owner 自己重读能**快速重建对这一模块的认知与 insight**；别人读完也能**掌握**这个知识单元。所以按清晰的逻辑链重组、讲全、给完整算例，写成能独立成立的知识沉淀（参考已有的 `bayesian-decision-theory.md`：先讲「为什么」与直觉，再展开公式与算例）。
+- 即使内容**来源**是某门课，也要**重写**成通用知识沉淀后再归入对应学科主题，剥掉课程外壳（讲次、考点、应试套路）。那些应试外壳留给 `academics`。
 
 ## 四、Frontmatter 规范
 
@@ -97,14 +125,16 @@ schema 定义在 `src/content.config.ts`。字段：
 - **语言**：正文以**中文**为主。
 - **数学公式**：行内 `$...$`，行间 `$$...$$`（KaTeX 语法）。改完务必 `pnpm build` 并确认公式真的渲染成 KaTeX（构建产物里 `class="katex"`，且没有残留的原始 `$...$` 文本）。
 - **表格 / 删除线等 GFM 语法**可直接用（Astro 默认开启 GFM）。
-- **`tech-stack` 文章的风格**（owner 的偏好，沿用）：按清晰的逻辑链重组知识点、**不照搬课件/课程顺序**，写成能独立成立的知识沉淀；每个知识点讲全、给完整算例。**不用「课程笔记」「第几讲」这类框架**；若内容确实需要应试向的「考点清单」，那种产物应放 `academics`。
+- **`tech-stack` / `academics` 的写法差异**见上「三、内容怎么组织」里的两个专节——下笔前先确认归属与组织逻辑（知识体系 vs 课程体系），别写串。
+- **Markdown lint**：本仓规范由根目录 `.markdownlint.json` 定义（基于 markdownlint 默认规则，仅关掉对「中文无空格断词 + KaTeX 行间公式」不适用的 `MD013` 行长与 `MD060` 表格 pipe 风格）。交付前确保所改 markdown 在此配置下无 lint 错误。
 
 ### 新增一篇文章的 checklist
 
 1. 想清楚归属的 section 与目录，必要时新建目录并放一个 `_index.md`。
-2. 写 `*.md`，补全 frontmatter（至少 title / description / date）。
-3. `pnpm dev` 或 `pnpm build` 本地验证渲染（尤其有公式/表格时）。
-4. commit + push（见下）。
+2. 若是 `academics` 课程文章，**先到 `~/workplace/personal/college/curriculum/<年级>/<课程名>/` 核对源材料**，并保持两边目录同名对应。
+3. 写 `*.md`，补全 frontmatter（至少 title / description / date）。
+4. `pnpm dev` 或 `pnpm build` 本地验证渲染（尤其有公式/表格时）。
+5. commit + push（见下）。
 
 ## 六、提交与部署
 

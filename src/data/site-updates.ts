@@ -27,7 +27,7 @@ export const SITE_UPDATES: SiteUpdate[] = [
   {
     date: '2026-06-13',
     title: '加入博弈论笔记',
-    description: '在 Tech Stack 数学板块沉淀博弈论系列，支持 KaTeX 公式渲染。',
+    description: '沉淀博弈论课程笔记系列，支持 KaTeX 公式渲染。',
     icon: '✍️',
   },
   {
