@@ -20,7 +20,7 @@
 
 ## 一、这是什么项目
 
-`lidongjun.com` 的个人博客（同时是 `lidongjun2004.github.io`）。站点主题是「积极乐观、永远攀登」的个人工坊，内容横跨技术、学业、职业、生活几大块。
+`lidongjun.com` 的个人博客（同时是 `lidongjun2004.github.io`）。站点主题是「Keep Climbing. Keep Thinking. Keep Loving.」的个人工坊，内容横跨技术、学业、职业、生活几大块。
 
 - **框架**：Astro 6（静态站点）
 - **样式**：Tailwind CSS v4（`@tailwindcss/vite`）
