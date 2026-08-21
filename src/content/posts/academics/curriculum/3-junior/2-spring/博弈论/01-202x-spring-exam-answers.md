@@ -1,11 +1,11 @@
 ---
-title: "往年题 · 答案与解析（年份待确认）"
-description: "课程目录中三页往年题的独立推导答案，覆盖策略删除、Cournot、重复博弈、贝叶斯均衡与混同 PBE"
+title: "202x 年春真题 · 答案与解析"
+description: "博弈论春季学期真题的独立推导答案，覆盖策略删除、Cournot、重复博弈、Bertrand、贝叶斯均衡与混同 PBE"
 date: 2026-08-21
 tags: ["博弈论", "数学", "真题"]
 ---
 
-这不是课程提供的官方标准答案，而是根据目录中的三页题目独立推导的解析。建议先完成[纯题版](/academics/curriculum/3-junior/2-spring/博弈论/12-past-exam-questions/)，再回来核对思路。
+这不是课程提供的官方标准答案，而是根据原卷独立推导的解析。建议先完成[202x 年春真题](/academics/curriculum/3-junior/2-spring/博弈论/00-202x-spring-exam/)，再回来核对思路。
 
 ## 第 1 题：策略式博弈
 
@@ -376,7 +376,7 @@ $$
 
 ## 第 6 题：混同信号博弈
 
-![往年题中的混同信号博弈](/images/game-theory/past-exam-3.png)
+![第 6 题的信号博弈树](/images/game-theory/202x-spring-exam-signaling-game.png)
 
 设接收者看到 $L$ 后认为发送者是类型 $t_1$ 的概率为
 
