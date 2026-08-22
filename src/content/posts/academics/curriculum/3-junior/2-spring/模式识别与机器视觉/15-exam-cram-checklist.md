@@ -1,8 +1,8 @@
 ---
 title: "考前速成必会清单"
-description: "考前最后一晚必背：推不出来、做题却要用的硬结论、固定阈值、易错方向与套路口诀"
-date: 2026-06-24
-tags: ["模式识别", "考前速成", "复习", "课程笔记"]
+description: "串联全课公式、固定结论、易错方向与简答题答题骨架，适合考前最后一次查漏补缺"
+date: 2026-08-22
+tags: ["模式识别与机器视觉", "数学"]
 ---
 
 > 这篇只收**临场推不出来、做题却要用**的东西：要背的结论、固定公式、容易记反的方向、解题套路。能现场推的过程（完整对偶推导、各分布 MLE 求导）不在这里——那些靠理解，这些靠记。考前过一遍，进考场。
@@ -138,6 +138,136 @@ $$a_n\big(t_n y(\mathbf{x}_n)-1\big)=0$$
 - **生成式 vs 判别式**：生成式建模 $p(\mathbf{x}\mid\omega)$（贝叶斯）；判别式直接学边界（SVM、Logistic）。
 - **一致最优 / 贝叶斯错误率**：贝叶斯决策逐点条件错误率 $P(e\mid\mathbf{x})=1-\max_i P(\omega_i\mid\mathbf{x})$ 最小，是错误率理论下界。
 
+## 七、CNN 与 Transformer
+
+**CNN 三个理由**：局部连接减少参数、权重共享让同一特征可出现在任意位置、下采样降低空间分辨率。
+
+**卷积输出尺寸**：
+
+$$
+H_{out}=\left\lfloor\frac{H+2P-K}{S}\right\rfloor+1.
+$$
+
+**转置卷积**用于上采样；**空洞卷积**不显著增加参数却能扩大感受野。
+
+**Self-Attention 必背**：
+
+$$
+Q=XW_Q,\qquad K=XW_K,\qquad V=XW_V,
+$$
+
+$$
+\operatorname{Attention}(Q,K,V)
+=\operatorname{softmax}\left(\frac{QK^{\mathsf T}}{\sqrt{d_k}}\right)V.
+$$
+
+- Query 和 Key 算匹配，权重再对 Value 求和；
+- $\sqrt{d_k}$ 防止点积过大让 softmax 饱和；
+- 多头注意力并行学习多种关系；
+- Self-Attention 不认识顺序，必须加入位置编码；
+- RNN 顺序计算、难并行；Transformer 能并行并直接建立长距离关系。
+
+## 八、ViT、Swin 与 SAM
+
+**ViT 流程**：图像切 patch → 展平并线性投影 → 加位置编码与 [CLS] token → Transformer Encoder → 取 [CLS] 分类。
+
+Patch 数量：
+
+$$
+N=\frac{HW}{P^2}.
+$$
+
+**Swin 四件套**：分层结构、Patch Merging、窗口注意力 W-MSA、移位窗口 SW-MSA。固定窗口省计算，移位窗口负责跨窗口通信。
+
+**三类分割**：
+
+- 语义分割：像素分类，不区分同类实例；
+- 实例分割：每个对象单独掩码；
+- 全景分割：覆盖整图并区分实例。
+
+**SAM 三组件**：image encoder（ViT 图像特征）+ prompt encoder（点/框/文字/掩码）+ mask decoder。多掩码输出用于处理提示歧义。
+
+**SAM 数据引擎**：模型辅助手动 → 半自动 → 全自动；SA-1B 约 1100 万图、11 亿掩码。
+
+## 九、目标检测
+
+**总纲**：两阶段先候选框再精修，准但慢；一阶段一次前向直接预测，快但细粒度定位通常较弱。
+
+**IoU 与 NMS**：
+
+$$
+\operatorname{IoU}=\frac{\text{交集面积}}{\text{并集面积}}.
+$$
+
+NMS = 按类别、按置信度排序 → 留最高分框 → 删除与它 IoU 超阈值的框 → 重复。
+
+**R-CNN 演进**：
+
+1. R-CNN：Selective Search 出约 2000 框，每框单独过 CNN，极慢；
+2. SPP-Net：整图卷一次，任意尺寸区域变固定长度；
+3. Fast R-CNN：共享特征 + ROI Pooling + 分类/回归联合训练；
+4. Faster R-CNN：RPN + Anchor 取代 Selective Search。
+
+**RPN**：对每个 anchor 做前景/背景二分类 + 粗回归；检测头再做具体类别分类 + 细回归。
+
+**指标**：
+
+$$
+\operatorname{Precision}=\frac{TP}{TP+FP},
+\qquad
+\operatorname{Recall}=\frac{TP}{TP+FN}.
+$$
+
+Precision 看误检，Recall 看漏检；AP 针对单类，mAP 对所有类别求平均。
+
+**YOLO v1**：$7\times7$ 网格，每格 2 框、20 类：
+
+$$
+7\times7\times(2\times5+20)=7\times7\times30.
+$$
+
+物体中心落在哪格，哪格负责；confidence $=P(\text{Object})\times\operatorname{IoU}$。
+
+**YOLO v2 三项改进**：高分辨率分类器、Darknet-19 + passthrough 特征融合、多尺度训练。
+
+## 十、GAN 与 Diffusion
+
+**GAN 组成**：生成器 $G$ + 判别器 $D$。
+
+$$
+\min_G\max_D
+\mathbb{E}_{x\sim p_{data}}[\log D(x)]
++\mathbb{E}_{z\sim p_z}[\log(1-D(G(z)))].
+$$
+
+理想收敛时 $p_g=p_{data}$、$D^*(x)=1/2$。训练交替更新 D 与 G；主要问题是梯度消失、模式崩溃和双方失衡。
+
+**Diffusion**：前向固定加噪，反向网络去噪。
+
+$$
+x_t=\sqrt{1-\beta_t}x_{t-1}+\sqrt{\beta_t}\epsilon,
+$$
+
+$$
+x_t=\sqrt{\bar\alpha_t}x_0+\sqrt{1-\bar\alpha_t}\epsilon.
+$$
+
+训练时随机抽 $t$，让 UNet 预测噪声；生成时必须按时间反复去噪。结论：Diffusion 训练稳定、质量和多样性好，但采样慢；GAN 采样快，但训练更不稳定。
+
+## 十一、对比学习、CLIP 与 PEFT
+
+**对比学习**：同图不同增强为正样本，其他图为负样本；嵌入空间拉近正样本、推远负样本。InfoNCE 本质是在所有候选中识别正确配对。
+
+**CLIP 训练**：图像编码器 + 文本编码器；batch 内 $N\times N$ 图文相似度矩阵，对角线为正样本，非对角线为负样本。
+
+**CLIP zero-shot**：类别套入 `a photo of a {class}` → 编码成文本向量 → 与图像向量算相似度 → 取最大类别。
+
+**PEFT 总纲**：冻结大模型主体，只训练少量参数。
+
+- Prompt Tuning：训练输入端连续 Soft Prompt；
+- Adapter：每层插入下采样—激活—上采样的瓶颈模块；
+- LoRA：冻结 $W_0$，只学低秩增量 $\Delta W=BA$，推理前可合并回原权重。
+
 ---
 
-**进考场前默背三件最易错**：① 似然比阈值上下别反（似然 1/2，先验 2/1）；② 最小风险取 **min**、高斯方差 MLE 分母 **$N$** 且偏小（无偏才 $N-1$）；③ SVM 软间隔 $C$ 大=窄间隔易过拟合、$a_n=C$ 才越界。加油，稳住！
+**进考场前最后默背**：似然比阈值上下别反；最小风险取 min；高斯方差 MLE 分母是 $N$；SVM 的 $C$ 越大违规越贵；Self-Attention 用 Q/K 匹配后加权 V；Faster R-CNN 的 RPN 出候选框；YOLO 是一阶段；Diffusion 先加噪再去噪；CLIP 靠图文共享空间完成 zero-shot。

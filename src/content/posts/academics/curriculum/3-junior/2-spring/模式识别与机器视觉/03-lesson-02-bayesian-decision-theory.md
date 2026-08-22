@@ -1,11 +1,15 @@
 ---
-title: "贝叶斯决策理论"
+title: "第二讲 · 贝叶斯决策理论"
 description: "最小错误率与最小风险两套决策准则、似然比形式、白血病例子与结论反转、0-1 损失下的统一"
-date: 2026-06-22
-tags: ["模式识别", "贝叶斯决策", "课程笔记", "复习"]
+date: 2026-08-22
+tags: ["模式识别与机器视觉", "数学"]
 ---
 
 贝叶斯决策是模式识别的理论基石，回答一个问题：**在类的概率分布完全已知时，怎么判类才最优**。本节是全课计算题的重头戏。
+
+![类条件密度经过贝叶斯公式转化为后验概率](/images/pattern-recognition-vision/bayes-density-and-posterior.png)
+
+*图：左边描述“某一类通常生成怎样的样本”，右边才回答“看到这个样本后，它最可能属于哪一类”。*
 
 ## 一、四个基本概念
 
@@ -38,15 +42,15 @@ $$\text{若 } P(\omega_1 \mid \mathbf{x}) > P(\omega_2 \mid \mathbf{x}), \text{ 
 2. **比类条件 × 先验**：取 $p(\mathbf{x} \mid \omega_i) P(\omega_i)$ 最大者；
 3. **似然比形式**：
 
-$$l(\mathbf{x}) = \frac{p(\mathbf{x} \mid \omega_1)}{p(\mathbf{x} \mid \omega_2)} \gtrless \lambda = \frac{P(\omega_2)}{P(\omega_1)}$$
+   $$l(\mathbf{x}) = \frac{p(\mathbf{x} \mid \omega_1)}{p(\mathbf{x} \mid \omega_2)} \gtrless \lambda = \frac{P(\omega_2)}{P(\omega_1)}$$
 
-似然比 $l(\mathbf{x})$ 只和样本有关，阈值 $\lambda$ 只和先验有关、可事先算好。大于阈值判第一类，否则判第二类。
+   似然比 $l(\mathbf{x})$ 只和样本有关，阈值 $\lambda$ 只和先验有关、可事先算好。大于阈值判第一类，否则判第二类。
 
 4. **对数形式**（乘法变加法，防止概率连乘下溢）：
 
-$$h(\mathbf{x}) = -\ln l(\mathbf{x}) = -\ln p(\mathbf{x} \mid \omega_1) + \ln p(\mathbf{x} \mid \omega_2)$$
+   $$h(\mathbf{x}) = -\ln l(\mathbf{x}) = -\ln p(\mathbf{x} \mid \omega_1) + \ln p(\mathbf{x} \mid \omega_2)$$
 
-判别时把 $h(\mathbf{x})$ 与 $\ln \dfrac{P(\omega_1)}{P(\omega_2)}$ 比较。
+   判别时把 $h(\mathbf{x})$ 与 $\ln \dfrac{P(\omega_1)}{P(\omega_2)}$ 比较。
 
 ### 白血病例子（最小错误率）
 
