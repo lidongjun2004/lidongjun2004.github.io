@@ -1,6 +1,6 @@
 ---
-title: "GIM（二面结果未记录）"
-description: "Quant Dev/Research · 一面、二面"
+title: "GIM · Quant Dev/Research"
+description: "三面挂"
 date: 2026-08-23
 tags: ["实习", "量化"]
 ---

@@ -1,6 +1,6 @@
 ---
-title: "三代科技（挂）"
-description: "AI Infra · 一面"
+title: "三代科技 · AI Infra"
+description: "一面挂"
 date: 2026-08-23
 tags: ["实习", "AI Infra"]
 ---

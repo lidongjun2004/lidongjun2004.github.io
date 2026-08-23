@@ -1,6 +1,6 @@
 ---
-title: "无垠跃迁（挂）"
-description: "多模态算法岗 · 一面"
+title: "无垠跃迁 · 多模态算法岗"
+description: "一面挂"
 date: 2026-08-23
 tags: ["实习", "算法"]
 ---

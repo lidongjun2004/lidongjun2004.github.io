@@ -1,6 +1,6 @@
 ---
-title: "MiniMax（过）"
-description: "AI Infra · 一面、二面"
+title: "MiniMax · AI Infra"
+description: "二面过"
 date: 2026-08-23
 tags: ["实习", "AI Infra"]
 ---

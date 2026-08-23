@@ -1,6 +1,6 @@
 ---
-title: "智谱（挂）"
-description: "算法岗 · 一面"
+title: "智谱 · 算法岗"
+description: "一面挂"
 date: 2026-08-23
 tags: ["实习", "算法"]
 ---

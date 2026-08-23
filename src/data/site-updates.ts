@@ -9,7 +9,7 @@ export const SITE_UPDATES: SiteUpdate[] = [
   {
     date: '2026-08-23',
     title: '实习面经板块上线',
-    description: '整理 2025 年末至 2026 年初的九家公司实习笔试与面试记录。',
+    description: '整理 2025 年末至 2026 年初的九家公司实习面试记录。',
     icon: '💼',
   },
   {

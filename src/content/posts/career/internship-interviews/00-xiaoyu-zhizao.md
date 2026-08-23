@@ -1,6 +1,6 @@
 ---
-title: "小雨制造（挂）"
-description: "具身智能工程师 · 一面"
+title: "小雨制造 · 具身智能工程师"
+description: "一面挂"
 date: 2026-08-23
 tags: ["实习", "算法"]
 ---
