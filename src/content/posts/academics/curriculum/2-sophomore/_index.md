@@ -1,6 +1,6 @@
 ---
 title: "大二 · Sophomore"
-description: "大二学年的课程，待整理"
+description: "最忙碌的一集"
 ---
 
-WIP：大二的课程还没开始整理。
+对我个人来讲是各种竞赛、科研的爆发时期，非常挤占
