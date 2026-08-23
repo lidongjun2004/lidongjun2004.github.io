@@ -1,10 +1,12 @@
 ---
-title: "知识抽取总论"
-description: "三类数据源（结构化/半结构化/非结构化）的抽取全景：实体、关系、事件，方法演进谱"
+title: "第三讲 · 知识抽取总论：从数据到三元组"
+description: "知识抽取的任务、评测与爬虫基础，以及使用 DM、R2RML 和 OBDA 将关系数据库映射为 RDF"
 date: 2026-06-25
-tags: ["知识图谱", "课程笔记", "复习"]
+updated: 2026-08-23
+tags: ["知识图谱", "数学"]
 ---
 
+<!-- markdownlint-disable MD028 MD032 MD040 -->
 
 > 对应 PPT：第3讲
 > 回答：知识抽取做什么？数据源有几种？典型任务是什么？行业评测体系？结构化数据怎么抽？
@@ -309,3 +311,76 @@ MUC (1987~1998) → ACE (1999~2008) → KBP/TAC (2009~至今)
     ├── 工具：D2RQ / Mastro / Ultrawrap / Ontop
     └── OBDA：不迁移数据，SPARQL 查 DB
 ```
+
+---
+
+## 8. 课件补全与边界说明
+
+### 8.1 YAGO：三类数据源确实会在一个项目里相遇
+
+课件用 YAGO 说明“结构化、半结构化、非结构化”不是三条互不相干的路线：
+
+- 从 Wikipedia 获取正文等非结构化内容，以及分类、信息框等半结构化内容；
+- 从 WordNet 获取结构化的词汇与概念体系；
+- 通过规则抽取、对齐并组织实体和事实；
+- YAGO2 又融合 GeoNames，补入地理位置和时空信息。
+
+该页课件给出的规模是**覆盖多种语言、1000 万个实体、1.2 亿个三元组**。这些数字描述的是课件所引用版本的量级，不应当当成 YAGO 所有后续版本的永久统计。
+
+### 8.2 Direct Mapping：People 与 Addresses 怎样变成图
+
+假设 `People(ID=7, fname="Bob", addr=18)` 的 `addr` 外键指向 `Addresses(ID=18, city="Cambridge")`。Direct Mapping 的关键不是简单把表“截图成图”，而是稳定地产生资源标识：
+
+```text
+<.../People/ID/7> rdf:type <.../People> .
+<.../People/ID/7> <.../People/fname> "Bob" .
+<.../People/ID/7> <.../People/ref-addr> <.../Addresses/ID/18> .
+<.../Addresses/ID/18> <.../Addresses/city> "Cambridge" .
+```
+
+这里能一一对应出四个动作：
+
+1. 用表名确定类；
+2. 用“表名 + 主键列 + 主键值”确定每行的 IRI；
+3. 普通列生成字面量三元组，`NULL` 不生成三元组；
+4. 外键生成对象关系，宾语是被引用行的 IRI，而不是把外键数字当作普通字符串。
+
+### 8.3 R2RML：把映射规则拆开才不容易乱
+
+![R2RML 从关系表到 RDF 的映射结构](/images/knowledge-graph/r2rml-mapping-example.png)
+
+*逻辑表提供行，主语映射生成资源，谓词—宾语映射把列值或外键关系变成事实。*
+
+R2RML 中一个 **Triples Map** 可以按三层理解：
+
+1. **逻辑表（Logical Table）**：指定来源是物理表、视图还是有效 SQL 查询；
+2. **主语映射（Subject Map）**：通常以主键套入模板，为每一行生成 IRI，也可声明该资源所属的类；
+3. **谓词—宾语映射（Predicate-Object Map）**：谓词说明语义，宾语可以来自某列的字面量、IRI 模板，或者另一个 Triples Map。
+
+课件中的 `DEPT` 与 `EMP` 例子体现了最后一种情况：
+
+- `DEPT(DEPTNO=10, DNAME=APPSERVER, LOC=NEW YORK)` 映射为部门资源；
+- `EMP(EMPNO=7369, ENAME=SMITH, JOB=CLERK, DEPTNO=10)` 映射为雇员资源；
+- 普通列分别映射为部门名称、地点、雇员姓名和职位；
+- `EMP.DEPTNO` 引用 `DEPT.DEPTNO`，因此用父 Triples Map 和 `joinCondition` 生成 `ex:department` 对象关系。
+
+连接条件的本质是：对子表当前行读取 `child="DEPTNO"`，在父表寻找 `parent="DEPTNO"` 相等的行，再把雇员资源连接到部门资源。它和 SQL `JOIN` 的语义一致，只是输出变成 RDF 边。
+
+### 8.4 DM 与 R2RML 的选择
+
+| 问题 | Direct Mapping | R2RML |
+|---|---|---|
+| 要不要手写映射 | 不需要，规则固定 | 需要定义映射文档 |
+| 能否改类名、属性名与 IRI | 基本不能 | 可以 |
+| 能否使用视图或 SQL | 不强调 | 可以 |
+| 能否表达多表语义关系 | 依赖默认外键规则 | 可显式定义引用对象映射和连接条件 |
+| 最适合 | 快速得到一份结构忠实的 RDF | 面向业务语义的可控映射 |
+
+### 8.5 D2RQ、Mastro、Ultrawrap、Ontop 的边界
+
+- **D2RQ / D2R Server**：通过可定制映射把 Web、SPARQL 请求即时重写为 SQL，无须先把整库复制进三元组库；同时可以导出 RDF，并部分支持 R2RML。
+- **Mastro**：通过数据库—本体映射提供 SPARQL 访问，核心推理机支持本体分类、一致性检查、推理和查询回答。
+- **Ultrawrap**：编译器负责建立数据库到 RDF/OWL 的映射，服务器负责执行 SPARQL；支持 R2RML、D2RQ 映射并提供定制界面。
+- **Ontop**：把关系数据库暴露成**虚拟 RDF 图**，用 R2RML 定义语义，并在查询时把 SPARQL 翻译成 SQL；其重点不是离线导出一份实体化 RDF。课件把系统分为输入层（本体、数据库、映射、查询）、核心层（翻译、优化、执行）、API 层和面向终端用户的应用层。
+
+因此“能否导出 RDF”和“能否让用户用 SPARQL 看见 RDF 图”是两个不同问题。OBDA 关心后者：保留关系数据库作为事实源，用映射和本体提供统一语义视图。

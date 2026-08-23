@@ -1,10 +1,12 @@
 ---
-title: "知识存储与检索"
-description: "三元组库 vs 图数据库、Neo4j 等代表系统、语义检索与 SPARQL / Cypher 查询"
+title: "第八讲 · 知识存储与检索"
+description: "对比 RDF 与属性图的数据模型，掌握 SPARQL、Cypher、Neo4j 增删改查及批量导入"
 date: 2026-06-25
-tags: ["知识图谱", "课程笔记", "复习"]
+updated: 2026-08-23
+tags: ["知识图谱", "数学"]
 ---
 
+<!-- markdownlint-disable MD031 MD032 MD040 -->
 
 > 对应 PPT：第8讲
 > 重点：RDF 图 vs 属性图、SPARQL vs Cypher、4 种基于关系型数据库的存储方案。
@@ -311,3 +313,148 @@ WHERE t1.s = 'A' AND t1.p = 'friendOf'
     ├── AllegroGraph（商业强大）
     └── Neo4j（属性图主流）
 ```
+
+---
+
+## 8. 课件补全与勘误
+
+### 8.1 属性图的准确性质
+
+前文把“节点标签”列入课件的节点性质，并把出边、入边合写成一条，因而得到“节点 4 条”的记忆法；这与 PPT 原文不一致。课件逐条列出的属性图性质是：
+
+**节点四条**：
+
+1. 每个节点具有唯一的 id。
+2. 每个节点具有若干条出边。
+3. 每个节点具有若干条入边。
+4. 每个节点具有一组键值对属性。
+
+**边五条**：
+
+1. 每条边具有唯一的 id。
+2. 每条边具有一个头节点。
+3. 每条边具有一个尾节点。
+4. 每条边具有一个表示联系的标签。
+5. 每条边具有一组键值对属性。
+
+Neo4j 实际支持节点 Label，但它不是这页 PPT 所列四条性质之一。前文“RDF 图 vs 属性图”表格中关于行业分布、数据规模、Schema 严格程度和推理强弱的横向比较属于帮助理解的**课程补充**，并非课件逐项给出的结论，不能把其中的数量级当作统一性能上限。
+
+### 8.2 同一个问题如何落到两种查询语言
+
+![SPARQL 用三元组模式查询 RDF 图](/images/knowledge-graph/sparql-query-example.png)
+
+SPARQL 的查询条件本身仍是一张“带变量的 RDF 图”。例如查询北航隶属机构的名字，要让三个三元组模式通过变量相接：
+
+```sparql
+SELECT ?name
+WHERE {
+  ?university <http://example.org/名称> "北航" .
+  ?university <http://example.org/隶属于> ?organization .
+  ?organization <http://example.org/名称> ?name .
+}
+```
+
+![Cypher 用节点和关系模式查询属性图](/images/knowledge-graph/cypher-query-example.png)
+
+Cypher 则直接画出节点—关系模式，并从匹配到的节点读取属性：
+
+```cypher
+MATCH (university:University {name: '北航'})-[:隶属于]->(organization:Organization)
+RETURN organization.name
+```
+
+两者的思路相同：先描述要匹配的局部图，再指定返回值。区别是 RDF 把名称也表达成三元组，属性图则把 `name` 放在节点的键值属性里。
+
+### 8.3 Neo4j 的增删改查
+
+课件不仅讲查询，还列出了创建节点和关系、增改属性、删除属性、删除节点和关系等操作。可以用下面这一组最小命令串起来理解：
+
+```cypher
+CREATE (university:University {name: '北航'})
+RETURN university
+```
+
+```cypher
+MATCH (university:University {name: '北航'})
+MERGE (city:City {name: '北京'})
+MERGE (university)-[:位于]->(city)
+SET university.FOUNDED_IN = 1952
+RETURN university, city
+```
+
+```cypher
+MATCH (university:University {name: '北航'})
+REMOVE university.FOUNDED_IN
+```
+
+```cypher
+MATCH (:University {name: '北航'})-[relation:位于]->(:City {name: '北京'})
+DELETE relation
+```
+
+```cypher
+MATCH (node {name: '北航'})
+DETACH DELETE node
+```
+
+`DELETE node` 只能删除没有关系的节点；`DETACH DELETE node` 会先删除相连关系。清空当前数据库可写成 `MATCH (node) DETACH DELETE node`，执行前必须确认数据范围。
+
+批量导入时，把 UTF-8 CSV 放入 Neo4j 的 `import` 目录：
+
+```cypher
+LOAD CSV WITH HEADERS FROM 'file:///example_node.csv' AS line
+MERGE (:Node {id: line.id, name: line.name})
+```
+
+```cypher
+LOAD CSV WITH HEADERS FROM 'file:///example_relation.csv' AS line
+MATCH (source:Node {id: line.START_ID}), (target:Node {id: line.END_ID})
+MERGE (source)-[:REL {type: line.TYPE}]->(target)
+```
+
+Python 侧的 `py2neo` 相当于连接器；建立 `Graph` 后，可用 `graph.run("MATCH ...")` 发送 Cypher。查询语义仍由 Cypher 决定，`py2neo` 只负责连接、参数传递和结果封装。
+
+### 8.4 北航小图谱：任一与同时
+
+课件用“北航—人工智能学院—两门课程”演示了一个容易出错的查询。下面这条语句只要求课程名属于给定集合：
+
+```cypher
+MATCH (department:Department)-[:开设]->(course:Course)
+WHERE course.name IN ['人工智能导论', '知识图谱']
+RETURN department.name
+```
+
+它的语义是“开设了**任一门**课程的二级单位”，每匹配一门课就产生一行，同一个单位还可能重复出现。即使加 `DISTINCT`，也只是去重，并不会把“任一”变成“同时”。
+
+要表达“同时开设两门”，可以用两个图模式约束同一个 `department`：
+
+```cypher
+MATCH (department:Department)-[:开设]->(:Course {name: '人工智能导论'})
+MATCH (department)-[:开设]->(:Course {name: '知识图谱'})
+RETURN department.name
+```
+
+也可以聚合后要求两个目标课程都出现：
+
+```cypher
+MATCH (department:Department)-[:开设]->(course:Course)
+WHERE course.name IN ['人工智能导论', '知识图谱']
+WITH department, count(DISTINCT course.name) AS courseCount
+WHERE courseCount = 2
+RETURN department.name
+```
+
+同一语义在 RDF/SPARQL 中通过两个独立三元组模式表达：
+
+```sparql
+SELECT ?name
+WHERE {
+  ?department <http://example.org/开设> ?knowledgeGraph .
+  ?department <http://example.org/开设> ?introToAI .
+  ?knowledgeGraph <http://example.org/名称> "知识图谱" .
+  ?introToAI <http://example.org/名称> "人工智能导论" .
+  ?department <http://example.org/名称> ?name .
+}
+```
+
+这组对照的核心不是背语法，而是先判断自然语言中的量词：是“至少一项命中”，还是“每项约束都要成立”。
