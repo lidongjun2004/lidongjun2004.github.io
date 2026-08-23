@@ -1,21 +1,21 @@
 ---
-title: "考前速成必会清单"
+title: "考前速查清单"
 description: "串联全课公式、固定结论、易错方向与简答题答题骨架，适合考前最后一次查漏补缺"
 date: 2026-08-22
 tags: ["模式识别与机器视觉", "数学"]
 ---
 
-> 这篇只收**临场推不出来、做题却要用**的东西：要背的结论、固定公式、容易记反的方向、解题套路。能现场推的过程（完整对偶推导、各分布 MLE 求导）不在这里——那些靠理解，这些靠记。考前过一遍，进考场。
+这篇汇总了做题时需要直接使用的结论、固定公式、容易记反的方向和解题步骤。完整的对偶推导和各分布 MLE 求导仍放在相应章节，这里只做快速核对。
 
 ## 一、贝叶斯决策
 
-**贝叶斯公式**（闭眼能写）：
+**贝叶斯公式**：
 
 $$P(\omega_i \mid \mathbf{x}) = \frac{p(\mathbf{x} \mid \omega_i)P(\omega_i)}{p(\mathbf{x})}, \qquad p(\mathbf{x}) = \sum_j p(\mathbf{x}\mid\omega_j)P(\omega_j)$$
 
 **最小错误率**：选后验最大的类。等价于选 $p(\mathbf{x}\mid\omega_i)P(\omega_i)$ 最大（分母相同可省）。
 
-**最小错误率似然比阈值**（要背，方向别反）：
+**最小错误率似然比阈值**（注意比值方向）：
 
 $$l(\mathbf{x}) = \frac{p(\mathbf{x}\mid\omega_1)}{p(\mathbf{x}\mid\omega_2)} > \frac{P(\omega_2)}{P(\omega_1)} \implies \text{判 } \omega_1$$
 
@@ -33,7 +33,7 @@ $$l(\mathbf{x}) = \frac{p(\mathbf{x}\mid\omega_1)}{p(\mathbf{x}\mid\omega_2)} > 
 
 $$\frac{p(\mathbf{x}\mid\omega_1)}{p(\mathbf{x}\mid\omega_2)} > \frac{P(\omega_2)}{P(\omega_1)}\cdot\frac{\lambda_{12}-\lambda_{22}}{\lambda_{21}-\lambda_{11}} \implies \text{判 } \omega_1$$
 
-**两者关系（必考简答）**：0-1 损失（$\lambda_{ii}=0,\lambda_{ij}=1$）下，最小风险**退化为**最小错误率。即最小错误率是最小风险的特例。
+**两者关系**：0-1 损失（$\lambda_{ii}=0,\lambda_{ij}=1$）下，最小风险**退化为**最小错误率。即最小错误率是最小风险的特例。
 
 **结论会反转**：同一题，最小错误率判 A、最小风险可能判 B——因为代价不对称（漏诊比误诊贵）。记住"宁可误诊不可漏诊"这个方向。
 
@@ -48,15 +48,15 @@ $$\frac{p(\mathbf{x}\mid\omega_1)}{p(\mathbf{x}\mid\omega_2)} > \frac{P(\omega_2
 | 伯努利 | $\hat p = k/N$ | 频率 |
 | 指数 $\lambda e^{-\lambda x}$ | $\hat\lambda = 1/\bar x$ | 均值倒数 |
 | 泊松 | $\hat\lambda = \bar x$ | 就是均值 |
-| 均匀 $U(0,\theta)$ | $\hat\theta = \max_i x_i$ | **不能求导！** |
+| 均匀 $U(0,\theta)$ | $\hat\theta = \max_i x_i$ | 驻点法无解，最优值在约束边界 |
 
-**均匀分布陷阱**（高频）：似然 $\theta^{-N}$ 求导无零点。理由背熟：$\theta^{-N}$ 递减想要 $\theta$ 小，约束 $\theta\ge\max x_i$，夹逼得 $\hat\theta=\max_i x_i$。
+**均匀分布的约束**：似然 $\theta^{-N}$ 求导无零点。因为 $\theta^{-N}$ 递减，而参数又必须满足 $\theta\ge\max x_i$，所以 $\hat\theta=\max_i x_i$。
 
-**有偏无偏（必考结论）**：
+**有偏与无偏**：
 
 - 高斯方差 MLE **有偏、偏小**，$E[\hat\sigma^2] = \frac{N-1}{N}\sigma^2$；
 - 无偏修正用 $N-1$：$s^2 = \frac{1}{N-1}\sum(x_i-\bar x)^2$；
-- 原因一句话：用 $\bar x$ 顶替真 $\mu$，消耗 1 个自由度。
+- 用 $\bar x$ 代替真实均值 $\mu$ 会消耗 1 个自由度。
 
 **多维高斯**：$\hat{\boldsymbol\mu}$ = 样本均值；$\hat{\boldsymbol\Sigma} = \frac{1}{N}\sum(\mathbf{x}_k-\hat{\boldsymbol\mu})(\mathbf{x}_k-\hat{\boldsymbol\mu})^{\mathsf T}$。$\hat{\boldsymbol\mu}$ 与 $\Sigma$ 是否已知无关。
 
@@ -64,13 +64,13 @@ $$\frac{p(\mathbf{x}\mid\omega_1)}{p(\mathbf{x}\mid\omega_2)} > \frac{P(\omega_2
 
 **±1 标签**：$t_n\in\{+1,-1\}$，正确分类 $\iff t_n y(\mathbf{x}_n)>0$。
 
-**基本型**（背）：
+**基本型**：
 
 $$\min \tfrac{1}{2}\|\mathbf{w}\|^2 \quad \text{s.t.}\quad t_n(\mathbf{w}^{\mathsf T}\mathbf{x}_n+b)\ge 1$$
 
 间隔 = $\dfrac{1}{\|\mathbf{w}\|}$；最大化间隔 = 最小化 $\frac12\|\mathbf{w}\|^2$。
 
-**两个必背关系**（对偶求导结果，做题直接用）：
+**对偶求导得到的两个关系**：
 
 $$\mathbf{w} = \sum_n a_n t_n \mathbf{x}_n, \qquad \sum_n a_n t_n = 0$$
 
@@ -81,7 +81,7 @@ $$a_n\big(t_n y(\mathbf{x}_n)-1\big)=0$$
 - $a_n=0$ → 非支持向量（间隔外，没用）；
 - $a_n>0$ → **支持向量**，恰在间隔边界 $t_n y(\mathbf{x}_n)=1$。
 
-**手算套路**（两三个点的题，照走）：
+**手算步骤**（两三个点的题）：
 
 1. 用 $\sum_n a_n t_n=0$ 减少未知数；
 2. 写 $\mathbf{w}=\sum_n a_n t_n\mathbf{x}_n$；
@@ -91,22 +91,22 @@ $$a_n\big(t_n y(\mathbf{x}_n)-1\big)=0$$
 **软间隔**：约束放成 $t_n y(\mathbf{x}_n)\ge 1-\xi_n$，目标加 $C\sum\xi_n$。
 
 - 对偶唯一变化：$0\le a_n\le C$（外加 $\sum_n a_n t_n=0$）；
-- **$C$ 方向别记反**：$C$ 大 → 重罚违规、间隔窄、易过拟合；$C$ 小 → 容忍违规、间隔宽、泛化好；
-- 口诀：**只有 $a_n=C$ 的点才越界**（$0<a_n<C$ 恰在边界）。
+- $C$ 大时对违规惩罚更重、正则化更弱；$C$ 小时允许更多违规、正则化更强。
+- $0<a_n<C$ 的点恰在间隔边界；违反间隔要求的点一定有 $a_n=C$，但反过来不一定成立。
 
 ## 四、PCA / LDA
 
 **协方差矩阵**：$\mathbf{S} = \frac{1}{N}\sum(\mathbf{x}_n-\bar{\mathbf{x}})(\mathbf{x}_n-\bar{\mathbf{x}})^{\mathsf T}$。
 
-**核心结论**：主成分 = $\mathbf{S}$ 的**最大特征值**对应的特征向量；投影后方差 = 该特征值 $\lambda$。降到 $M$ 维取前 $M$ 大。
+**主成分的选择**：主成分 = $\mathbf{S}$ 的**最大特征值**对应的特征向量；投影后方差 = 该特征值 $\lambda$。降到 $M$ 维取前 $M$ 大。
 
 **失真度**（最小误差视角）：$J = \sum_{i=M+1}^{D}\lambda_i$ = 丢掉的特征值之和。
 
-**2×2 求特征值套路**（计算题必用）：解 $\det(\mathbf{S}-\lambda\mathbf{I})=0$ → 得 $\lambda$ → 回代 $(\mathbf{S}-\lambda\mathbf{I})\mathbf{u}=0$ 求特征向量。
+**2×2 特征值计算步骤**：解 $\det(\mathbf{S}-\lambda\mathbf{I})=0$ → 得 $\lambda$ → 回代 $(\mathbf{S}-\lambda\mathbf{I})\mathbf{u}=0$ 求特征向量。
 
 **PCA 三条局限（简答）**：假设线性、假设大方差=主成分（高信噪比）、假设近高斯分布。
 
-**PCA vs LDA（高频对比）**：
+**PCA vs LDA**：
 
 | | PCA | LDA |
 |---|---|---|
@@ -121,16 +121,16 @@ $$a_n\big(t_n y(\mathbf{x}_n)-1\big)=0$$
 
 **准则函数**：$J = \sum_n\sum_k r_{nk}\|\mathbf{x}_n-\boldsymbol\mu_k\|^2$（硬分配 $r_{nk}\in\{0,1\}$）。
 
-**两步（E/M 对应，必考）**：
+**两步交替（对应 E/M）**：
 
 - E 步（分配）：每点归最近中心，$r_{nk}=1$ 当 $k=\arg\min_j\|\mathbf{x}_n-\boldsymbol\mu_j\|^2$；
 - M 步（更新）：$\boldsymbol\mu_k = \dfrac{\sum_n r_{nk}\mathbf{x}_n}{\sum_n r_{nk}}$ = 该类均值。
 
-**与 GMM/EM 关系（高频简答）**：K 均值 = **硬分配**；GMM+EM = **软分配**（按概率部分归属）。K 均值是 GMM 的硬分配特例。
+**与 GMM/EM 的关系**：K 均值是**硬分配**；GMM+EM 通常是**软分配**。各高斯分量具有相同球形协方差和相同混合权重时，取硬分配会得到 K 均值式更新；也可以从共同协方差趋近于零的小方差极限理解两者关系。
 
 **肘部法则**：$J$-$K$ 曲线由陡变缓的拐点定 $K$。
 
-## 六、零散硬记点（容易问、推不出）
+## 六、其他概念
 
 - **三大流派**：① 类条件密度（参数法 / 非参数法）② 判别函数（感知机/Fisher/SVM）③ 相似度。
 - **非参数估计三件套**：直方图、$k$ 近邻、Parzen（核）窗。
@@ -150,7 +150,7 @@ $$
 
 **转置卷积**用于上采样；**空洞卷积**不显著增加参数却能扩大感受野。
 
-**Self-Attention 必背**：
+**Self-Attention**：
 
 $$
 Q=XW_Q,\qquad K=XW_K,\qquad V=XW_V,
@@ -177,7 +177,7 @@ $$
 N=\frac{HW}{P^2}.
 $$
 
-**Swin 四件套**：分层结构、Patch Merging、窗口注意力 W-MSA、移位窗口 SW-MSA。固定窗口省计算，移位窗口负责跨窗口通信。
+**Swin 的四项设计**：分层结构、Patch Merging、窗口注意力 W-MSA、移位窗口 SW-MSA。固定窗口省计算，移位窗口负责跨窗口通信。
 
 **三类分割**：
 
@@ -191,7 +191,7 @@ $$
 
 ## 九、目标检测
 
-**总纲**：两阶段先候选框再精修，准但慢；一阶段一次前向直接预测，快但细粒度定位通常较弱。
+**两类检测器**：两阶段方法先生成候选框，再分类和精修；一阶段方法一次前向直接预测。它们的速度与精度差异还取决于具体架构和训练方法。
 
 **IoU 与 NMS**：
 
@@ -203,7 +203,7 @@ NMS = 按类别、按置信度排序 → 留最高分框 → 删除与它 IoU �
 
 **R-CNN 演进**：
 
-1. R-CNN：Selective Search 出约 2000 框，每框单独过 CNN，极慢；
+1. R-CNN：Selective Search 出约 2000 框，每框单独过 CNN，计算开销很大；
 2. SPP-Net：整图卷一次，任意尺寸区域变固定长度；
 3. Fast R-CNN：共享特征 + ROI Pooling + 分类/回归联合训练；
 4. Faster R-CNN：RPN + Anchor 取代 Selective Search。
@@ -262,7 +262,7 @@ $$
 
 **CLIP zero-shot**：类别套入 `a photo of a {class}` → 编码成文本向量 → 与图像向量算相似度 → 取最大类别。
 
-**PEFT 总纲**：冻结大模型主体，只训练少量参数。
+**PEFT**：冻结大模型主体，只训练少量参数。
 
 - Prompt Tuning：训练输入端连续 Soft Prompt；
 - Adapter：每层插入下采样—激活—上采样的瓶颈模块；
@@ -270,4 +270,4 @@ $$
 
 ---
 
-**进考场前最后默背**：似然比阈值上下别反；最小风险取 min；高斯方差 MLE 分母是 $N$；SVM 的 $C$ 越大违规越贵；Self-Attention 用 Q/K 匹配后加权 V；Faster R-CNN 的 RPN 出候选框；YOLO 是一阶段；Diffusion 先加噪再去噪；CLIP 靠图文共享空间完成 zero-shot。
+**最后核对**：似然比阈值上下别反；最小风险取 min；高斯方差 MLE 分母是 $N$；SVM 的 $C$ 越大违规越贵；Self-Attention 用 Q/K 匹配后加权 V；Faster R-CNN 的 RPN 出候选框；YOLO 是一阶段；Diffusion 先加噪再去噪；CLIP 靠图文共享空间完成 zero-shot。

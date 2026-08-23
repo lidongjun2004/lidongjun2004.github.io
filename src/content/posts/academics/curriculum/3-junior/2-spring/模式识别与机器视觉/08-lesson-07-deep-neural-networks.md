@@ -169,9 +169,9 @@ Self-Attention 本身对输入顺序不敏感，因此必须额外加入位置�
 
 它们不是简单的替代关系：现代视觉模型经常同时借用 CNN 的局部性和 Transformer 的全局建模能力。
 
-## 本讲速记
+## 复习要点
 
-- CNN 的三根支柱：局部连接、权重共享、下采样。
+- CNN 的三项特点：局部连接、权重共享、下采样。
 - 多层卷积通过扩大感受野，把低级局部特征组合成高级语义。
 - Attention 是对 Value 的加权求和，权重来自 Query 与 Key 的匹配。
 - Self-Attention 的核心公式是 $\operatorname{softmax}(QK^{\mathsf T}/\sqrt{d_k})V$。

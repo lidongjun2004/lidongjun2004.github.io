@@ -49,7 +49,7 @@ tags: ["知识图谱", "数学"]
 
 ---
 
-## 2. 基本概念（期末爱考辨析）
+## 2. 基本概念
 
 ### 2.1 问句短语
 
@@ -70,7 +70,7 @@ tags: ["知识图谱", "数学"]
 | **关联型** | "What is the connection between Barack Obama and Indonesia?" |
 | **比较型** | "What is the difference between impressionism and expressionism?" |
 
-### 2.3 答案类型（必背）
+### 2.3 答案类型
 
 | 类型 | 例子 |
 |---|---|
@@ -96,7 +96,7 @@ tags: ["知识图谱", "数学"]
 
 ---
 
-## 3. KG 问答 3 大主流方法（必背）
+## 3. KG 问答的 3 类主流方法
 
 | 方法 | 思路 | 优点 | 缺点 |
 |---|---|---|---|
