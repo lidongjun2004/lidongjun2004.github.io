@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" role="img" aria-labelledby="title desc">
+  <title id="title">PageRank 三页面示例</title>
+  <desc id="desc">页面 A 链接到 B 和 C，B 链接到 C，C 链接回 A</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="900" height="460" rx="28" fill="#f8fafc"/>
+  <path d="M282 137 C384 50 516 50 618 137" fill="none" stroke="#334155" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M660 186 C682 257 635 332 566 356" fill="none" stroke="#334155" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M500 362 C385 397 261 328 241 207" fill="none" stroke="#334155" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M270 207 C310 285 372 338 426 354" fill="none" stroke="#0f766e" stroke-width="5" marker-end="url(#arrow)"/>
+  <circle cx="225" cy="155" r="66" fill="#dbeafe" stroke="#2563eb" stroke-width="5"/>
+  <circle cx="675" cy="155" r="66" fill="#dcfce7" stroke="#16a34a" stroke-width="5"/>
+  <circle cx="500" cy="365" r="66" fill="#fef3c7" stroke="#d97706" stroke-width="5"/>
+  <text x="225" y="169" text-anchor="middle" font-size="42" font-family="sans-serif" font-weight="700" fill="#1e3a8a">A</text>
+  <text x="675" y="169" text-anchor="middle" font-size="42" font-family="sans-serif" font-weight="700" fill="#14532d">B</text>
+  <text x="500" y="379" text-anchor="middle" font-size="42" font-family="sans-serif" font-weight="700" fill="#78350f">C</text>
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-family="sans-serif" fill="#475569">链接就是“把自己的票分给别人”</text>
+</svg>

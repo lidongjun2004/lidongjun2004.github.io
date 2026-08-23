@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="360" viewBox="0 0 1040 360" role="img" aria-labelledby="title desc">
+  <title id="title">少量点的快速数感与较多点的计数差异</title>
+  <desc id="desc">四个小面板分别包含一个、两个、三个、四个点，最后一个面板包含八个点</desc>
+  <rect width="1040" height="360" rx="28" fill="#f8fafc"/>
+  <g fill="#ffffff" stroke="#cbd5e1" stroke-width="3">
+    <rect x="35" y="70" width="165" height="200" rx="18"/>
+    <rect x="235" y="70" width="165" height="200" rx="18"/>
+    <rect x="435" y="70" width="165" height="200" rx="18"/>
+    <rect x="635" y="70" width="165" height="200" rx="18"/>
+    <rect x="835" y="70" width="170" height="200" rx="18"/>
+  </g>
+  <g fill="#2563eb">
+    <circle cx="118" cy="170" r="22"/>
+    <circle cx="285" cy="125" r="22"/><circle cx="350" cy="215" r="22"/>
+    <circle cx="480" cy="120" r="22"/><circle cx="560" cy="145" r="22"/><circle cx="515" cy="225" r="22"/>
+    <circle cx="680" cy="120" r="22"/><circle cx="755" cy="120" r="22"/><circle cx="680" cy="220" r="22"/><circle cx="755" cy="220" r="22"/>
+  </g>
+  <g fill="#dc2626">
+    <circle cx="872" cy="112" r="16"/><circle cx="922" cy="105" r="16"/><circle cx="970" cy="128" r="16"/><circle cx="885" cy="165" r="16"/>
+    <circle cx="950" cy="177" r="16"/><circle cx="865" cy="225" r="16"/><circle cx="918" cy="235" r="16"/><circle cx="974" cy="218" r="16"/>
+  </g>
+  <g font-family="sans-serif" text-anchor="middle" fill="#334155">
+    <text x="118" y="315" font-size="22">1</text><text x="318" y="315" font-size="22">2</text><text x="518" y="315" font-size="22">3</text><text x="718" y="315" font-size="22">4</text><text x="920" y="315" font-size="22">需要逐个数？</text>
+    <text x="520" y="40" font-size="25" font-weight="700">人通常能“看一眼”识别少量对象，而不必逐个计数</text>
+  </g>
+</svg>
