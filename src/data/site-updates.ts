@@ -7,6 +7,12 @@ export interface SiteUpdate {
 
 export const SITE_UPDATES: SiteUpdate[] = [
   {
+    date: '2026-08-23',
+    title: '真题与解析合并阅读',
+    description: '博弈论和模式识别真题改为题目、解析同页展示，每道题的答案默认折叠，作答后再手动展开。',
+    icon: '📝',
+  },
+  {
     date: '2026-06-30',
     title: '修正文章与目录排序',
     description: '目录内列表与「上一篇 / 下一篇」改由文件名顺序决定，修好了系列文章方向标反、年级目录乱序的问题。',

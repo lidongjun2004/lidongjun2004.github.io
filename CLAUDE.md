@@ -128,6 +128,7 @@ schema 定义在 `src/content.config.ts`。字段：
 - **语言**：正文以**中文**为主。
 - **数学公式**：行内 `$...$`，行间 `$$...$$`（KaTeX 语法）。改完务必 `pnpm build` 并确认公式真的渲染成 KaTeX（构建产物里 `class="katex"`，且没有残留的原始 `$...$` 文本）。
 - **表格 / 删除线等 GFM 语法**可直接用（Astro 默认开启 GFM）。
+- **真题与答案合并展示**：需要自测的真题页将题目和解析放在同一篇文章中，每道题后使用原生 `<details class="exam-answer">` 与 `<summary>` 包裹解析，默认折叠、不写 `open`；独立答案页不再保留。折叠块样式统一维护在 `src/styles/global.css`，不用 JavaScript。
 - **`tech-stack` / `academics` 的写法差异**见上「三、内容怎么组织」里的两个专节——下笔前先确认归属与组织逻辑（知识体系 vs 课程体系），别写串。
 - **owner 的 `_index` 文案习惯**（落地页要贴合，别写成官腔）：
   - **标题双语**：`中文 · English` 格式（如 `校内课程 · Curriculum`、`大三下 · Junior Spring`）。
