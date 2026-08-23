@@ -8,6 +8,12 @@ export interface SiteUpdate {
 export const SITE_UPDATES: SiteUpdate[] = [
   {
     date: '2026-08-23',
+    title: '实习面经板块上线',
+    description: '整理 2025 年末至 2026 年初的九家公司实习笔试与面试记录。',
+    icon: '💼',
+  },
+  {
+    date: '2026-08-23',
     title: '真题与解析合并阅读',
     description: '博弈论和模式识别真题改为题目、解析同页展示，每道题的答案默认折叠，作答后再手动展开。',
     icon: '📝',
