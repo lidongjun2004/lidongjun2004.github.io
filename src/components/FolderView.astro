@@ -1,6 +1,6 @@
 ---
 import { SECTION_META } from '../lib/sections';
-import { getSection, getUrl, listChildren } from '../lib/content-utils';
+import { compareByOrder, getSection, getUrl, listChildren } from '../lib/content-utils';
 import { getPublicPosts } from '../lib/content-utils';
 
 interface FolderEntry {
@@ -25,40 +25,45 @@ const folderChildCounts = Object.fromEntries(
     return [folder.path, { folders: subFolders.length, posts: subDocs.length }];
   })
 );
+
+const children = [
+  ...folders.map((folder) => ({ kind: 'folder' as const, id: folder.post.id, folder })),
+  ...docs.map((doc) => ({ kind: 'doc' as const, id: doc.id, doc })),
+].sort(compareByOrder);
 ---
 
 <div class="space-y-3">
-  {/* Folders */}
-  {folders.map((folder) => {
-    const section = getSection(folder.post.id);
-    const meta = SECTION_META[section];
-    return (
-      <a
-        href={getUrl(folder.post.id, urlPrefix)}
-        class="group flex items-center gap-3 bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
-      >
-        <span class="text-xl shrink-0">📁</span>
-        <div class="min-w-0 flex-1">
-          <h3 class="font-semibold text-[var(--color-heading)] group-hover:opacity-75 transition-opacity">
-            {folder.post.data.title || folder.name}
-          </h3>
-          {(() => {
-            const counts = folderChildCounts[folder.path];
-            const fc = counts?.folders ?? 0;
-            const pc = counts?.posts ?? 0;
-            const text = `${fc} ${fc === 1 ? 'folder' : 'folders'}, ${pc} ${pc === 1 ? 'post' : 'posts'}`;
-            return (
-              <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">{text}</p>
-            );
-          })()}
-        </div>
-        <span class="text-[var(--color-text-light)] text-sm shrink-0">→</span>
-      </a>
-    );
-  })}
+  {children.map((child) => {
+    if (child.kind === 'folder') {
+      const { folder } = child;
+      const section = getSection(folder.post.id);
+      const meta = SECTION_META[section];
+      return (
+        <a
+          href={getUrl(folder.post.id, urlPrefix)}
+          class="group flex items-center gap-3 bg-[var(--color-card)] rounded-xl p-4 border border-[var(--color-border)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+        >
+          <span class="text-xl shrink-0">📁</span>
+          <div class="min-w-0 flex-1">
+            <h3 class="font-semibold text-[var(--color-heading)] group-hover:opacity-75 transition-opacity">
+              {folder.post.data.title || folder.name}
+            </h3>
+            {(() => {
+              const counts = folderChildCounts[folder.path];
+              const fc = counts?.folders ?? 0;
+              const pc = counts?.posts ?? 0;
+              const text = `${fc} ${fc === 1 ? 'folder' : 'folders'}, ${pc} ${pc === 1 ? 'post' : 'posts'}`;
+              return (
+                <p class="text-sm text-[var(--color-text-light)] mt-0.5 truncate">{text}</p>
+              );
+            })()}
+          </div>
+          <span class="text-[var(--color-text-light)] text-sm shrink-0">→</span>
+        </a>
+      );
+    }
 
-  {/* Documents */}
-  {docs.map((doc) => {
+    const { doc } = child;
     const section = getSection(doc.id);
     const meta = SECTION_META[section];
     const dateStr = doc.data.date?.toLocaleDateString('zh-CN', {
@@ -96,7 +101,7 @@ const folderChildCounts = Object.fromEntries(
     );
   })}
 
-  {folders.length === 0 && docs.length === 0 && (
+  {children.length === 0 && (
     <p class="text-[var(--color-text-light)] text-center py-8">
       No content yet. Stay tuned!
     </p>

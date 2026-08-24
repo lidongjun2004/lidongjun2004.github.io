@@ -68,7 +68,7 @@ $$
 等价地，不存在非零左特征向量 $q^T$ 满足
 
 $$
-q^TA=\lambda q^T,qquad q^TB=0.
+q^TA=\lambda q^T,\qquad q^TB=0.
 $$
 
 若某个左特征模式与输入正交，输入就激发不了它。
@@ -137,7 +137,7 @@ $$
 在 $x=Pz$ 下，
 
 $$
-\bar A=P^{-1}AP,qquad\bar B=P^{-1}B.
+\bar A=P^{-1}AP,\qquad\bar B=P^{-1}B.
 $$
 
 新可控矩阵满足

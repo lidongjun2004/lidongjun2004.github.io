@@ -10,7 +10,7 @@ tags: ["算法设计与分析", "算法"]
 设
 
 $$
-A_i\text{ 的维度为 }p_{i-1}\times p_i,qquad 1\le i\le n.
+A_i\text{ 的维度为 }p_{i-1}\times p_i,\qquad 1\le i\le n.
 $$
 
 一个 $a\times b$ 矩阵乘以 $b\times c$ 矩阵，需要 $abc$ 次标量乘法。
