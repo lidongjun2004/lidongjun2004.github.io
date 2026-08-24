@@ -2,7 +2,7 @@
 title: "第二十九讲 · Transformer、BERT 与 Vision Transformer"
 description: "从注意力和位置编码出发拆解 Transformer 编码器与解码器，并理解 BERT 预训练和 Vision Transformer 的图像序列化"
 date: 2026-08-23
-tags: ["机器学习", "AI"]
+tags: ["AI"]
 ---
 
 RNN 按时间步依次传递状态，长距离信息要穿过很长的链。Transformer 改用注意力，让任意两个 token 在一层内直接交换信息，并把同一层所有位置并行计算。

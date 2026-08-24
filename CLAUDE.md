@@ -107,7 +107,7 @@ schema 定义在 `src/content.config.ts`。字段：
 | `description` | string | 建议填，用作 SEO 与列表摘要 |
 | `date` | date | 文章日期，影响排序（见下） |
 | `updated` | date | 可选，更新日期 |
-| `tags` | string[] | 可选，标签 |
+| `tags` | enum[] | 可选，只能使用标签白名单 |
 | `category` | string[] | 可选 |
 | `section` | enum | 可选（路由实际按路径推导，一般不用手填） |
 | `cover` | string | 可选封面 |
@@ -128,6 +128,7 @@ schema 定义在 `src/content.config.ts`。字段：
 
 - **文件名**：kebab-case、纯 ASCII（URL 友好）。`title` 可以用中文，与文件名解耦。**文件名前缀即排序**：同目录内想排序就加数字前缀（文章 `00-` / `01-` 两位补零；排序用的文件夹 `1-` / `2-`），详见上「四」的排序规则。课程名目录是例外（用中文、不带前缀，靠 `date` 之外的天然顺序无所谓，因为同课内文章自己带 `NN-` 前缀）。
 - **语言**：正文以**中文**为主。
+- **标签只用白名单**：`数学`、`AI`、`作业`、`真题`、`实习`、`速成`、`AI Infra`、`量化`。不要把课程名、章节名、算法名或零散知识点当作标签，也不要为了凑标签给现有文章推断或补打；不确定就不写 `tags`。只有 owner 明确提出新标签时，才同时更新 `src/content.config.ts` 的 `POST_TAGS` 与本条约定。
 - **数学公式**：行内 `$...$`，行间 `$$...$$`（KaTeX 语法）。改完务必 `pnpm build` 并确认公式真的渲染成 KaTeX（构建产物里 `class="katex"`，且没有残留的原始 `$...$` 文本）。
 - **表格 / 删除线等 GFM 语法**可直接用（Astro 默认开启 GFM）。
 - **真题与答案合并展示**：需要自测的真题页将题目和解析放在同一篇文章中，每道题后使用原生 `<details class="exam-answer">` 与 `<summary>` 包裹解析，默认折叠、不写 `open`；独立答案页不再保留。折叠块样式统一维护在 `src/styles/global.css`，不用 JavaScript。

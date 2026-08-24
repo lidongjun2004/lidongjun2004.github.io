@@ -7,6 +7,12 @@ export interface SiteUpdate {
 
 export const SITE_UPDATES: SiteUpdate[] = [
   {
+    date: '2026-08-24',
+    title: '精简标签体系',
+    description: '将全站标签收敛为数学、AI、作业、真题、实习、速成、AI Infra 与量化，移除课程名和零散概念标签。',
+    icon: '🏷️',
+  },
+  {
     date: '2026-08-23',
     title: '实习面经板块上线',
     description: '整理 2025 年末至 2026 年初的九家公司实习面试记录。',

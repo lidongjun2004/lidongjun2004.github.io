@@ -2,7 +2,7 @@
 title: "第二讲 · 不等式、PAC 学习与 VC 维"
 description: "以 Markov、Chebyshev、Hoeffding、Cauchy-Schwarz 和 Jensen 不等式为基础，建立 PAC 学习、样本复杂度、打散与 VC 维的完整逻辑"
 date: 2026-08-23
-tags: ["机器学习", "AI"]
+tags: ["AI"]
 ---
 
 训练集上的错误率很低，能不能说明模型遇到新数据时也可靠？如果暂时不能，我们还需要多少样本，才能以足够大的把握相信它？

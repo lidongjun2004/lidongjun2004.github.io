@@ -3,7 +3,7 @@ title: "第三讲 · 知识抽取总论：从数据到三元组"
 description: "知识抽取的任务、评测与爬虫基础，以及使用 DM、R2RML 和 OBDA 将关系数据库映射为 RDF"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD028 MD032 MD040 -->

@@ -2,7 +2,7 @@
 title: "第四讲 · 模糊系统优化：TSK、ANFIS 与 Mamba"
 description: "把 Mamdani 规则的后件换成函数，理解 TSK 与 RBFN、MoE、CART、Stacking 的等价关系，掌握 ANFIS 五层结构、MBGD 优化套路，并看 Mamba 如何把状态空间法重新带回序列建模"
 date: 2026-08-23
-tags: ["智能控制与机器人", "数学"]
+tags: ["数学"]
 ---
 
 > 对应 PPT：模糊系统优化专题。第三讲的 Mamdani 控制器靠人写规则，这一讲继续追问：规则能否从数据中优化？答案是把后件改成函数，再把整套模糊推理画成一张可反向传播的网络。

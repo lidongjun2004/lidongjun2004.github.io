@@ -11,4 +11,6 @@
 - **Plan & Think · 计划与思考** — 目标、规划、复盘与方法论（WIP）。
 - **Health & Fitness · 健康与健身** — 训练、饮食与身体管理（WIP）。
 
+Tags 只使用少量稳定的跨内容主题，不用课程名或零散知识点制造标签云。
+
 站点用 [Astro](https://astro.build/) 构建，部署于 GitHub Pages。

@@ -2,7 +2,6 @@
 title: "极限环：如何证明存在或不存在"
 description: "Bendixson、Dulac、Lyapunov、捕获域与 Poincaré–Bendixson"
 date: 2026-08-24
-tags: ["动力系统"]
 ---
 
 极限环是**孤立的周期轨道**。孤立二字很重要：线性中心周围的一族闭轨不是极限环，因为任意一条闭轨旁边还有其他闭轨。

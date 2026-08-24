@@ -3,7 +3,7 @@ title: "第一讲 · 知识图谱概述"
 description: "从数据、信息与知识的区别出发，理解知识图谱的结构、发展、应用、构建流程与存储边界"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD031 MD032 MD036 MD040 -->

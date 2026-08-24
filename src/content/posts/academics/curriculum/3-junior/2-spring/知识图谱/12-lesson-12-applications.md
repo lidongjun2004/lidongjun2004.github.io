@@ -3,7 +3,7 @@ title: "第十二讲 · 知识图谱应用"
 description: "串联知识图谱问答、时序推理、可解释推荐、视觉推理与医疗、商业和安全领域案例"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD031 MD032 MD036 MD040 -->

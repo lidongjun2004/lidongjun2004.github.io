@@ -2,7 +2,6 @@
 title: "拟 Newton 法与 DFP 更新"
 description: "从割线方程构造逆 Hessian 近似，推导 DFP 更新并理解正定性条件"
 date: 2026-08-24
-tags: ["最优化方法"]
 ---
 
 Newton 法快，却要计算和分解 Hessian。拟 Newton 法只用相邻点的梯度变化，逐步学习一个曲率矩阵。

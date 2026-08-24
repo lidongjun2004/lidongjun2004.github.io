@@ -2,7 +2,7 @@
 title: "第 11 周作业：直接方法与可行方向法"
 description: "整理 Powell 方向更新、线性约束可行方向和 Zoutendijk 子问题的手算过程"
 date: 2026-08-24
-tags: ["最优化方法", "作业"]
+tags: ["作业"]
 ---
 
 本周原 PDF 是 Lee 的手算，前半是 Powell 直接法，后半是线性约束下的可行方向与 KKT 判断。

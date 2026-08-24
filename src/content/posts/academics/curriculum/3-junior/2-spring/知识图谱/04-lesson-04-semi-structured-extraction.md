@@ -3,7 +3,7 @@ title: "第四讲 · 半结构化知识抽取"
 description: "从百科页面和网络表中抽取、阐释知识，理解包装器、实体链接、消歧与 PageRank 的完整流程"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD032 MD040 -->

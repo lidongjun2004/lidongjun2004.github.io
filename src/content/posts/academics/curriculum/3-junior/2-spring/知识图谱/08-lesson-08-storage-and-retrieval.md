@@ -3,7 +3,7 @@ title: "第八讲 · 知识存储与检索"
 description: "对比 RDF 与属性图的数据模型，掌握 SPARQL、Cypher、Neo4j 增删改查及批量导入"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD031 MD032 MD040 -->

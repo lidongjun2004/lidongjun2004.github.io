@@ -2,7 +2,7 @@
 title: "第二十一讲 · 自动微分"
 description: "从计算图出发理解前向模式与反向模式自动微分、Jacobian-vector product、vector-Jacobian product 和反向传播的实现逻辑"
 date: 2026-08-23
-tags: ["机器学习", "AI"]
+tags: ["AI"]
 ---
 
 训练神经网络时，我们真正需要的不是一个漂亮的导函数表达式，而是损失函数对数百万个参数的数值梯度。自动微分（Automatic Differentiation，AD）做的事，就是把程序拆成一连串基本运算，再沿计算图精确应用链式法则。

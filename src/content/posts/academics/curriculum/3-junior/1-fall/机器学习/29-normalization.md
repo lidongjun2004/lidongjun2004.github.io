@@ -2,7 +2,7 @@
 title: "第二十七讲 · 从输入标准化到 BatchNorm、LayerNorm 与 GroupNorm"
 description: "理解归一化为何稳定训练，比较 BatchNorm、LayerNorm、InstanceNorm 与 GroupNorm 的统计维度、训练推理差异和使用场景"
 date: 2026-08-23
-tags: ["机器学习", "AI"]
+tags: ["AI"]
 ---
 
 归一化不是把所有数“统一缩到 $0$ 到 $1$”这么简单。它真正关心的是：**在哪些元素上统计均值和方差，哪些维度分别保留，以及训练和推理是否使用同一套统计量**。

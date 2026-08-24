@@ -2,7 +2,6 @@
 title: "Lagrange 对偶与对偶间隙"
 description: "从 Lagrange 函数构造对偶函数，理解弱对偶、强对偶、Slater 条件和鞍点"
 date: 2026-08-24
-tags: ["最优化方法"]
 ---
 
 Lagrange 对偶把约束搬进目标，并用乘子为违反约束“定价”。它不仅能给下界，还能解释 KKT、分解算法和灵敏度。

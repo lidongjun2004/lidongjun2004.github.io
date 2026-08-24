@@ -3,7 +3,7 @@ title: "第十讲 · 知识表示学习与推理基础"
 description: "从知识图谱补全出发，理解 TransE、路径与规则增强、类型与文本信息，以及强化学习、低资源、多模态和时序推理"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD028 MD031 MD032 MD034 MD036 MD040 -->

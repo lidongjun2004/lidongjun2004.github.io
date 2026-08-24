@@ -3,7 +3,7 @@ title: "第六讲 · NER 前沿与 LLM 知识抽取"
 description: "梳理低资源、持续、嵌套、跨领域与多模态 NER，并限定理解 LLM 过滤—重排实验的结论"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD031 MD032 MD034 MD040 -->

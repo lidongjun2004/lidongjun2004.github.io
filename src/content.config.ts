@@ -2,6 +2,17 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { SECTIONS } from './lib/sections';
 
+export const POST_TAGS = [
+  '数学',
+  'AI',
+  '作业',
+  '真题',
+  '实习',
+  '速成',
+  'AI Infra',
+  '量化',
+] as const;
+
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
   schema: z.object({
@@ -11,7 +22,7 @@ const posts = defineCollection({
     updated: z.coerce.date().optional(),
     section: z.enum(SECTIONS).optional(),
     category: z.array(z.string()).default([]),
-    tags: z.array(z.string()).default([]),
+    tags: z.array(z.enum(POST_TAGS)).default([]),
     cover: z.string().optional(),
     draft: z.boolean().default(false),
   }),

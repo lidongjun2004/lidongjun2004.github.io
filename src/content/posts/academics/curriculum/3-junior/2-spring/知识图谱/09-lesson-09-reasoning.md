@@ -3,7 +3,7 @@ title: "第九讲 · 知识推理：规则、路径与大模型"
 description: "从四类一般推理出发，掌握规则学习、PCA 置信度、PRA、强化学习多跳推理与 Think on Graph"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD032 MD040 -->

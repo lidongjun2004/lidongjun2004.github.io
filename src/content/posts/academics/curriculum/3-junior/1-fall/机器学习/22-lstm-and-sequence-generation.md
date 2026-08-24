@@ -2,7 +2,7 @@
 title: "第二十讲 · LSTM 与序列生成"
 description: "针对长距离依赖和梯度消失问题，推导 LSTM 的输入门、遗忘门、输出门与状态更新，并分析文本和代码生成案例"
 date: 2026-08-23
-tags: ["机器学习", "AI"]
+tags: ["AI"]
 ---
 
 普通 RNN 能把过去带到现在，却很难跨越很长距离。判断“the clouds are in the sky”中的 `sky`，附近词就够了；判断“I grew up in France ... I speak fluent French”中的 `French`，则必须保存很久以前的 `France`。

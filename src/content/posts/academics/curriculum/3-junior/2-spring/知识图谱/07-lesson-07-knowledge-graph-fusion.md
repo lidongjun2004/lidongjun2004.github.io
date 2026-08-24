@@ -3,7 +3,7 @@ title: "第七讲 · 知识图谱融合"
 description: "从语言与模型异构出发，理解本体映射、实例匹配、实体消歧与跨图谱实体对齐"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD032 MD040 -->

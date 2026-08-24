@@ -3,7 +3,7 @@ title: "第八讲 · 具身智能、VLA 与 SimLingo"
 description: "第一人称智能与 POMDP、自动驾驶从模块化到端到端、VLA（视觉-语言-动作）四层五部件架构与 Cross-Attention、典型模型 RT-2/Pi0/Pi0.5，以及 SimLingo、NaVILA 实验"
 date: 2026-06-29
 updated: 2026-08-23
-tags: ["智能控制与机器人", "数学"]
+tags: ["数学"]
 ---
 
 > 对应 PPT：具身智能专题（前半）+ 第六讲《视觉-语言-动作模型 VLA》

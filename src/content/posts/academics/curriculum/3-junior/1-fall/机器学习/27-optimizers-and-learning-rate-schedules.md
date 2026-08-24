@@ -2,7 +2,7 @@
 title: "第二十五讲 · SGD、Momentum、AdamW 与学习率调度"
 description: "从普通 SGD 出发推导 Momentum、AdaGrad、RMSProp、Adam 与 AdamW，并梳理预热、衰减和余弦学习率策略"
 date: 2026-08-23
-tags: ["机器学习", "AI"]
+tags: ["AI"]
 ---
 
 反向传播给出当前 mini-batch 的梯度，优化器决定如何利用当前和历史梯度更新参数。最朴素的 SGD 只看眼前方向；Momentum 记住方向；AdaGrad、RMSProp 和 Adam 还会根据每个参数近期梯度的尺度调整步长。

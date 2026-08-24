@@ -3,7 +3,7 @@ title: "第五讲 · 非结构化知识抽取：NER、关系与事件"
 description: "从序列标注和 BiLSTM-CRF 出发，系统理解实体识别、关系抽取、事件抽取及流水线与联合方法"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD028 MD031 MD032 MD040 -->

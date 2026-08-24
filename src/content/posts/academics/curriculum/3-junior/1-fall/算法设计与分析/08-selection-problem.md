@@ -2,7 +2,6 @@
 title: "选择问题：第 k 小元素"
 description: "从排序、Quickselect 到 median of medians，理解期望线性与最坏线性选择算法"
 date: 2026-08-23
-tags: ["算法设计与分析", "算法"]
 ---
 
 选择问题要求在未排序数组中找第 $k$ 小元素。中位数只是 $k=\lceil n/2\rceil$ 的特殊情况。

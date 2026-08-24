@@ -3,7 +3,7 @@ title: "第二讲 · 知识表示：从符号、本体到语义网"
 description: "串联逻辑、语义网络、本体、RDF、RDFS、OWL、SPARQL、JSON-LD、属性图与分布式表示"
 date: 2026-06-25
 updated: 2026-08-23
-tags: ["知识图谱", "数学"]
+tags: ["数学"]
 ---
 
 <!-- markdownlint-disable MD024 MD031 MD032 MD036 MD040 -->

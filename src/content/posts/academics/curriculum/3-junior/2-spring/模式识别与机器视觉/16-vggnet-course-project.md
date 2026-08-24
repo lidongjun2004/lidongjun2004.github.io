@@ -2,7 +2,7 @@
 title: "大作业 · VGGNet 论文精读与汇报"
 description: "围绕 VGGNet 的核心问题、3×3 小卷积核、A-E 网络配置、训练测试策略、实验结论与 7 分钟汇报结构整理课程大作业"
 date: 2026-08-22
-tags: ["模式识别与机器视觉", "数学", "作业"]
+tags: ["数学", "作业"]
 ---
 
 这次大作业精读的是 VGG 论文 *Very Deep Convolutional Networks for Large-Scale Image Recognition*。它没有发明复杂的新模块，而是用一组控制变量清楚的实验回答一个问题：
