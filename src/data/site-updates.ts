@@ -9,7 +9,7 @@ export const SITE_UPDATES: SiteUpdate[] = [
   {
     date: '2026-08-27',
     title: '统一大三课程目录',
-    description: '大三上、下课程统一整理为速成、往年题、知识点与作业四类，并为旧文章地址保留跳转。',
+    description: '大三上、下课程统一整理为速成、真题、知识点与作业四类，并为旧文章地址保留跳转。',
     icon: '📚',
   },
   {
@@ -57,7 +57,7 @@ export const SITE_UPDATES: SiteUpdate[] = [
   {
     date: '2026-06-25',
     title: '充实学业与知识沉淀',
-    description: '新增知识图谱课程笔记与模式识别复习，扩充 Tech Stack 的机器学习与数学主题。',
+    description: '新增知识图谱课程笔记与模式识别复习。',
     icon: '📚',
   },
   {

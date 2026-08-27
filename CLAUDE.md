@@ -2,7 +2,7 @@
 
 > 本文件是这个博客仓库的「交接说明」，给所有在此协作的 AI agent（Claude Code / Codex / Cursor / 其他）看。
 > 目标：让接班者**不用反复摸索**就能正确地往博客里加内容、改样式、提交部署。
-> `CLAUDE.md` 是指向本文件的软链接，二者内容一致。
+> `AGENTS.md` 是指向本文件的软链接，二者内容一致。
 
 ## 零、每次编辑必守的铁律（最高优先级）
 
@@ -49,8 +49,8 @@ pnpm preview        # 预览构建产物
 `section`（顶级分类）是**由路径的第一层目录推导**的，不是靠 frontmatter 字段。目录可以任意嵌套，URL 直接等于文件路径，例如：
 
 ```text
-src/content/posts/tech-stack/artificial-intelligence/ml-fundamentals/bayesian-decision-theory.md
-        → https://lidongjun.com/tech-stack/artificial-intelligence/ml-fundamentals/bayesian-decision-theory/
+src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
+        → https://lidongjun.com/tech-stack/foreign-languages/english/ielts/ielts-notes/
 ```
 
 六个顶级 section（定义见 `src/lib/sections.ts`，**新增 section 必须先改这里的 `SECTIONS` 数组**）：
@@ -75,17 +75,18 @@ src/content/posts/tech-stack/artificial-intelligence/ml-fundamentals/bayesian-de
 - **目标 / 规划 / 长期思考**（计划、复盘、方法论）→ `plan-think`。
 - **健康 / 健身**（训练、饮食、身体管理）→ `health-fitness`。
 
-> **一句话分流**：`academics` 是「学校课程体系的投影」——这门课讲了什么、会考什么；`tech-stack` 是「我已内化的技术栈的投影」——按知识体系重新组织、能独立成立的认知。**同一份课程材料可以两边各有产物**（如「模式识别」课：`academics` 放面向考试的复习，`tech-stack/artificial-intelligence/ml-fundamentals/` 放提炼后的通用知识单元），但两边的组织逻辑、目标、写法完全不同。
+> **一句话分流**：`academics` 是「学校课程体系的投影」——这门课讲了什么、会考什么；`tech-stack` 是「我已内化的技术栈的投影」——按知识体系重新组织、能独立成立的认知。同一份课程材料可以两边各有产物，但放入 `tech-stack` 前必须剥掉课程外壳，并经过 owner 打磨与 review；两边的组织逻辑、目标、写法完全不同。
 
 ### `academics` 怎么写（学校视角）
 
 定位：记录 owner（在校生）在学校里的各项事务——**课程、竞赛、科研**。`research/`（与 `curriculum/` 并列）已起骨架、内容待写；竞赛暂未开始。课程是目前主体。
 
 - **目录结构**：课程一律 `academics/curriculum/<年级>/<学期>/<课程名>/`。年级目录带数字前缀排序：`1-freshman` / `2-sophomore` / `3-junior` / `4-senior`；学期同理：`1-fall` / `2-spring`；**课程名用中文、与源目录同名、不带前缀**（如 `academics/curriculum/3-junior/2-spring/知识图谱/`）。四个年级 × fall/spring 的骨架（含各级 `_index.md`）已全部建好，新课直接放进对应 `<年级>/<学期>/` 即可。前缀只为排序与 URL，落地页展示名由各 `_index.md` 的 `title` 决定（中文双语，如「大三 · Junior」）。
-- **课程内阅读顺序**：统一为「速成 → 往年题 → 知识点 → 作业」。速成稿固定为课程根目录的 `00-exam-cram.md`；其余内容分别放入 `01-past-exams/`、`02-lessons/`、`03-homework/`，三个文件夹的 `_index.md` 只写对应展示标题「往年题」「知识点」「作业」，正文留空。往年题卷内按时间从新到旧编号；知识点和作业沿用文章自身编号。没有源材料的类别只保留空目录，不补造文章（包括速成稿）。
+- **课程内阅读顺序**：统一为「速成 → 真题 → 知识点 → 作业」。速成稿固定为课程根目录的 `00-exam-cram.md`；其余内容分别放入 `01-past-exams/`、`02-lessons/`、`03-homework/`，三个文件夹的 `_index.md` 只写对应展示标题「真题」「知识点」「作业」，正文留空。真题卷内按时间从新到旧编号；知识点和作业沿用文章自身编号。没有源材料的类别只保留空目录，不补造文章（包括速成稿）。
 - **源目录绑定（关键约束）**：每门课的事实来源是本机 `~/workplace/personal/college/curriculum/<年级>/<课程名>/`（PPT、作业、大作业、讲义都在那里）。写 / 改文章前**先去对应源目录核对材料**，别凭空写。
 - **目录对应（注意层级差与前缀差）**：源目录是 `<年级>/<课程名>`（年级如 `junior`，**无数字前缀、无学期层**），blog 是 `<数字->年级>/<数字->学期>/<课程名>`（如 `3-junior/2-spring/知识图谱`，年级 / 学期带前缀、多一层学期）。所以对应关系是**最末一层「课程名」同名、内容一致**，而非两边目录树逐层全等——核对时认「课程名」这一层，别被前缀和学期层绊住。源目录有的课程章节，blog 文章应覆盖到；课程范围变了，两边同步。
-- **目标**：让 owner 本人、以及任何浏览者，**在具备前置知识的基础上能学懂这门课、较好应对考试**。所以这里**可以也应该**带课程框架——「第几讲」「考点清单」「考前速成」「往年题」都正当（参考已有的 `00-exam-cram.md` / `01-past-exams/`）。
+- **发布门槛**：`academics` 内容允许在 owner 尚未逐篇 review 的情况下暂时发布，但必须忠实于课程源材料并完成现有校验。
+- **目标**：让 owner 本人、以及任何浏览者，**在具备前置知识的基础上能学懂这门课、较好应对考试**。所以这里**可以也应该**带课程框架——「第几讲」「考点清单」「考前速成」「真题」都正当（参考已有的 `00-exam-cram.md` / `01-past-exams/`）。
 - **不要**把这里的内容写成脱离课程的通用知识沉淀——那是 `tech-stack` 的活。这里忠实于课程体系本身，**哪怕那个课程体系本身糟糕、零散**，也照实记录「它是怎么讲、怎么考的」。
 
 ### `tech-stack` 怎么写（知识体系视角）
@@ -93,8 +94,9 @@ src/content/posts/tech-stack/artificial-intelligence/ml-fundamentals/bayesian-de
 定位：owner **真正自己学过一遍、已掌握并内化**的技术栈 / 知识库的投影。是「我的技术认知地图」，不是「某门课的笔记本」。
 
 - **准入门槛（关键约束）**：只放**已内化**的内容——哪怕 owner 现在 point of view 不深、或日后遗忘了，也得是当初真学懂、消化过的知识单元。**没真正掌握的，不往这里放**（那种属于 academics 的应试记录，或根本还没学）。
-- **目录按学科 / 主题切分**，不按课程：`artificial-intelligence/ml-fundamentals/`、`math/`、`computer-science/` 等。文章是「贝叶斯决策」「SVM」这种**知识单元**，能脱离任何具体课程独立成立。**不要**出现 `pattern-recognition/`、`第几讲` 这类课程结构，也**不要**带「课程笔记」语气 / 标签。
-- **目标**：owner 自己重读能**快速重建对这一模块的认知与 insight**；别人读完也能**掌握**这个知识单元。所以按清晰的逻辑链重组、讲全、给完整算例，写成能独立成立的知识沉淀（参考已有的 `bayesian-decision-theory.md`：先讲「为什么」与直觉，再展开公式与算例）。
+- **发布门槛（硬规则）**：`tech-stack` 叶子文章必须经过 owner 亲自打磨或逐篇 review，并得到明确认可后才能发布；agent 不得把未经认可的草稿直接发布到这里。此限制不套用于 `academics`。
+- **目录按学科 / 主题切分**，不按课程：如 `artificial-intelligence/computer-vision/`、`math/`、`computer-science/`。文章是「贝叶斯决策」「SVM」这种**知识单元**，能脱离任何具体课程独立成立。**不要**出现 `pattern-recognition/`、`第几讲` 这类课程结构，也**不要**带「课程笔记」语气 / 标签。
+- **目标**：owner 自己重读能**快速重建对这一模块的认知与 insight**；别人读完也能**掌握**这个知识单元。所以按清晰的逻辑链重组、讲全、给完整算例，写成能独立成立的知识沉淀。
 - 即使内容**来源**是某门课，也要**重写**成通用知识沉淀后再归入对应学科主题，剥掉课程外壳（讲次、考点、应试套路）。那些应试外壳留给 `academics`。
 
 ## 四、Frontmatter 规范
@@ -134,7 +136,8 @@ schema 定义在 `src/content.config.ts`。字段：
 - **真题与答案合并展示**：需要自测的真题页将题目和解析放在同一篇文章中，每道题后使用原生 `<details class="exam-answer">` 与 `<summary>` 包裹解析，默认折叠、不写 `open`；独立答案页不再保留。折叠块样式统一维护在 `src/styles/global.css`，不用 JavaScript。
 - **实习面经的问答展示**：题目使用正常字体；owner 的回答或现场复盘放在对应题目内的 Markdown 引用块中，首行统一写 `**我的回答**`，回答原文保留斜体。引用块直接复用全站 blockquote 样式，始终展开，不使用真题专用的折叠答案组件。
 - **`tech-stack` / `academics` 的写法差异**见上「三、内容怎么组织」里的两个专节——下笔前先确认归属与组织逻辑（知识体系 vs 课程体系），别写串。
-- **owner 的 `_index` 文案习惯**（落地页要贴合，别写成官腔）：
+- **目录页保护（硬规则）**：除非 owner 明确要求修改某个既有目录页，否则不得改动其 `_index.md` 的 frontmatter 或正文。新建文件夹时，若 owner 未指定目录页文案，只添加经确认或由文件夹名称直接确定的必填 `title`，不自行补 `description`，正文留空。
+- **owner 的 `_index` 文案习惯**（仅在 owner 明确要求撰写或更新目录页时适用；落地页要贴合，别写成官腔）：
   - **标题双语**：`中文 · English` 格式（如 `校内课程 · Curriculum`、`大三下 · Junior Spring`）。
   - **description 写真实定位 / 主观态度**，不写正确但空洞的套话（owner 原话如「我觉得有用的，但是内容不好评价的课（完全没用的就根本不想整理）」）。
   - **正文写「定位 + 进度」**：一句话说清这层是什么，再用 `目前进度：…` 或 `WIP：…` 标出已整理 / 待整理的状态（owner 习惯用 `WIP：科研 · Research、竞赛 · Contest` 这种列法占位未来板块）。
@@ -145,7 +148,7 @@ schema 定义在 `src/content.config.ts`。字段：
 
 每个节点都由「非正文字段」（frontmatter）+「正文」（body）构成，`title` 是唯一必填项，其余按需：
 
-- **文件夹**（`_index.md`）：`title`（必填）· `description` · 正文；子项列表由系统按目录**自动生成**，不用手写。
+- **文件夹**（`_index.md`）：`title`（必填）；只有 owner 明确指定时才写 `description` 或正文。子项列表由系统按目录**自动生成**，不用手写。
 - **文章**（普通 `*.md`）：`title`（必填）· `description` · `date` · `tags`（按需 `updated` / `category` / `cover`）· 正文。
 
 步骤：
@@ -153,7 +156,7 @@ schema 定义在 `src/content.config.ts`。字段：
 1. 想清楚归属的 section 与目录，必要时新建目录并放一个 `_index.md`。
 2. 若是 `academics` 课程内容，**先到 `~/workplace/personal/college/curriculum/<年级>/<课程名>/` 核对源材料**，并保持两边目录同名对应。
 3. **非正文字段必须先过 owner（硬规则）**：新增任何文章 / 文件夹，先把拟定的**全部非正文字段**（文件夹的 `title` / `description`；文章的 `title` / `description` / `date` / `tags` 等）逐项列给 owner 确认，符合预期后再落地，**不擅自定稿**。
-4. 写正文。初稿交付后若 owner 有意见，按反馈继续调整，直到认可。
+4. 叶子文章按要求写正文；目录页正文只有 owner 明确要求时才写，否则留空。初稿交付后若 owner 有意见，按反馈继续调整，直到认可。
 5. `pnpm dev` 或 `pnpm build` 本地验证渲染（尤其有公式 / 表格时）。
 6. commit + push（见下）。
 
