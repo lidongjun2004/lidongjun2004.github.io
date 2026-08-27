@@ -24,6 +24,8 @@ $$
 
 若有 $q$ 种颜色，位置构成正六边形。手镯允许翻面，所以作用群是 $D_6$，共有 12 个元素。
 
+![正六边形在不同旋转下形成的位置循环](/images/academics/abstract-algebra/lessons/hexagon-rotation-cycles.webp)
+
 - 恒等变换有 $q^6$ 个不动染色；
 - 转 $60^\circ$ 或 $300^\circ$，六点成一个循环，各有 $q$ 个；
 - 转 $120^\circ$ 或 $240^\circ$，有两个循环，各有 $q^2$ 个；

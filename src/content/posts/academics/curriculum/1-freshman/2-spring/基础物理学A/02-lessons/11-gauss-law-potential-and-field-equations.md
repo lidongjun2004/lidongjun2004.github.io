@@ -41,6 +41,10 @@ $$
 
 ## 三类标准对称
 
+![均匀带电球面的同心球形高斯面与径向电场](/images/academics/curriculum/basic-physics-a1/lessons/spherical-gaussian-surface.png)
+
+![无限长带电直线外的同轴圆柱形高斯面](/images/academics/curriculum/basic-physics-a1/lessons/cylindrical-gaussian-surface.png)
+
 半径 $R$、总电荷 $Q$ 的均匀带电球面：
 
 $$

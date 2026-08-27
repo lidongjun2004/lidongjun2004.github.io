@@ -48,6 +48,8 @@ AVL 树要求每个结点左右子树高度差的绝对值不超过 1。插入�
 
 ## 哈夫曼树
 
+![相同叶结点权值对应的不同二叉树具有不同带权路径长度](/images/academics/freshman-data-structures/lessons/weighted-path-length.png)
+
 给定叶结点权值 $w_i$ 和深度 $l_i$，带权路径长度为
 
 $$

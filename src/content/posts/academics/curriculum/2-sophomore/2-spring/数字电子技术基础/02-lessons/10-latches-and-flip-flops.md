@@ -33,6 +33,10 @@ date: 2026-08-27
 
 NAND 构成的 RS 锁存器输入低有效，保持和禁止组合正好不同。看到电路要先判断是 NOR 还是 NAND、输入是否带上划线。
 
+![低有效 NAND 型 RS 锁存器的功能表](/images/academics/digital-electronics/lessons/rs-latch-truth-table.png)
+
+这张表里的输入带横线，所以 $\overline R=\overline S=1$ 才是保持，二者同时为 0 才是禁止态。做题时若忽略“低有效”，四行功能会整体判断反。
+
 ## 门控 RS 锁存器
 
 加入使能或时钟电平 $C$：$C$ 无效时保持，$C$ 有效时响应 $S,R$。它仍是电平敏感器件，在整个有效电平期间输入变化都可能透到输出。

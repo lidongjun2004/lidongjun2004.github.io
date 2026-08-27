@@ -8,6 +8,8 @@ date: 2026-08-27
 
 ## 洛伦兹力
 
+![正负电荷在磁场中运动时洛伦兹力方向的右手定则](/images/academics/curriculum/basic-physics-a1/lessons/lorentz-force-directions.png)
+
 带电量 $q$ 的粒子在电磁场中受力
 
 $$

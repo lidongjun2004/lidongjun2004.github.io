@@ -20,6 +20,8 @@ $$
 F_{X,Y}(x,y)=P(X\le x,Y\le y).
 $$
 
+![联合分布函数对应点左下方区域的概率](/images/academics/probability/lessons/joint-cdf-lower-left-region.webp)
+
 它满足：
 
 - 对每个变量分别单调不减；

@@ -76,6 +76,8 @@ int matrix[3][4];
 
 它是长度为 3 的数组，每个元素类型都是 `int[4]`。因此 `matrix` 在表达式中转换成指向第一行的指针，类型为 `int (*)[4]`。
 
+![二维数组按行连续存储且 a、a+1、a+2 分别指向各行](/images/academics/freshman-c-programming/lessons/two-dimensional-array-layout.png)
+
 ```text
 matrix
   ↓
@@ -131,6 +133,8 @@ int value = 42;
 int *p = &value;
 int **pp = &p;
 ```
+
+![三重、二重和一重指针逐级指向最终变量](/images/academics/freshman-c-programming/lessons/multiple-pointer-chain.png)
 
 ```text
 pp ─→ p ─→ value

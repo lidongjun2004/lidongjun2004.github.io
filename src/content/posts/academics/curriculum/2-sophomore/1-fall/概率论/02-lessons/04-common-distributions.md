@@ -257,6 +257,8 @@ $$
 
 它关于 $\mu$ 对称，在 $\mu$ 处达到最大值，期望为 $\mu$、方差为 $\sigma^2$。标准化后
 
+![正态分布中均值改变峰的位置、标准差改变曲线宽窄](/images/academics/probability/lessons/normal-location-scale.webp)
+
 $$
 Z=\frac{X-\mu}{\sigma}\sim N(0,1).
 $$

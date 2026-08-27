@@ -29,6 +29,8 @@ $$
 
 第二种解释说明了为什么 DFT 的时域移位、卷积都天然是模 $N$ 的循环操作。
 
+![有限序列按 N 点周期延拓后的样值排列](/images/academics/signals-and-systems/lessons/dft-periodic-extension.png)
+
 ## 周期性与对称性
 
 $$

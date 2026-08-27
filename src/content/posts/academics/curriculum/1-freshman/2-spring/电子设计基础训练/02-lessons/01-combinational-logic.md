@@ -6,6 +6,8 @@ date: 2026-08-27
 
 现存手绘材料尝试用 AND、OR 和 NOT 组成“同或”和“异或”电路。它也刚好展示了电子设计的一个基本方法：**不靠电路长得像不像，而是把每个节点翻译成表达式，再逐行验证。**
 
+![手绘的同或与异或组合逻辑门连接方案](/images/academics/freshman-electronics-training/lessons/xnor-xor-hand-drawn-circuits.png)
+
 ## 三种基本门
 
 | 门 | 表达式 | 何时输出 1 |

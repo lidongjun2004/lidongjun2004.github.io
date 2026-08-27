@@ -284,6 +284,8 @@ $0\cdot\infty$、$\infty-\infty$、$1^\infty$ 不能直接求导，先化为商�
 
 ## 函数作图的完整流程
 
+![导数符号与曲线极值、拐点对应的函数图像](/images/academics/freshman-math-analysis-1/lessons/derivative-curve-sketch.png)
+
 1. 找定义域、对称性、周期性；
 2. 求零点、截距、间断点和渐近线；
 3. 用 $f'$ 列单调区间与极值；

@@ -77,6 +77,8 @@ if (q != NULL) {
 
 ## 循环链表
 
+![普通单链表与尾结点回指表头的循环链表](/images/academics/freshman-data-structures/lessons/linear-and-circular-lists.png)
+
 循环单链表最后一个结点不指向 `NULL`，而指回首结点。它适合需要循环访问的问题，例如约瑟夫环。
 
 遍历时不能再用 `p != NULL` 作为终止条件，而应保存起点，在回到起点时停止。空表、单结点自环尤其容易漏判。

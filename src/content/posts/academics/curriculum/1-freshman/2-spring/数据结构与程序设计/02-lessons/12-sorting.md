@@ -39,6 +39,8 @@ date: 2026-08-27
 
 ## 堆排序
 
+![堆排序将根与末结点交换后对剩余堆向下调整](/images/academics/freshman-data-structures/lessons/heap-sort-adjustment.png)
+
 先建大顶堆，堆顶是当前最大元素；把堆顶与末元素交换，缩小堆范围，再向下调整恢复堆序。
 
 建堆 $O(n)$，随后 $n-1$ 次调整各 $O(\log n)$，总时间 $O(n\log n)$；额外空间 $O(1)$；不稳定。它的最坏时间有保证。

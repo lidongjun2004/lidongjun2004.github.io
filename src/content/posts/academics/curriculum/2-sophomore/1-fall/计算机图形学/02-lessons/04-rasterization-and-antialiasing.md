@@ -87,4 +87,6 @@ $$
 
 这就是 supersampling。它在采样前近似做低通滤波，代价则大约随样本数增长。多重采样可复用部分着色结果，专门改善几何边缘。
 
+![预滤波后采样以中间覆盖值平滑三角形边界](/images/academics/computer-graphics/lessons/antialiased-sampling.webp)
+
 反走样不能凭空恢复已经丢掉的信息。若纹理在一个像素里重复很多次，即使几何边缘多采样也不够，还需要 Mipmap 或各向异性过滤等预滤波技术。

@@ -46,6 +46,10 @@ $$
 
 偏移在转换前后不变，只是页号被页框号替换。
 
+课件中的地址转换图把硬件动作串在了一起：先由页号定位页表项并检查越界，再用查出的页框号替换页号，页内偏移原样带到物理地址。
+
+![分页系统从逻辑地址到物理地址的页表转换过程](/images/academics/computer-systems-foundation/os-lessons/page-table-address-translation.png)
+
 ## 页表本身放在哪里
 
 页表通常在内存中，PCB 或架构寄存器保留当前页表根。于是一次数据访存变成：

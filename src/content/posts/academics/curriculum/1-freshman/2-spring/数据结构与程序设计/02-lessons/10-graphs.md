@@ -19,7 +19,11 @@ date: 2026-08-27
 
 邻接矩阵用 $|V|\times|V|$ 数组保存边。判断两点是否直接相连为 $O(1)$，但空间固定为 $O(|V|^2)$，适合稠密图。
 
+![四顶点无向图及其邻接矩阵表示](/images/academics/freshman-data-structures/lessons/adjacency-matrix.png)
+
 邻接表为每个顶点保存出边链表，空间 $O(|V|+|E|)$，适合稀疏图。无向边会在两个顶点的表中各出现一次；有向图的表长直接反映出度。
+
+![同一无向图的顶点结点与边结点邻接表表示](/images/academics/freshman-data-structures/lessons/adjacency-list.png)
 
 课程还介绍有向图十字链表和无向图邻接多重表，用来让同一条边同时便于从两个端点访问。
 

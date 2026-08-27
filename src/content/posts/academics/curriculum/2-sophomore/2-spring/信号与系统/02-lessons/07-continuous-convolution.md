@@ -23,6 +23,8 @@ $$
 
 随着 $t$ 改变，重叠端点的关系会发生变化，因此答案通常分段。关键不是画得漂亮，而是找出所有“边缘刚接触”的 $t$ 值。
 
+![卷积中变量替换、反转、平移、相乘的图形过程](/images/academics/signals-and-systems/lessons/continuous-convolution.png)
+
 ## 区间法
 
 若 $x$ 的支撑集为 $[a,b]$，$h$ 的支撑集为 $[c,d]$，则卷积支撑集为

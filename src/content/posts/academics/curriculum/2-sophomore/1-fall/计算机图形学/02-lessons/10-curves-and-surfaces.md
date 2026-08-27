@@ -103,6 +103,8 @@ $$
 
 直到只剩一个点 $\mathbf P_0^{(n)}=\mathbf B(t)$。它几何直观、数值稳定，还能在任意 $t$ 处把一条 Bezier 精确拆成两段。
 
+![三次贝塞尔曲线的 de Casteljau 逐层线性插值](/images/academics/computer-graphics/lessons/de-casteljau-cubic.webp)
+
 Bezier 曲线的常用性质：
 
 - 插值首尾控制点。

@@ -103,6 +103,8 @@ $$
 
 若从任意 $A$ 到 $B$ 的积分只依赖端点，不依赖路径，就称积分路径无关。等价地，任意闭曲线上的积分为零。
 
+![区域 D 内从 A 到 B 的两条不同路径 L1 和 L2](/images/academics/math-analysis-2/lessons/path-independent-curves.png)
+
 若存在函数 $U(x,y)$ 使
 
 $$

@@ -44,6 +44,8 @@ $$
 
 前者是一个数，后者是一个向量；这是真题中很常见的混淆点。
 
+![空间向量在给定轴上的正交投影示意](/images/academics/freshman-linear-algebra/lessons/vector-projection.png)
+
 ### 叉积：法向和面积
 
 $\boldsymbol a\times\boldsymbol b$ 同时垂直于 $\boldsymbol a,\boldsymbol b$，方向按右手定则，长度为

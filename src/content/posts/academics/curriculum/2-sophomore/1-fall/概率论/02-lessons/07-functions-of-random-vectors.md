@@ -91,6 +91,8 @@ $$
 
 实际积分范围由 $x$ 同时落在 $X$ 的支持集、$z-x$ 落在 $Y$ 的支持集确定。
 
+![卷积中固定 z 的水平线与支持域边界决定 x 的积分范围](/images/academics/probability/lessons/convolution-support-lines.webp)
+
 ### 例：两个均匀变量之和
 
 $X,Y\overset{\text{iid}}\sim U(0,1)$。对 $0<z<1$，可取 $0<x<z$；对 $1\le z<2$，可取 $z-1<x<1$。因此

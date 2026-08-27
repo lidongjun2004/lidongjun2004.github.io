@@ -143,6 +143,8 @@ P1: acquire(file)          P2: acquire(printer)
 
 如果每类资源只有一个实例，有向环与死锁等价。有多实例时，有环只说明可能死锁：环外的某个资源实例可能先被释放，使环能打开。
 
+![资源分配图中有环且死锁与有环但不死锁的对比](/images/academics/computer-systems-foundation/os-lessons/rag-cycle-comparison.png)
+
 课件还用“化简”表述检测：反复找出当前未阻塞、其剩余请求可被可用资源满足的进程，假想它完成并释放资源，删去相关边。若最终仍有无法化简的边/进程集，它们就是死锁候选。
 
 ## 检测到之后怎么解除

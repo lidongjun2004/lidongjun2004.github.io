@@ -27,6 +27,10 @@ $$
 
 ## 三大分布怎样串起来
 
+![自由度为 4 的 t 分布与标准正态分布的形状对比](/images/academics/mathematical-statistics/lessons/t-versus-normal.png)
+
+$t$ 分布与标准正态分布同样关于零对称，但尾部更厚；自由度增大时，估计方差带来的额外不确定性变小，$t$ 分布也就逐渐靠近标准正态分布。
+
 若 $Z_i\overset{\text{i.i.d.}}\sim N(0,1)$，则
 
 $$

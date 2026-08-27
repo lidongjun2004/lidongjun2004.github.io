@@ -12,6 +12,8 @@ date: 2026-08-27
 
 顺序栈常让 `top` 指向当前栈顶，空栈时为 `-1`；也可以让 `top` 指向下一个可用位置，空栈时为 `0`。代码和判断条件必须与约定一致。
 
+![顺序栈用数组存储元素并以 top 指向栈顶位置](/images/academics/freshman-data-structures/lessons/sequential-stack.png)
+
 ```c
 int push(Stack *s, int x) {
     if (s->top == MAXSIZE - 1) return 0;

@@ -39,6 +39,8 @@ $$
 
 所以网络“深”不是因为矩阵乘得多，而是每层之间的非线性让函数族变丰富。常见激活：
 
+![无隐藏层、单隐藏层和双隐藏层网络可表示的决策区域复杂度对比](/images/academics/freshman-ai-intro/lessons/network-depth-and-decision-regions.png)
+
 - sigmoid 输出 0—1，但饱和区梯度小；
 - tanh 输出 -1—1，仍会饱和；
 - ReLU 为 $\max(0,z)$，正区梯度稳定、计算简单。

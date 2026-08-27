@@ -34,6 +34,10 @@ $$
 
 有限长右边序列的 ROC 通常是除 $z=0$ 外整个平面；有限长左边序列可能排除无穷。双边有理序列的 ROC 位于两组极点之间。
 
+双边序列的两个收敛条件叠加后，ROC 就是两条极点半径之间的圆环，而不是任意形状的二维区域。
+
+![双边序列在 z 平面中的环形收敛域](/images/academics/signals-and-systems/lessons/z-roc.png)
+
 ## 性质
 
 若 $x[n]\leftrightarrow X(z)$：

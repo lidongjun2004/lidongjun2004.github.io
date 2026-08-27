@@ -37,6 +37,8 @@ $$
 
 ## 同时性的相对性
 
+![火车司机与隧道看守人对两端事件是否同时的不同判断](/images/academics/curriculum/basic-physics-a1/lessons/train-tunnel-simultaneity.png)
+
 两个事件在 $S$ 中同时，$\Delta t=0$，但
 
 $$

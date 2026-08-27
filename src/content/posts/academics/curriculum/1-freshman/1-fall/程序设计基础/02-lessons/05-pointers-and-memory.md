@@ -22,6 +22,8 @@ int count = 18;
 
 变量名让我们直接访问对象，地址让我们间接访问对象。
 
+![变量 a 在按字节编址的连续内存单元中占据多个地址](/images/academics/freshman-c-programming/lessons/addressed-memory-cells.png)
+
 ```c
 int *count_ptr = &count;
 printf("%p\n", (void *)count_ptr);

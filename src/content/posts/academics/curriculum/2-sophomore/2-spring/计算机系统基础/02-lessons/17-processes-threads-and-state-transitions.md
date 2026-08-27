@@ -85,6 +85,8 @@ S2: d = a - b       R2={a,b}, W2={d}
 
 更完整模型还可加新建、终止、就绪挂起、阻塞挂起。“挂起”强调进程已被中级调度移出主存，与是否正在等事件是两个维度。
 
+![包含新建和终止状态的进程状态转换图](/images/academics/computer-systems-foundation/os-lessons/process-state-transitions.png)
+
 ## PCB 是 OS 眼中的进程
 
 PCB 常记录：

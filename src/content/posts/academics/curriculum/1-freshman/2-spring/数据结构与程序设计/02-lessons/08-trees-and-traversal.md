@@ -57,6 +57,8 @@ typedef struct BTNode {
 
 ## 遍历只有“根在什么时候访问”的区别
 
+![二叉树按层从左到右遍历及其访问序列](/images/academics/freshman-data-structures/lessons/level-order-traversal.png)
+
 - 前序：根、左、右；
 - 中序：左、根、右；
 - 后序：左、右、根；

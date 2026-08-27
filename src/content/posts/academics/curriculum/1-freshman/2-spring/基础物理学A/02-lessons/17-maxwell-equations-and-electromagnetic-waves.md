@@ -147,6 +147,8 @@ $$
 
 ## 真空中的电磁波
 
+![时变电场与时变磁场在空间中相互激发的连续过程](/images/academics/curriculum/basic-physics-a1/lessons/electric-magnetic-field-regeneration.png)
+
 在无自由电荷、无传导电流的真空区域，
 
 $$

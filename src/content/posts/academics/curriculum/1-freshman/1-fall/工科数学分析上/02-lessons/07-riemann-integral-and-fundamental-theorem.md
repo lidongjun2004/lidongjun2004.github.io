@@ -175,6 +175,8 @@ $g$ 不变号是把加权平均控制在 $f$ 的最小值和最大值之间的�
 
 ## 积分上限函数
 
+![变上限积分把从 a 到 x0 的曲线下面积累积成函数](/images/academics/freshman-math-analysis-1/lessons/variable-upper-limit-area.png)
+
 令
 
 $$

@@ -86,6 +86,8 @@ $$
 
 ## 感生电场
 
+![圆柱形时变磁场内旋涡电场与两根导体棒的几何关系](/images/academics/curriculum/basic-physics-a1/lessons/induced-electric-field-geometry.png)
+
 导体回路不动、磁场随时间变化时，麦克斯韦提出：即使空间中没有导线，时变磁场也会产生有旋电场 $\mathbf E_{\mathrm{ind}}$：
 
 $$

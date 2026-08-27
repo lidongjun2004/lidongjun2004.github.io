@@ -10,6 +10,8 @@ date: 2026-08-27
 
 这个作品用超声波传感器测距，用伺服机改变方向，然后把每个“角度—距离”点画成类似雷达的扫描界面。它的价值在于串起多个模块，而不是复现专业电磁雷达。
 
+![超声波扫描实验中的舵机、HC-SR04 模块与 Arduino 控制板](/images/academics/freshman-electronics-training/lessons/ultrasonic-radar-components.png)
+
 ```text
 伺服机设定角度
         ↓

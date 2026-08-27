@@ -22,6 +22,8 @@ $$
 
 当 $f\ge0$ 时，它可理解为曲顶柱体的体积；若 $f$ 有正有负，则是带符号体积。$\iint_D1\,dA$ 就是区域面积。
 
+![把曲顶柱体分成许多底面积为 Δσi 的小柱体并求和](/images/academics/math-analysis-2/lessons/double-integral-columns.png)
+
 连续函数在有界闭区域上可积。二重积分保留线性、区域可加性和比较性质。例如 $m\le f\le M$ 时
 
 $$
@@ -48,6 +50,8 @@ $$
 $$
 
 这里先固定 $x$，沿竖直线从下边界积到上边界，再让 $x$ 横扫区域。
+
+![竖直直线与 x 型区域边界至多相交两次的示意](/images/academics/math-analysis-2/lessons/x-simple-regions.png)
 
 若区域可写成 $y$ 型：
 

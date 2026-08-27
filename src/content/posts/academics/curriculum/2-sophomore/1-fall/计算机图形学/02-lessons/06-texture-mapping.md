@@ -10,6 +10,8 @@ date: 2026-08-27
 
 每个网格顶点除了三维位置，还带纹理坐标 $(u,v)$。光栅化时先在三角形内插值得到 $(u,v)$，再去纹理图中反查颜色。这个方向是从屏幕样本回到纹理，因此也叫 backward mapping；若从纹理像素向屏幕正向撒点，容易留下空洞。
 
+![参数坐标和纹理坐标经世界坐标映射到屏幕坐标](/images/academics/computer-graphics/lessons/texture-mapping-flow.webp)
+
 UV 参数化没有统一答案：
 
 - 圆柱可用环绕角和高度。
@@ -60,6 +62,8 @@ $$
 远处一个屏幕像素可能覆盖纹理中的大片区域。只取一个点会漏掉区域内大部分高频信息，导致闪烁和摩尔纹。单纯提高屏幕采样数也可能代价过高。
 
 Mipmap 预先生成尺寸逐级减半的低通图像。渲染时估计相邻屏幕样本在纹理空间的跨度，选择合适层级：
+
+![Mipmap 为同一纹理预存逐级缩小的分辨率层次](/images/academics/computer-graphics/lessons/mipmap-hierarchy.webp)
 
 $$
 L\approx\log_2\rho,

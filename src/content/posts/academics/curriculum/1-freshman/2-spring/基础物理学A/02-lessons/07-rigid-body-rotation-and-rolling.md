@@ -86,6 +86,8 @@ $$
 
 ## 刚体平面运动
 
+![刚体上同一点相对两个基点的位置矢量与角速度关系](/images/academics/curriculum/basic-physics-a1/lessons/rigid-body-reference-points.png)
+
 一般平面运动可拆成质心平动与绕质心转动：
 
 $$
