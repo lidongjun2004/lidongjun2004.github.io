@@ -309,7 +309,6 @@ export default defineConfig({
         '10-lesson-09-pbe-and-signaling',
         '11-lesson-10-signaling-applications-and-refinements',
       ],
-      '03-homework': ['12-homework-solutions'],
     }),
     ...categorizedCourseRedirects(juniorSpringBase, '智能控制与机器人', {
       '02-lessons': [
@@ -324,7 +323,6 @@ export default defineConfig({
         '09-lesson-09-safety-ethics',
         '10-lesson-10-navila-vla-deployment',
       ],
-      '03-homework': ['11-homework-and-projects'],
     }),
     ...categorizedCourseRedirects(juniorSpringBase, '模式识别与机器视觉', {
       '02-lessons': [
@@ -359,7 +357,6 @@ export default defineConfig({
         '11-lesson-11-advanced-kge-and-reasoning',
         '12-lesson-12-applications',
       ],
-      '03-homework': ['14-homework-and-projects'],
     }),
     ...categorizedCourseRedirects(juniorSpringBase, '科学研讨与实践', {
       '03-homework': ['01-course-assignment'],
@@ -368,10 +365,18 @@ export default defineConfig({
       `${juniorSpringBase}/博弈论/01-past-exams/00-202x-spring-exam`,
     [`${juniorSpringBase}/博弈论/01-202x-spring-exam`]:
       `${juniorSpringBase}/博弈论/01-past-exams/00-202x-spring-exam`,
+    [`${juniorSpringBase}/博弈论/12-homework-solutions`]:
+      `${juniorSpringBase}/博弈论/03-homework`,
+    [`${juniorSpringBase}/博弈论/03-homework/12-homework-solutions`]:
+      `${juniorSpringBase}/博弈论/03-homework`,
     [`${juniorSpringBase}/智能控制与机器人/00-2026-spring-exam`]:
       `${juniorSpringBase}/智能控制与机器人/01-past-exams/00-2026-spring-exam`,
     [`${juniorSpringBase}/智能控制与机器人/01-2026-spring-exam`]:
       `${juniorSpringBase}/智能控制与机器人/01-past-exams/00-2026-spring-exam`,
+    [`${juniorSpringBase}/智能控制与机器人/11-homework-and-projects`]:
+      `${juniorSpringBase}/智能控制与机器人/03-homework`,
+    [`${juniorSpringBase}/智能控制与机器人/03-homework/11-homework-and-projects`]:
+      `${juniorSpringBase}/智能控制与机器人/03-homework`,
     [`${juniorSpringBase}/模式识别与机器视觉/00-2025-spring-exam-topics`]:
       `${juniorSpringBase}/模式识别与机器视觉/01-past-exams/01-2025-spring-exam-topics`,
     [`${juniorSpringBase}/模式识别与机器视觉/01-2025-spring-exam-topics`]:
@@ -386,6 +391,10 @@ export default defineConfig({
       `${juniorSpringBase}/知识图谱/01-past-exams/00-2026-spring-exam`,
     [`${juniorSpringBase}/知识图谱/01-2026-spring-exam`]:
       `${juniorSpringBase}/知识图谱/01-past-exams/00-2026-spring-exam`,
+    [`${juniorSpringBase}/知识图谱/14-homework-and-projects`]:
+      `${juniorSpringBase}/知识图谱/03-homework`,
+    [`${juniorSpringBase}/知识图谱/03-homework/14-homework-and-projects`]:
+      `${juniorSpringBase}/知识图谱/03-homework`,
     [`${juniorSpringBase}/知识图谱/13-final-exam-review`]:
       `${juniorSpringBase}/知识图谱/00-exam-cram`,
   },

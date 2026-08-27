@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="390" viewBox="0 0 1120 390" role="img" aria-labelledby="title desc">
+  <title id="title">四位倒 T 型电阻网络 DAC</title>
+  <desc id="desc">R-2R 梯形网络逐级把参考电流二分，每个数字开关决定该位电流是否进入运放求和点。</desc>
+  <defs>
+    <style>
+      .wire{stroke:#334155;stroke-width:3;fill:none}
+      .res{stroke:#ea580c;stroke-width:4;fill:none}
+      .op{fill:#f8fafc;stroke:#475569;stroke-width:2}
+      .switch{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:8}
+      .title{font:700 24px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+      .tiny{font:16px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#475569;text-anchor:middle}
+    </style>
+  </defs>
+  <text class="title" x="560" y="38">倒 T 型网络：只用 R 和 2R 产生二进制位权</text>
+  <text class="text" x="92" y="102">VREF</text><path class="wire" d="M125 96H185"/>
+  <path class="res" d="M185 96l12-10 20 20 20-20 20 20 20-20 12 10"/><text class="tiny" x="237" y="76">R</text>
+  <path class="wire" d="M289 96H385"/>
+  <path class="res" d="M385 96l12-10 20 20 20-20 20 20 20-20 12 10"/><text class="tiny" x="437" y="76">R</text>
+  <path class="wire" d="M489 96H585"/>
+  <path class="res" d="M585 96l12-10 20 20 20-20 20 20 20-20 12 10"/><text class="tiny" x="637" y="76">R</text>
+  <path class="wire" d="M689 96H785"/>
+  <path class="res" d="M785 96l12-10 20 20 20-20 20 20 20-20 12 10"/><text class="tiny" x="837" y="76">R</text>
+  <path class="wire" d="M889 96H936"/>
+  <g>
+    <path class="wire" d="M337 96V142"/><path class="res" d="M337 142l-10 12 20 18-20 18 20 18-20 18 10 12"/><text class="tiny" x="365" y="194">2R</text>
+    <path class="wire" d="M537 96V142"/><path class="res" d="M537 142l-10 12 20 18-20 18 20 18-20 18 10 12"/><text class="tiny" x="565" y="194">2R</text>
+    <path class="wire" d="M737 96V142"/><path class="res" d="M737 142l-10 12 20 18-20 18 20 18-20 18 10 12"/><text class="tiny" x="765" y="194">2R</text>
+    <path class="wire" d="M937 96V142"/><path class="res" d="M937 142l-10 12 20 18-20 18 20 18-20 18 10 12"/><text class="tiny" x="965" y="194">2R</text>
+  </g>
+  <rect class="switch" x="294" y="254" width="86" height="50"/><text class="text" x="337" y="286">d₃</text>
+  <rect class="switch" x="494" y="254" width="86" height="50"/><text class="text" x="537" y="286">d₂</text>
+  <rect class="switch" x="694" y="254" width="86" height="50"/><text class="text" x="737" y="286">d₁</text>
+  <rect class="switch" x="894" y="254" width="86" height="50"/><text class="text" x="937" y="286">d₀</text>
+  <path class="wire" d="M337 238V254M537 238V254M737 238V254M937 238V254"/>
+  <path class="wire" d="M337 304V338H1005M537 304V338M737 304V338M937 304V338"/>
+  <polygon class="op" points="1005,300 1005,368 1070,334"/>
+  <text class="text" x="1020" y="328">−</text><text class="text" x="1020" y="357">+</text>
+  <path class="wire" d="M1070 334H1100"/>
+  <text class="tiny" x="1060" y="385">求和运放输出</text>
+  <text class="tiny" x="560" y="365">各开关决定该位电流进入求和点还是地；支路电流按 1/2、1/4、1/8、1/16 缩放</text>
+</svg>

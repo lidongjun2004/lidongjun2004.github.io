@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500" role="img" aria-labelledby="title desc">
+  <title id="title">RAM 位扩展和字扩展</title>
+  <desc id="desc">左侧展示八片一位存储器并联为八位字长，右侧展示高位地址译码选择四片存储器扩大字数。</desc>
+  <defs>
+    <style>
+      .chip{fill:#f8fafc;stroke:#475569;stroke-width:2;rx:10}
+      .decoder{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:10}
+      .bus{stroke:#334155;stroke-width:3;fill:none}
+      .select{stroke:#2563eb;stroke-width:2;fill:none}
+      .title{font:700 25px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+      .tiny{font:16px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#475569;text-anchor:middle}
+    </style>
+  </defs>
+  <text class="title" x="270" y="42">位扩展：1024×1 → 1024×8</text>
+  <path class="bus" d="M45 102H493"/><text class="tiny" x="74" y="91">A₉…A₀、CS、R/W</text>
+  <g>
+    <rect class="chip" x="55" y="145" width="90" height="155"/><text class="text" x="100" y="214">1024</text><text class="text" x="100" y="240">×1</text>
+    <rect class="chip" x="165" y="145" width="90" height="155"/><text class="text" x="210" y="214">1024</text><text class="text" x="210" y="240">×1</text>
+    <rect class="chip" x="275" y="145" width="90" height="155"/><text class="text" x="320" y="214">…</text>
+    <rect class="chip" x="385" y="145" width="90" height="155"/><text class="text" x="430" y="214">1024</text><text class="text" x="430" y="240">×1</text>
+  </g>
+  <path class="bus" d="M100 102V145M210 102V145M320 102V145M430 102V145"/>
+  <path class="bus" d="M100 300V370M210 300V370M320 300V370M430 300V370"/>
+  <text class="text" x="270" y="405">8 片各负责 D₀…D₇ 的一位</text>
+  <text class="tiny" x="270" y="438">地址相同，字长相加</text>
+  <line x1="550" y1="30" x2="550" y2="470" stroke="#cbd5e1" stroke-width="2"/>
+  <text class="title" x="835" y="42">字扩展：256×8 → 1024×8</text>
+  <rect class="decoder" x="585" y="82" width="145" height="90"/><text class="text" x="657" y="119">2 → 4</text><text class="tiny" x="657" y="145">A₉A₈ 译码</text>
+  <text class="tiny" x="657" y="71">高位地址</text>
+  <g>
+    <rect class="chip" x="800" y="72" width="165" height="70"/><text class="text" x="882" y="113">256×8 · 0</text>
+    <rect class="chip" x="800" y="160" width="165" height="70"/><text class="text" x="882" y="201">256×8 · 1</text>
+    <rect class="chip" x="800" y="248" width="165" height="70"/><text class="text" x="882" y="289">256×8 · 2</text>
+    <rect class="chip" x="800" y="336" width="165" height="70"/><text class="text" x="882" y="377">256×8 · 3</text>
+  </g>
+  <path class="select" d="M730 102H790M730 122H760V195H790M730 142H750V283H790M730 162H740V371H790"/>
+  <path class="bus" d="M1010 72V406"/><path class="bus" d="M965 107H1010M965 195H1010M965 283H1010M965 371H1010"/>
+  <text class="tiny" x="1048" y="224" transform="rotate(90 1048 224)">A₇…A₀、D₇…D₀、R/W 共用</text>
+  <text class="text" x="835" y="448">高位选芯片，低位选片内地址</text>
+</svg>

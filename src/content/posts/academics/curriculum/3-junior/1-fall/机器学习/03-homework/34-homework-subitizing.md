@@ -9,6 +9,13 @@ tags: ["AI", "作业"]
 
 ![少量点的快速数感示例](/images/machine-learning/30-35/subitizing-examples.svg)
 
+## 作业边界
+
+源材料是课件目录中的 `introduction of Subitizing-作业3.pptx`，没有单独题目说明。现有材料能确认的任务主题是理解深度网络的数感能力及其泛化问题；下面折叠保存按课件整理的分析，不补造提交格式和评分要求。
+
+<details class="exam-answer">
+<summary>查看作业内容</summary>
+
 ## Subitizing 与普通计数
 
 文献中常见的经验范围约为 1～4 个物体：人类反应时间增长很慢，像是并行感知了数量；物体更多后，反应时间会随数量明显增长，更像逐项计数。课程课件采用了“3～6 个项目以内”的定义，同时又写到多数人通常能轻松判断 1～6 个物体。这里保留两种口径，不把边界当作固定常数；刺激形式、排列和个体经验都会改变表现。
@@ -118,3 +125,5 @@ tags: ["AI", "作业"]
 2. Xi Zhang, Xiaolin Wu. *On Numerosity of Deep Neural Networks*. NeurIPS, 2020.
 3. Vivian Milagros De La Cruz et al. *Making Fingers and Words Count in a Cognitive Robot*. Frontiers in Behavioral Neuroscience, 2014, 8: 13.
 4. Marek Rucinski, Angelo Cangelosi, Tony Belpaeme. *Robotic Model of the Contribution of Gesture to Learning to Count*. ICDL, 2012.
+
+</details>

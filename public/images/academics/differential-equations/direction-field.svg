@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">方向场与积分曲线</title>
+  <desc id="desc">微分方程在每一点给出切线方向，解曲线必须处处贴着这些方向前进。</desc>
+  <rect width="960" height="540" rx="28" fill="#f8fafc"/>
+  <text x="54" y="58" font-size="28" font-family="system-ui, sans-serif" font-weight="700" fill="#172033">方向场：方程给局部斜率，初值选择其中一条积分曲线</text>
+  <g stroke="#94a3b8" stroke-width="3" stroke-linecap="round">
+    <path d="M105 409 l24 -9 M195 400 l24 -12 M285 386 l24 -17 M375 366 l24 -23 M465 335 l24 -28 M555 299 l24 -31 M645 258 l24 -32 M735 220 l24 -29 M825 188 l24 -23"/>
+    <path d="M105 324 l24 -2 M195 321 l24 -4 M285 315 l24 -8 M375 305 l24 -12 M465 289 l24 -17 M555 269 l24 -21 M645 246 l24 -23 M735 221 l24 -24 M825 198 l24 -23"/>
+    <path d="M105 239 l24 5 M195 245 l24 3 M285 247 l24 0 M375 245 l24 -4 M465 239 l24 -8 M555 229 l24 -12 M645 214 l24 -16 M735 196 l24 -19 M825 175 l24 -21"/>
+    <path d="M105 154 l24 11 M195 168 l24 10 M285 179 l24 7 M375 186 l24 4 M465 188 l24 0 M555 185 l24 -4 M645 177 l24 -8 M735 165 l24 -11 M825 150 l24 -14"/>
+    <path d="M105 89 l24 15 M195 111 l24 14 M285 130 l24 12 M375 145 l24 9 M465 155 l24 5 M555 160 l24 0 M645 159 l24 -4 M735 154 l24 -8 M825 145 l24 -11"/>
+  </g>
+  <path d="M78 429 C193 419 281 397 369 352 C478 296 520 224 618 190 C704 159 793 159 879 177" fill="none" stroke="#2563eb" stroke-width="7"/>
+  <path d="M79 288 C201 304 297 307 391 285 C502 259 589 206 680 160 C751 124 813 105 879 106" fill="none" stroke="#0f766e" stroke-width="7"/>
+  <circle cx="369" cy="352" r="9" fill="#dc2626"/>
+  <circle cx="391" cy="285" r="9" fill="#dc2626"/>
+  <line x1="78" y1="455" x2="886" y2="455" stroke="#334155" stroke-width="3"/>
+  <line x1="78" y1="455" x2="78" y2="80" stroke="#334155" stroke-width="3"/>
+  <rect x="566" y="350" width="304" height="81" rx="14" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="587" y="383" font-size="20" font-family="system-ui, sans-serif" fill="#172033">同一个方向场，红点表示不同初值</text>
+  <text x="587" y="415" font-size="20" font-family="system-ui, sans-serif" fill="#172033">唯一性成立时，两条解不能相交</text>
+  <text x="73" y="500" font-size="20" font-family="system-ui, sans-serif" fill="#475569">每条灰色短线只表示一点的斜率；彩色曲线处处与经过位置的短线相切。</text>
+</svg>

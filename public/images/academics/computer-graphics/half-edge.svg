@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
+  <title id="title">半边结构中的 twin、next 与 face</title>
+  <desc id="desc">两个相邻三角形共享一条无向边，但用方向相反的两条半边表示。</desc>
+  <defs>
+    <marker id="blue" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2563eb"/></marker>
+    <marker id="orange" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/></marker>
+    <style>.lab{font:20px system-ui,sans-serif;fill:#0f172a}.small{font:17px system-ui,sans-serif;fill:#475569}</style>
+  </defs>
+  <polygon points="120,400 450,80 450,400" fill="#dbeafe" stroke="#334155" stroke-width="3"/>
+  <polygon points="450,80 780,400 450,400" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <line x1="450" y1="110" x2="450" y2="365" stroke="#2563eb" stroke-width="8" marker-end="url(#blue)"/>
+  <line x1="470" y1="370" x2="470" y2="115" stroke="#ea580c" stroke-width="8" marker-end="url(#orange)"/>
+  <text class="lab" x="280" y="265">face A</text><text class="lab" x="610" y="265">face B</text>
+  <text class="small" x="330" y="445">蓝色半边 h</text><text class="small" x="525" y="445">橙色半边 twin(h)</text>
+  <text class="small" x="450" y="480" text-anchor="middle">每条半边还保存 origin、next 与所属 face</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="500" viewBox="0 0 1100 500" role="img" aria-labelledby="title desc">
+  <title id="title">简谐振动的旋转矢量与能量交换</title>
+  <desc id="desc">左侧用匀速旋转矢量在横轴的投影表示简谐位移，右侧展示动能与势能以两倍频率互换，总能量不变。</desc>
+  <defs>
+    <style>
+      .axis{stroke:#334155;stroke-width:2.5;fill:none}
+      .circle{stroke:#94a3b8;stroke-width:2;fill:#f8fafc}
+      .vec{stroke:#2563eb;stroke-width:5;fill:none}
+      .proj{stroke:#ea580c;stroke-width:4;stroke-dasharray:7 7}
+      .kin{stroke:#2563eb;stroke-width:4;fill:none}
+      .pot{stroke:#ea580c;stroke-width:4;fill:none}
+      .tot{stroke:#16a34a;stroke-width:4;fill:none}
+      .title{font:700 24px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
+  </defs>
+  <text class="title" x="275" y="40">旋转矢量的投影就是简谐量</text>
+  <circle class="circle" cx="275" cy="255" r="145"/><path class="axis" d="M75 255H475"/><path class="axis" d="M275 55V455"/>
+  <path class="vec" d="M275 255L385 160" marker-end="url(#arrow)"/><path class="proj" d="M385 160V255"/>
+  <circle cx="385" cy="255" r="7" fill="#ea580c"/><text class="text" x="388" y="288">x=A cos(ωt+φ)</text>
+  <text class="text" x="342" y="185">A</text><text class="text" x="310" y="237">ωt+φ</text>
+  <line x1="540" y1="55" x2="540" y2="465" stroke="#cbd5e1" stroke-width="2"/>
+  <text class="title" x="815" y="40">势能与动能互换，总能量守恒</text>
+  <path class="axis" d="M595 420H1040"/><path class="axis" d="M595 420V85"/>
+  <path class="tot" d="M610 145H1025"/><text class="text" x="970" y="127" fill="#16a34a">E</text>
+  <path class="pot" d="M610 150 C660 150,660 410,715 410 C770 410,770 150,825 150 C880 150,880 410,935 410 C990 410,990 150,1025 150"/>
+  <path class="kin" d="M610 410 C660 410,660 150,715 150 C770 150,770 410,825 410 C880 410,880 150,935 150 C990 150,990 410,1025 410"/>
+  <text class="text" x="675" y="112" fill="#ea580c">U=E cos²(ωt+φ)</text><text class="text" x="900" y="455" fill="#2563eb">K=E sin²(ωt+φ)</text>
+</svg>

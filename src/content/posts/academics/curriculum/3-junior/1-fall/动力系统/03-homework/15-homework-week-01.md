@@ -36,6 +36,9 @@ $$
 
 ## 解答
 
+<details class="exam-answer">
+<summary>查看解答</summary>
+
 利用恒等式
 
 $$
@@ -82,3 +85,5 @@ $x=k\pi$ 都是不动点，不能套入除以 $\sin x$ 后的公式；若 $x_0=k
 - $((2k-1)\pi,2k\pi)$ 内 $\sin x<0$，轨道向左趋于 $(2k-1)\pi$。
 
 这也说明偶数倍 $\pi$ 不稳定，奇数倍 $\pi$ 稳定。
+
+</details>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="420" viewBox="0 0 1120 420" role="img" aria-labelledby="title desc">
+  <title id="title">时序逻辑分析与设计流程</title>
+  <desc id="desc">上行从电路图到功能，下行从需求到电路图，强调状态方程和自启动检查。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#64748b;stroke-width:2;rx:14}
+      .key{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:14}
+      .check{fill:#f0fdf4;stroke:#16a34a;stroke-width:2;rx:14}
+      .arrow{stroke:#475569;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+      .label{font:600 21px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .small{font:17px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+      .row{font:700 23px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#1e3a8a}
+    </style>
+  </defs>
+  <text class="row" x="24" y="78">分析</text>
+  <rect class="box" x="110" y="35" width="150" height="82"/>
+  <text class="label" x="185" y="70">电路图</text><text class="small" x="185" y="96">器件与连接</text>
+  <rect class="box" x="310" y="35" width="170" height="82"/>
+  <text class="label" x="395" y="70">激励 / 输出</text><text class="small" x="395" y="96">先写组合逻辑</text>
+  <rect class="key" x="530" y="35" width="160" height="82"/>
+  <text class="label" x="610" y="70">状态方程</text><text class="small" x="610" y="96">求 Qⁿ⁺¹</text>
+  <rect class="box" x="740" y="35" width="150" height="82"/>
+  <text class="label" x="815" y="70">表 / 图 / 波形</text><text class="small" x="815" y="96">互相校验</text>
+  <rect class="check" x="940" y="35" width="150" height="82"/>
+  <text class="label" x="1015" y="70">功能判断</text><text class="small" x="1015" y="96">含自启动</text>
+  <path class="arrow" d="M260 76H302"/><path class="arrow" d="M480 76H522"/><path class="arrow" d="M690 76H732"/><path class="arrow" d="M890 76H932"/>
+  <text class="row" x="24" y="307">设计</text>
+  <rect class="box" x="110" y="265" width="150" height="82"/>
+  <text class="label" x="185" y="300">功能要求</text><text class="small" x="185" y="326">输入与输出</text>
+  <rect class="box" x="310" y="265" width="170" height="82"/>
+  <text class="label" x="395" y="300">原始状态图</text><text class="small" x="395" y="326">记住必要历史</text>
+  <rect class="key" x="530" y="265" width="160" height="82"/>
+  <text class="label" x="610" y="300">化简与编码</text><text class="small" x="610" y="326">次态 / 输出表</text>
+  <rect class="box" x="740" y="265" width="150" height="82"/>
+  <text class="label" x="815" y="300">求驱动方程</text><text class="small" x="815" y="326">K 图化简</text>
+  <rect class="check" x="940" y="265" width="150" height="82"/>
+  <text class="label" x="1015" y="300">实现与校验</text><text class="small" x="1015" y="326">无效状态也检查</text>
+  <path class="arrow" d="M260 306H302"/><path class="arrow" d="M480 306H522"/><path class="arrow" d="M690 306H732"/><path class="arrow" d="M890 306H932"/>
+  <path d="M610 125V245" stroke="#2563eb" stroke-width="2" stroke-dasharray="7 7"/>
+  <text class="small" x="610" y="188">同一个状态模型，方向相反</text>
+</svg>

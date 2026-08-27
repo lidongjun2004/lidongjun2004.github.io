@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500" role="img" aria-labelledby="title desc">
+  <title id="title">单缝衍射与光栅主极大</title>
+  <desc id="desc">左侧展示单缝各子波的相位矢量形成中央主极大和旁瓣，右侧展示多缝光栅的窄主极大被单缝包络调制。</desc>
+  <defs>
+    <style>
+      .axis{stroke:#334155;stroke-width:2.5;fill:none}
+      .single{stroke:#2563eb;stroke-width:4;fill:#dbeafe;fill-opacity:.55}
+      .grating{stroke:#ea580c;stroke-width:3;fill:#ffedd5;fill-opacity:.55}
+      .env{stroke:#2563eb;stroke-width:2;stroke-dasharray:7 7;fill:none}
+      .title{font:700 24px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+    </style>
+  </defs>
+  <text class="title" x="275" y="40">单缝：中央主极大最宽、最亮</text>
+  <path class="axis" d="M55 420H515"/><path class="axis" d="M275 420V85"/>
+  <path class="single" d="M58 418 C85 415,95 400,110 410 C135 425,145 390,165 400 C200 420,215 340,230 275 C245 175,258 105,275 95 C292 105,305 175,320 275 C335 340,350 420,385 400 C405 390,415 425,440 410 C455 400,465 415,512 418"/>
+  <text class="text" x="275" y="463">a sinθ = ±λ 是第一暗纹</text>
+  <path d="M560 55V465" stroke="#cbd5e1" stroke-width="2"/>
+  <text class="title" x="840" y="40">光栅：窄主极大 × 单缝衍射包络</text>
+  <path class="axis" d="M600 420H1080"/><path class="axis" d="M840 420V85"/>
+  <path class="env" d="M605 418 C690 415,735 355,770 230 C800 130,820 95,840 90 C860 95,880 130,910 230 C945 355,990 415,1075 418"/>
+  <path class="grating" d="M605 419 L640 417 L652 385 L661 417 L710 418 L728 350 L737 418 L785 418 L800 270 L808 418 L826 418 L837 98 L843 418 L862 418 L872 270 L880 418 L928 418 L938 350 L947 418 L996 417 L1005 385 L1014 417 L1075 419"/>
+  <text class="text" x="840" y="463">d sinθ = kλ；N 越大，主极大越窄</text>
+</svg>

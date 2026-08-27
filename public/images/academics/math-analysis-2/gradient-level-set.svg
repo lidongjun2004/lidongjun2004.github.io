@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">梯度与等值线</title>
+  <desc id="desc">梯度垂直于等值线，并指向函数增长最快的方向。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" rx="28" fill="#f8fafc"/>
+  <text x="54" y="58" font-size="28" font-family="system-ui, sans-serif" font-weight="700" fill="#172033">梯度：垂直等值线，指向最快上升方向</text>
+  <ellipse cx="430" cy="290" rx="295" ry="155" fill="#dbeafe" stroke="#93c5fd" stroke-width="4"/>
+  <ellipse cx="430" cy="290" rx="215" ry="112" fill="#bfdbfe" stroke="#60a5fa" stroke-width="4"/>
+  <ellipse cx="430" cy="290" rx="125" ry="66" fill="#93c5fd" stroke="#3b82f6" stroke-width="4"/>
+  <circle cx="565" cy="379" r="9" fill="#172033"/>
+  <line x1="565" y1="379" x2="735" y2="255" stroke="#dc2626" stroke-width="7" marker-end="url(#arrow)"/>
+  <line x1="565" y1="379" x2="489" y2="273" stroke="#2563eb" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <path d="M531 401 Q592 449 664 424" fill="none" stroke="#0f766e" stroke-width="5"/>
+  <text x="705" y="238" font-size="23" font-family="system-ui, sans-serif" fill="#b91c1c">∇f</text>
+  <text x="453" y="260" font-size="22" font-family="system-ui, sans-serif" fill="#1d4ed8">−∇f</text>
+  <text x="646" y="458" font-size="21" font-family="system-ui, sans-serif" fill="#0f766e">切向移动：f 不变</text>
+  <rect x="696" y="318" width="203" height="115" rx="14" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="718" y="351" font-size="20" font-family="system-ui, sans-serif" fill="#172033">Dₑf = ∇f · e</text>
+  <text x="718" y="384" font-size="20" font-family="system-ui, sans-serif" fill="#172033">同向时最大</text>
+  <text x="718" y="417" font-size="20" font-family="system-ui, sans-serif" fill="#172033">反向时最小</text>
+  <text x="120" y="492" font-size="19" font-family="system-ui, sans-serif" fill="#475569">颜色越深表示函数值越高；梯度不沿等值线走，而是跨过等值线。</text>
+</svg>

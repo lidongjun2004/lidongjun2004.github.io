@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="520" viewBox="0 0 1120 520" role="img" aria-labelledby="title desc">
+  <title id="title">行波的相位传播与驻波的波节波腹</title>
+  <desc id="desc">左图展示右行简谐波在稍后时刻整体右移，右图展示两列反向等幅波叠加形成固定波节和波腹。</desc>
+  <defs>
+    <style>
+      .axis{stroke:#334155;stroke-width:2.5;fill:none}
+      .wave1{stroke:#2563eb;stroke-width:4;fill:none}
+      .wave2{stroke:#ea580c;stroke-width:4;fill:none;stroke-dasharray:8 7}
+      .env{stroke:#94a3b8;stroke-width:2;fill:none;stroke-dasharray:6 6}
+      .node{fill:#0f172a}
+      .title{font:700 24px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
+  </defs>
+  <text class="title" x="280" y="40">右行波：相位向 +x 传播</text>
+  <path class="axis" d="M45 265H520"/><path class="axis" d="M75 420V90"/>
+  <path class="wave1" d="M75 265 C115 125,155 125,195 265 C235 405,275 405,315 265 C355 125,395 125,435 265 C470 385,495 390,520 320"/>
+  <path class="wave2" d="M115 265 C155 125,195 125,235 265 C275 405,315 405,355 265 C395 125,435 125,475 265 C495 335,510 360,520 360"/>
+  <path class="wave1" d="M235 87H325" marker-end="url(#arrow)"/>
+  <text class="text" x="280" y="75">uΔt</text><text class="text" x="178" y="458" fill="#2563eb">t</text><text class="text" x="350" y="458" fill="#ea580c">t+Δt</text>
+  <line x1="560" y1="55" x2="560" y2="475" stroke="#cbd5e1" stroke-width="2"/>
+  <text class="title" x="840" y="40">驻波：形状呼吸，节点不移动</text>
+  <path class="axis" d="M600 265H1085"/>
+  <path class="env" d="M610 265 C650 105,690 105,730 265 C770 425,810 425,850 265 C890 105,930 105,970 265 C1010 425,1050 425,1080 300"/>
+  <path class="env" d="M610 265 C650 425,690 425,730 265 C770 105,810 105,850 265 C890 425,930 425,970 265 C1010 105,1050 105,1080 230"/>
+  <path class="wave1" d="M610 265 C650 165,690 165,730 265 C770 365,810 365,850 265 C890 165,930 165,970 265 C1010 365,1050 365,1080 287"/>
+  <circle class="node" cx="610" cy="265" r="6"/><circle class="node" cx="730" cy="265" r="6"/><circle class="node" cx="850" cy="265" r="6"/><circle class="node" cx="970" cy="265" r="6"/>
+  <text class="text" x="730" y="462">相邻波节间距 λ/2；波节到波腹 λ/4</text>
+</svg>

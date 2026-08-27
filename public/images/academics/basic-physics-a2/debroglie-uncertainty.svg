@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="470" viewBox="0 0 1100 470" role="img" aria-labelledby="title desc">
+  <title id="title">电子单缝衍射与位置动量不确定关系</title>
+  <desc id="desc">电子束通过宽度为 a 的单缝后横向扩散；缝越窄，位置范围越小而横向动量分布越宽。</desc>
+  <defs>
+    <style>
+      .electron{stroke:#2563eb;stroke-width:3;fill:none}
+      .wall{stroke:#334155;stroke-width:12}
+      .screen{stroke:#64748b;stroke-width:5}
+      .spread{fill:#dbeafe;stroke:#2563eb;stroke-width:2;fill-opacity:.55}
+      .title{font:700 24px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
+  </defs>
+  <text class="title" x="550" y="40">把位置限制在缝内，会放宽横向动量分布</text>
+  <path class="electron" d="M60 205H370M60 235H370M60 265H370" marker-end="url(#arrow)"/>
+  <line class="wall" x1="390" y1="70" x2="390" y2="195"/><line class="wall" x1="390" y1="275" x2="390" y2="405"/>
+  <line x1="355" y1="195" x2="355" y2="275" stroke="#ea580c" stroke-width="3"/><line x1="344" y1="195" x2="366" y2="195" stroke="#ea580c" stroke-width="3"/><line x1="344" y1="275" x2="366" y2="275" stroke="#ea580c" stroke-width="3"/><text class="text" x="325" y="240">a≈Δx</text>
+  <path class="spread" d="M402 235L960 80L960 390Z"/>
+  <line class="screen" x1="970" y1="55" x2="970" y2="415"/>
+  <path class="electron" d="M402 235L950 235" marker-end="url(#arrow)"/><path class="electron" d="M402 235L950 100" marker-end="url(#arrow)"/><path class="electron" d="M402 235L950 370" marker-end="url(#arrow)"/>
+  <text class="text" x="700" y="420">a↓ → 衍射角↑ → Δpₓ↑</text><text class="text" x="550" y="455">Δx·Δpₓ ≳ ℏ/2</text>
+</svg>

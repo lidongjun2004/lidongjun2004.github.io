@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
+  <title id="title">从模型坐标到屏幕像素的渲染流水线</title>
+  <desc id="desc">物体坐标依次经过模型、视图、投影、透视除法、视口和光栅化阶段。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#334155;stroke-width:2;rx:14}
+      .main{font:700 22px system-ui,sans-serif;fill:#0f172a;text-anchor:middle}
+      .sub{font:16px system-ui,sans-serif;fill:#475569;text-anchor:middle}
+      .arrow{stroke:#475569;stroke-width:3;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="box" x="20" y="75" width="150" height="100"/>
+  <text class="main" x="95" y="115">物体坐标</text><text class="sub" x="95" y="145">Model</text>
+  <line class="arrow" x1="170" y1="125" x2="215" y2="125"/>
+  <rect class="box" x="220" y="75" width="150" height="100"/>
+  <text class="main" x="295" y="115">世界坐标</text><text class="sub" x="295" y="145">M</text>
+  <line class="arrow" x1="370" y1="125" x2="415" y2="125"/>
+  <rect class="box" x="420" y="75" width="150" height="100"/>
+  <text class="main" x="495" y="115">相机坐标</text><text class="sub" x="495" y="145">V</text>
+  <line class="arrow" x1="570" y1="125" x2="615" y2="125"/>
+  <rect class="box" x="620" y="75" width="150" height="100"/>
+  <text class="main" x="695" y="108">裁剪坐标</text><text class="sub" x="695" y="138">P；再除以 w</text><text class="sub" x="695" y="160">得到 NDC</text>
+  <line class="arrow" x1="770" y1="125" x2="815" y2="125"/>
+  <rect class="box" x="820" y="75" width="150" height="100"/>
+  <text class="main" x="895" y="115">屏幕坐标</text><text class="sub" x="895" y="145">Viewport</text>
+  <line class="arrow" x1="970" y1="125" x2="1015" y2="125"/>
+  <rect class="box" x="1020" y="75" width="160" height="100"/>
+  <text class="main" x="1100" y="115">像素 / 片元</text><text class="sub" x="1100" y="145">Rasterize</text>
+</svg>

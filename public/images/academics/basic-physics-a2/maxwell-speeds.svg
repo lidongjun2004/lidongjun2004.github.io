@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="520" viewBox="0 0 1050 520" role="img" aria-labelledby="title desc">
+  <title id="title">麦克斯韦速率分布与三个特征速率</title>
+  <desc id="desc">较高温度的分布曲线更宽、更低、峰值右移；同一温度下最概然速率小于平均速率，小于方均根速率。</desc>
+  <defs>
+    <style>
+      .axis{stroke:#334155;stroke-width:3;fill:none}
+      .cold{stroke:#2563eb;stroke-width:5;fill:none}
+      .hot{stroke:#ea580c;stroke-width:5;fill:none}
+      .mark{stroke:#64748b;stroke-width:2;stroke-dasharray:7 7}
+      .title{font:700 25px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+      .blue{fill:#2563eb}.orange{fill:#ea580c}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker>
+  </defs>
+  <text class="title" x="525" y="40">麦克斯韦速率分布：面积始终为 1，温度改变的是形状</text>
+  <path class="axis" d="M90 440H985" marker-end="url(#arrow)"/><path class="axis" d="M90 440V72" marker-end="url(#arrow)"/>
+  <text class="text" x="975" y="476">速率 v</text><text class="text" x="47" y="82">f(v)</text>
+  <path class="cold" d="M92 439 C140 437,175 420,210 356 C250 280,300 150,365 125 C425 104,480 160,525 245 C565 319,610 385,700 423 C775 442,870 440,970 440"/>
+  <path class="hot" d="M92 439 C190 438,250 425,315 391 C385 354,455 284,525 248 C600 209,675 215,740 255 C800 292,850 345,900 391 C935 423,960 436,980 439"/>
+  <text class="text blue" x="372" y="102">T₁</text><text class="text orange" x="731" y="233">T₂ &gt; T₁</text>
+  <line class="mark" x1="365" y1="125" x2="365" y2="440"/><line class="mark" x1="405" y1="117" x2="405" y2="440"/><line class="mark" x1="447" y1="129" x2="447" y2="440"/>
+  <text class="text" x="365" y="474">vₚ</text><text class="text" x="405" y="502">v̄</text><text class="text" x="447" y="474">vᵣₘₛ</text>
+  <text class="text" x="650" y="96">同一温度：vₚ &lt; v̄ &lt; vᵣₘₛ</text>
+</svg>

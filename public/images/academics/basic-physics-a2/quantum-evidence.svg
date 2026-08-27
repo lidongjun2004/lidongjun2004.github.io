@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
+  <title id="title">早期量子论的三条实验线索</title>
+  <desc id="desc">黑体辐射曲线、光电效应的光子能量记账、康普顿散射的波长变化共同说明能量和动量以光子为单位交换。</desc>
+  <defs>
+    <style>
+      .axis{stroke:#334155;stroke-width:2.5;fill:none}
+      .blue{stroke:#2563eb;stroke-width:4;fill:none}
+      .orange{stroke:#ea580c;stroke-width:4;fill:none}
+      .green{stroke:#16a34a;stroke-width:4;fill:none}
+      .target{fill:#f1f5f9;stroke:#64748b;stroke-width:2}
+      .title{font:700 21px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:16px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+    </style>
+    <marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
+    <marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ea580c"/></marker>
+  </defs>
+  <text class="title" x="200" y="36">黑体辐射：能量不能连续均分</text>
+  <path class="axis" d="M45 380H370"/><path class="axis" d="M55 390V75"/>
+  <path class="blue" d="M58 378 C105 370,120 330,145 225 C165 145,190 92,220 108 C260 132,280 225,300 296 C322 355,345 372,368 378"/>
+  <path class="orange" d="M58 378 C120 375,150 350,190 285 C230 217,270 170,315 186 C345 202,358 280,368 342"/>
+  <text class="text" x="220" y="82" fill="#2563eb">T₂</text><text class="text" x="320" y="168" fill="#ea580c">T₁&lt;T₂</text><text class="text" x="210" y="425">λ</text>
+  <line x1="400" y1="55" x2="400" y2="430" stroke="#cbd5e1" stroke-width="2"/>
+  <text class="title" x="600" y="36">光电效应：一个光子给一个电子</text>
+  <rect class="target" x="565" y="180" width="70" height="185"/><text class="text" x="600" y="397">金属</text>
+  <path class="blue" d="M430 110 C455 80,480 140,505 110 C530 80,545 145,565 120" marker-end="url(#blue-arrow)"/>
+  <text class="text" x="490" y="72">hν</text>
+  <path class="orange" d="M635 230C700 180,735 130,780 92" marker-end="url(#orange-arrow)"/>
+  <circle cx="650" cy="220" r="10" fill="#ea580c"/><text class="text" x="700" y="270">hν=A+Kₘₐₓ</text>
+  <line x1="800" y1="55" x2="800" y2="430" stroke="#cbd5e1" stroke-width="2"/>
+  <text class="title" x="1000" y="36">Compton：光子也携带动量</text>
+  <circle class="target" cx="980" cy="245" r="20"/><text class="text" x="980" y="287">电子</text>
+  <path class="blue" d="M835 245H950" marker-end="url(#blue-arrow)"/><text class="text" x="890" y="220">λ</text>
+  <path class="orange" d="M995 230L1100 130" marker-end="url(#orange-arrow)"/><text class="text" x="1080" y="110">λ′&gt;λ</text>
+  <path class="green" d="M995 260L1095 350" marker-end="url(#orange-arrow)"/><text class="text" x="1080" y="390">反冲电子</text>
+  <text class="text" x="1000" y="445">Δλ=λc(1−cosθ)</text>
+</svg>

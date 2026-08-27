@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">注意力机制的查询键值流程</title>
+  <desc id="desc">查询和键计算相关性，归一化后加权汇总值</desc>
+  <rect width="960" height="420" rx="28" fill="#f8fafc"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="70" y="80" width="180" height="70" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+    <text x="160" y="123" text-anchor="middle" font-size="26" font-weight="700" fill="#1e3a8a">Query 查询</text>
+    <rect x="70" y="185" width="180" height="70" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="3"/>
+    <text x="160" y="228" text-anchor="middle" font-size="26" font-weight="700" fill="#78350f">Key 键</text>
+    <rect x="70" y="290" width="180" height="70" rx="18" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+    <text x="160" y="333" text-anchor="middle" font-size="26" font-weight="700" fill="#14532d">Value 值</text>
+    <rect x="355" y="120" width="230" height="100" rx="22" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/>
+    <text x="470" y="160" text-anchor="middle" font-size="24" font-weight="700" fill="#4c1d95">相关性打分</text>
+    <text x="470" y="194" text-anchor="middle" font-size="24" fill="#5b21b6">QKᵀ / √dₖ</text>
+    <rect x="355" y="270" width="230" height="80" rx="22" fill="#fae8ff" stroke="#c026d3" stroke-width="3"/>
+    <text x="470" y="319" text-anchor="middle" font-size="25" font-weight="700" fill="#701a75">softmax → 权重</text>
+    <rect x="690" y="175" width="200" height="100" rx="22" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
+    <text x="790" y="216" text-anchor="middle" font-size="24" font-weight="700" fill="#0c4a6e">加权求和</text>
+    <text x="790" y="250" text-anchor="middle" font-size="23" fill="#075985">权重 × Value</text>
+    <g stroke="#64748b" stroke-width="4" fill="#64748b">
+      <line x1="250" y1="115" x2="338" y2="153"/><path d="M338 153l-18-1 8-17z"/>
+      <line x1="250" y1="220" x2="338" y2="187"/><path d="M338 187l-11 14-7-18z"/>
+      <line x1="470" y1="220" x2="470" y2="252"/><path d="M470 252l-10-17h20z"/>
+      <line x1="585" y1="310" x2="675" y2="248"/><path d="M675 248l-8 17-11-15z"/>
+      <line x1="250" y1="325" x2="674" y2="263"/><path d="M674 263l-15 12-3-19z"/>
+    </g>
+    <text x="480" y="394" text-anchor="middle" font-size="22" fill="#475569">“我在找什么”决定“该从哪些位置取多少信息”</text>
+  </g>
+</svg>

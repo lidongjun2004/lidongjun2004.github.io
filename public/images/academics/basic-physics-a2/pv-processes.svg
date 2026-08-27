@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="520" viewBox="0 0 1080 520" role="img" aria-labelledby="title desc">
+  <title id="title">理想气体常见过程与循环功</title>
+  <desc id="desc">左图比较等温线和更陡的绝热线，右图说明顺时针循环的净功等于围成面积。</desc>
+  <defs>
+    <style>
+      .axis{stroke:#334155;stroke-width:3;fill:none}
+      .iso{stroke:#2563eb;stroke-width:5;fill:none}
+      .adi{stroke:#ea580c;stroke-width:5;fill:none}
+      .cycle{stroke:#16a34a;stroke-width:5;fill:#dcfce7;fill-opacity:.6}
+      .dash{stroke:#94a3b8;stroke-width:2;stroke-dasharray:6 6}
+      .title{font:700 24px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker>
+    <marker id="green-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#16a34a"/></marker>
+  </defs>
+  <text class="title" x="280" y="40">从同一初态膨胀：绝热线比等温线更陡</text>
+  <path class="axis" d="M65 445H505" marker-end="url(#arrow)"/><path class="axis" d="M65 445V75" marker-end="url(#arrow)"/>
+  <text class="text" x="493" y="478">V</text><text class="text" x="36" y="84">p</text>
+  <circle cx="145" cy="135" r="7" fill="#0f172a"/><text class="text" x="118" y="120">A</text>
+  <path class="iso" d="M145 135 C220 185,295 250,455 330"/><path class="adi" d="M145 135 C205 220,270 315,455 390"/>
+  <text class="text" x="410" y="306" fill="#2563eb">等温：pV=常量</text><text class="text" x="397" y="417" fill="#ea580c">绝热：pVᵞ=常量</text>
+  <line x1="540" y1="55" x2="540" y2="480" stroke="#cbd5e1" stroke-width="2"/>
+  <text class="title" x="805" y="40">循环净功 = p-V 图围成的有向面积</text>
+  <path class="axis" d="M600 445H1030" marker-end="url(#arrow)"/><path class="axis" d="M600 445V75" marker-end="url(#arrow)"/>
+  <text class="text" x="1018" y="478">V</text><text class="text" x="574" y="84">p</text>
+  <path class="cycle" d="M680 360 C710 245,790 155,900 145 C950 185,956 270,918 345 C850 400,750 405,680 360Z"/>
+  <path d="M756 209C790 174 835 155 882 148" stroke="#16a34a" stroke-width="3" fill="none" marker-end="url(#green-arrow)"/>
+  <text class="text" x="811" y="280">顺时针：Wₙₑₜ &gt; 0</text><text class="text" x="811" y="310">热机对外做功</text>
+</svg>

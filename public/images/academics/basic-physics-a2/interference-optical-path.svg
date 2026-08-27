@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-labelledby="title desc">
+  <title id="title">杨氏双缝与薄膜干涉的光程差</title>
+  <desc id="desc">左图标出双缝到屏上观察点的路径差，右图标出薄膜上下表面反射光的几何光程和半波损失。</desc>
+  <defs>
+    <style>
+      .ray{stroke:#2563eb;stroke-width:3;fill:none}
+      .film{fill:#dbeafe;stroke:#2563eb;stroke-width:2}
+      .screen{stroke:#334155;stroke-width:5}
+      .barrier{stroke:#334155;stroke-width:8}
+      .dash{stroke:#64748b;stroke-width:2;stroke-dasharray:7 7}
+      .title{font:700 24px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
+  </defs>
+  <text class="title" x="270" y="40">杨氏双缝：几何路程差决定相位差</text>
+  <line class="barrier" x1="120" y1="90" x2="120" y2="445"/><line class="screen" x1="475" y1="80" x2="475" y2="455"/>
+  <circle cx="120" cy="210" r="8" fill="#fff"/><circle cx="120" cy="310" r="8" fill="#fff"/>
+  <text class="text" x="88" y="215">S₁</text><text class="text" x="88" y="315">S₂</text><text class="text" x="500" y="176">P</text>
+  <circle cx="475" cy="170" r="7" fill="#ea580c"/><path class="ray" d="M120 210L475 170"/><path class="ray" d="M120 310L475 170"/>
+  <line class="dash" x1="120" y1="260" x2="475" y2="260"/><text class="text" x="295" y="477">δ=r₂−r₁≈d sinθ≈dx/D</text>
+  <path d="M560 55V475" stroke="#cbd5e1" stroke-width="2"/>
+  <text class="title" x="830" y="40">薄膜：几何光程 + 反射相变</text>
+  <polygon class="film" points="610,230 1025,190 1025,325 610,365"/>
+  <text class="text" x="1037" y="267">n</text><text class="text" x="819" y="300">厚度 e</text>
+  <path class="ray" d="M680 80L735 218L650 95" marker-end="url(#arrow)"/>
+  <path class="ray" d="M680 80L735 218L805 346L885 203L825 72" marker-end="url(#arrow)"/>
+  <line class="dash" x1="735" y1="218" x2="735" y2="348"/>
+  <text class="text" x="830" y="435">反射光程差：2ne cos r，再判断是否只有一次半波损失</text>
+</svg>

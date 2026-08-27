@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="570" viewBox="0 0 1040 570" role="img" aria-labelledby="title desc">
+  <title id="title">Green、Gauss、Stokes 的统一结构</title>
+  <desc id="desc">三个积分定理都将内部的局部变化转换成边界上的总体效应。</desc>
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="1040" height="570" rx="28" fill="#f8fafc"/>
+  <text x="54" y="59" font-size="29" font-family="system-ui, sans-serif" font-weight="700" fill="#172033">同一个思想：内部的局部变化 = 边界上的总体效应</text>
+  <rect x="55" y="105" width="285" height="360" rx="24" fill="#ecfeff" stroke="#22d3ee" stroke-width="3"/>
+  <text x="82" y="147" font-size="25" font-family="system-ui, sans-serif" font-weight="700" fill="#155e75">Green · 平面</text>
+  <ellipse cx="197" cy="276" rx="91" ry="62" fill="#a5f3fc" stroke="#0891b2" stroke-width="4"/>
+  <path d="M108 286 C115 217 270 190 286 272" fill="none" stroke="#dc2626" stroke-width="5" marker-end="url(#a)"/>
+  <text x="83" y="379" font-size="20" font-family="system-ui, sans-serif" fill="#164e63">区域内：Qₓ − Pᵧ</text>
+  <text x="83" y="414" font-size="20" font-family="system-ui, sans-serif" fill="#164e63">边界上：P dx + Q dy</text>
+  <rect x="378" y="105" width="285" height="360" rx="24" fill="#eff6ff" stroke="#60a5fa" stroke-width="3"/>
+  <text x="406" y="147" font-size="25" font-family="system-ui, sans-serif" font-weight="700" fill="#1e3a8a">Gauss · 体积</text>
+  <ellipse cx="520" cy="279" rx="98" ry="84" fill="#bfdbfe" stroke="#2563eb" stroke-width="4"/>
+  <line x1="520" y1="194" x2="520" y2="164" stroke="#dc2626" stroke-width="5" marker-end="url(#a)"/>
+  <line x1="616" y1="279" x2="649" y2="279" stroke="#dc2626" stroke-width="5" marker-end="url(#a)"/>
+  <line x1="447" y1="337" x2="420" y2="360" stroke="#dc2626" stroke-width="5" marker-end="url(#a)"/>
+  <text x="406" y="379" font-size="20" font-family="system-ui, sans-serif" fill="#1e3a8a">体内：∇ · F</text>
+  <text x="406" y="414" font-size="20" font-family="system-ui, sans-serif" fill="#1e3a8a">外表面：F · n</text>
+  <rect x="700" y="105" width="285" height="360" rx="24" fill="#f5f3ff" stroke="#a78bfa" stroke-width="3"/>
+  <text x="728" y="147" font-size="25" font-family="system-ui, sans-serif" font-weight="700" fill="#4c1d95">Stokes · 曲面</text>
+  <path d="M750 315 Q838 174 936 296 Q844 381 750 315" fill="#ddd6fe" stroke="#7c3aed" stroke-width="4"/>
+  <path d="M753 314 Q840 178 933 294" fill="none" stroke="#dc2626" stroke-width="5" marker-end="url(#a)"/>
+  <line x1="840" y1="281" x2="840" y2="205" stroke="#2563eb" stroke-width="5" marker-end="url(#a)"/>
+  <text x="728" y="379" font-size="20" font-family="system-ui, sans-serif" fill="#4c1d95">曲面上：(∇ × F) · n</text>
+  <text x="728" y="414" font-size="20" font-family="system-ui, sans-serif" fill="#4c1d95">边界上：F · dr</text>
+  <text x="55" y="523" font-size="21" font-family="system-ui, sans-serif" fill="#475569">红色表示边界取向，蓝色箭头表示曲面法向；使用公式前，先把二者的方向关系画出来。</text>
+</svg>

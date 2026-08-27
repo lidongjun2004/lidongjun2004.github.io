@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">逐点收敛与一致收敛的区别</title>
+  <desc id="desc">函数 x 的 n 次方在零到一上逐点收敛，但误差峰值不断挤向一，整个闭区间上并不一致收敛。</desc>
+  <rect width="960" height="500" rx="28" fill="#f8fafc"/>
+  <text x="54" y="58" font-size="27" font-family="system-ui, sans-serif" font-weight="700" fill="#172033">xⁿ 在 [0,1] 上：每个固定点会降下去，但最坏误差没有一起消失</text>
+  <line x1="92" y1="412" x2="886" y2="412" stroke="#334155" stroke-width="3"/>
+  <line x1="92" y1="412" x2="92" y2="92" stroke="#334155" stroke-width="3"/>
+  <text x="878" y="446" font-size="21" font-family="system-ui, sans-serif" fill="#334155">1</text>
+  <text x="56" y="105" font-size="21" font-family="system-ui, sans-serif" fill="#334155">1</text>
+  <text x="76" y="443" font-size="21" font-family="system-ui, sans-serif" fill="#334155">0</text>
+  <path d="M92 412 C235 411 385 403 520 367 C666 328 785 235 886 92" fill="none" stroke="#93c5fd" stroke-width="6"/>
+  <path d="M92 412 C358 412 548 411 667 387 C779 364 846 260 886 92" fill="none" stroke="#3b82f6" stroke-width="6"/>
+  <path d="M92 412 C535 412 710 412 799 398 C856 388 879 229 886 92" fill="none" stroke="#1d4ed8" stroke-width="6"/>
+  <path d="M92 412 L881 412 L886 92" fill="none" stroke="#ef4444" stroke-width="5" stroke-dasharray="11 9"/>
+  <circle cx="846" cy="260" r="8" fill="#1d4ed8"/>
+  <line x1="846" y1="260" x2="748" y2="174" stroke="#64748b" stroke-width="2"/>
+  <rect x="515" y="111" width="282" height="84" rx="14" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="538" y="145" font-size="20" font-family="system-ui, sans-serif" fill="#172033">可随 n 选择 xₙ 靠近 1</text>
+  <text x="538" y="176" font-size="20" font-family="system-ui, sans-serif" fill="#172033">使 |xₙⁿ − f(xₙ)| 仍不小</text>
+  <text x="202" y="335" font-size="20" font-family="system-ui, sans-serif" fill="#60a5fa">n = 2</text>
+  <text x="594" y="352" font-size="20" font-family="system-ui, sans-serif" fill="#2563eb">n = 6</text>
+  <text x="765" y="382" font-size="20" font-family="system-ui, sans-serif" fill="#1e40af">n = 20</text>
+  <text x="121" y="469" font-size="19" font-family="system-ui, sans-serif" fill="#ef4444">红色虚线：逐点极限 f(x)，在 x=1 处跳跃</text>
+</svg>

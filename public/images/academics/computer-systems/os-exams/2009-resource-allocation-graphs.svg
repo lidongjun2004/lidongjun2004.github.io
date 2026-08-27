@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" aria-labelledby="title desc">
+  <title id="title">2009 年操作系统试卷中的两幅资源分配图</title>
+  <desc id="desc">圆表示进程，方框表示资源，箭头方向与原卷一致；方框内的小圆点表示资源实例。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .edge{stroke:#334155;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .proc{fill:#fff;stroke:#0f172a;stroke-width:3}
+      .res{fill:#f8fafc;stroke:#0f172a;stroke-width:3}
+      .dot{fill:#0f172a}
+      .label{font:600 22px system-ui,sans-serif;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}
+      .caption{font:700 25px system-ui,sans-serif;fill:#0f172a;text-anchor:middle}
+    </style>
+  </defs>
+
+  <text class="caption" x="225" y="32">（a）</text>
+  <circle class="proc" cx="95" cy="195" r="28"/>
+  <text class="label" x="95" y="195">P1</text>
+  <rect class="res" x="175" y="165" width="60" height="60"/>
+  <circle class="dot" cx="205" cy="195" r="6"/>
+  <text class="label" x="205" y="250">R2</text>
+  <circle class="proc" cx="310" cy="195" r="28"/>
+  <text class="label" x="310" y="195">P2</text>
+  <rect class="res" x="385" y="165" width="60" height="60"/>
+  <circle class="dot" cx="415" cy="195" r="6"/>
+  <text class="label" x="415" y="250">R3</text>
+  <circle class="proc" cx="310" cy="85" r="28"/>
+  <text class="label" x="310" y="85">P3</text>
+  <rect class="res" x="175" y="55" width="60" height="60"/>
+  <circle class="dot" cx="205" cy="85" r="6"/>
+  <text class="label" x="205" y="30">R1</text>
+  <path class="edge" d="M175 96 L121 169"/>
+  <path class="edge" d="M123 195 L175 195"/>
+  <path class="edge" d="M235 195 L282 195"/>
+  <path class="edge" d="M338 195 L385 195"/>
+  <path class="edge" d="M415 165 L333 100"/>
+  <path class="edge" d="M282 85 L235 85"/>
+
+  <text class="caption" x="675" y="32">（b）</text>
+  <circle class="proc" cx="525" cy="195" r="28"/>
+  <text class="label" x="525" y="195">P1</text>
+  <rect class="res" x="585" y="75" width="64" height="64"/>
+  <circle class="dot" cx="617" cy="107" r="6"/>
+  <text class="label" x="617" y="52">R1</text>
+  <circle class="proc" cx="700" cy="107" r="28"/>
+  <text class="label" x="700" y="107">P2</text>
+  <rect class="res" x="750" y="75" width="64" height="64"/>
+  <circle class="dot" cx="782" cy="107" r="6"/>
+  <text class="label" x="782" y="52">R2</text>
+  <circle class="proc" cx="850" cy="195" r="28"/>
+  <text class="label" x="850" y="195">P3</text>
+  <rect class="res" x="750" y="250" width="64" height="64"/>
+  <circle class="dot" cx="770" cy="282" r="6"/>
+  <circle class="dot" cx="794" cy="282" r="6"/>
+  <text class="label" x="782" y="340">R3</text>
+  <circle class="proc" cx="700" cy="282" r="28"/>
+  <text class="label" x="700" y="282">P4</text>
+  <rect class="res" x="585" y="250" width="64" height="64"/>
+  <circle class="dot" cx="605" cy="282" r="6"/>
+  <circle class="dot" cx="629" cy="282" r="6"/>
+  <text class="label" x="617" y="340">R4</text>
+  <path class="edge" d="M545 175 L585 130"/>
+  <path class="edge" d="M649 107 L672 107"/>
+  <path class="edge" d="M728 107 L750 107"/>
+  <path class="edge" d="M814 125 L837 170"/>
+  <path class="edge" d="M835 218 L814 260"/>
+  <path class="edge" d="M750 282 L728 282"/>
+  <path class="edge" d="M672 282 L649 282"/>
+  <path class="edge" d="M585 266 L545 216"/>
+</svg>

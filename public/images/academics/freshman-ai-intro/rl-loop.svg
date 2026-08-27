@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="380" viewBox="0 0 960 380" role="img" aria-labelledby="title desc">
+  <title id="title">强化学习的智能体环境闭环</title>
+  <desc id="desc">智能体采取动作，环境返回新状态与奖励</desc>
+  <rect width="960" height="380" rx="28" fill="#f8fafc"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="95" y="115" width="250" height="145" rx="30" fill="#dbeafe" stroke="#2563eb" stroke-width="4"/>
+    <text x="220" y="180" text-anchor="middle" font-size="31" font-weight="700" fill="#1e3a8a">智能体 Agent</text>
+    <text x="220" y="220" text-anchor="middle" font-size="23" fill="#1e40af">策略 π(a|s)</text>
+    <rect x="615" y="115" width="250" height="145" rx="30" fill="#dcfce7" stroke="#16a34a" stroke-width="4"/>
+    <text x="740" y="180" text-anchor="middle" font-size="31" font-weight="700" fill="#14532d">环境 Environment</text>
+    <text x="740" y="220" text-anchor="middle" font-size="23" fill="#166534">状态转移 P</text>
+    <path d="M345 145C445 70 520 70 615 145" fill="none" stroke="#f97316" stroke-width="6"/>
+    <path d="M615 145l-27-5 16-22z" fill="#f97316"/>
+    <text x="480" y="69" text-anchor="middle" font-size="25" font-weight="700" fill="#9a3412">动作 aₜ</text>
+    <path d="M615 230C520 315 440 315 345 230" fill="none" stroke="#7c3aed" stroke-width="6"/>
+    <path d="M345 230l27 3-15 23z" fill="#7c3aed"/>
+    <text x="480" y="330" text-anchor="middle" font-size="25" font-weight="700" fill="#5b21b6">新状态 sₜ₊₁ + 奖励 rₜ₊₁</text>
+    <text x="480" y="365" text-anchor="middle" font-size="21" fill="#475569">动作会改变下一批数据；目标是最大化长期累计回报</text>
+  </g>
+</svg>

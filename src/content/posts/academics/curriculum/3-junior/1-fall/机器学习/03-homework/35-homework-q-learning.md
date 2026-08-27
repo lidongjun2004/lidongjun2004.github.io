@@ -9,6 +9,9 @@ tags: ["AI", "作业"]
 
 关于算法原理可先看[第七讲 · 强化学习与 Q-learning](/academics/curriculum/3-junior/1-fall/机器学习/07-reinforcement-learning/)。这里重点看一次具体实验怎样从奖励矩阵变成路径。
 
+<details class="exam-answer">
+<summary>查看程序还原与实验结果</summary>
+
 ## 环境与奖励
 
 ![Q-learning 八状态导航图](/images/machine-learning/30-35/q-learning-rooms.svg)
@@ -159,3 +162,5 @@ for _ in range(1000):
 ## 实验结论
 
 Q-learning 不需要预先知道最佳路径，只需要状态转移产生的奖励。通过时序差分更新，C → D 的即时奖励逐步传播到更远状态，最终每一行 Q 表都编码了“从这里走哪一步最有价值”。本实验环境是确定性的，合法边奖励简单且训练遍历充分，所以学出的贪心策略与最短路径一致。
+
+</details>

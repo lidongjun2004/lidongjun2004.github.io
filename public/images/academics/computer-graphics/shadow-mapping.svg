@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" role="img" aria-labelledby="title desc">
+  <title id="title">Shadow Mapping 两遍渲染</title>
+  <desc id="desc">第一遍从光源记录最近深度，第二遍从相机渲染并比较片元到光源的深度。</desc>
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+    <style>
+      .panel{fill:#f8fafc;stroke:#334155;stroke-width:2}
+      .title{font:700 24px system-ui,sans-serif;fill:#0f172a;text-anchor:middle}
+      .txt{font:18px system-ui,sans-serif;fill:#334155;text-anchor:middle}
+      .ray{stroke:#f59e0b;stroke-width:3;marker-end:url(#arr)}
+      .eye{stroke:#2563eb;stroke-width:3;marker-end:url(#arr)}
+    </style>
+  </defs>
+  <rect class="panel" x="20" y="25" width="450" height="370" rx="18"/>
+  <text class="title" x="245" y="65">第一遍：从光源看</text>
+  <circle cx="100" cy="120" r="25" fill="#fbbf24"/><text class="txt" x="100" y="170">光源</text>
+  <polygon points="270,210 350,115 410,270" fill="#94a3b8"/>
+  <line class="ray" x1="125" y1="125" x2="280" y2="205"/>
+  <line class="ray" x1="125" y1="120" x2="350" y2="120"/>
+  <rect x="150" y="320" width="250" height="35" fill="#dbeafe" stroke="#2563eb"/>
+  <text class="txt" x="275" y="385">保存每条光线最近的深度</text>
+  <rect class="panel" x="530" y="25" width="450" height="370" rx="18"/>
+  <text class="title" x="755" y="65">第二遍：从相机看</text>
+  <circle cx="610" cy="125" r="20" fill="#60a5fa"/><text class="txt" x="610" y="170">相机</text>
+  <polygon points="755,210 835,115 895,270" fill="#94a3b8"/>
+  <line class="eye" x1="635" y1="130" x2="765" y2="205"/>
+  <circle cx="765" cy="205" r="7" fill="#ef4444"/>
+  <text class="txt" x="755" y="320">当前深度 > Shadow Map 深度 + bias</text>
+  <text class="txt" x="755" y="355">则该片元在阴影中</text>
+</svg>

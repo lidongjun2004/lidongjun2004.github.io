@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500" role="img" aria-labelledby="title desc">
+  <title id="title">无限深势阱的波函数、概率密度和能级</title>
+  <desc id="desc">前三个定态波函数在两端为零，节点随量子数增加；右侧能级按 n 的平方升高并有非零基态能。</desc>
+  <defs>
+    <style>
+      .wall{stroke:#334155;stroke-width:5}
+      .axis{stroke:#64748b;stroke-width:2}
+      .psi{stroke:#2563eb;stroke-width:4;fill:none}
+      .prob{fill:#dbeafe;stroke:#2563eb;stroke-width:2;fill-opacity:.7}
+      .level{stroke:#ea580c;stroke-width:4}
+      .title{font:700 23px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#0f172a;text-anchor:middle}
+      .text{font:17px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#334155;text-anchor:middle}
+    </style>
+  </defs>
+  <text class="title" x="350" y="38">边界把物质波限制成驻波</text>
+  <line class="wall" x1="100" y1="75" x2="100" y2="430"/><line class="wall" x1="600" y1="75" x2="600" y2="430"/>
+  <path class="axis" d="M100 340H600"/><path class="axis" d="M100 235H600"/><path class="axis" d="M100 130H600"/>
+  <path class="psi" d="M100 340 C225 215,475 215,600 340"/><text class="text" x="72" y="346">n=1</text>
+  <path class="psi" d="M100 235 C165 150,285 150,350 235 C415 320,535 320,600 235"/><text class="text" x="72" y="241">n=2</text>
+  <path class="psi" d="M100 130 C150 55,250 55,267 130 C284 205,384 205,433 130 C482 55,570 55,600 130"/><text class="text" x="72" y="136">n=3</text>
+  <text class="text" x="100" y="462">0</text><text class="text" x="600" y="462">a</text><text class="text" x="350" y="484">ψₙ(x)=√(2/a) sin(nπx/a)</text>
+  <line x1="660" y1="55" x2="660" y2="455" stroke="#cbd5e1" stroke-width="2"/>
+  <text class="title" x="890" y="38">能量量子化且基态不为零</text>
+  <line class="level" x1="760" y1="375" x2="1020" y2="375"/><text class="text" x="730" y="381">E₁</text>
+  <line class="level" x1="760" y1="285" x2="1020" y2="285"/><text class="text" x="730" y="291">4E₁</text>
+  <line class="level" x1="760" y1="135" x2="1020" y2="135"/><text class="text" x="730" y="141">9E₁</text>
+  <path d="M890 375V285M890 285V135" stroke="#2563eb" stroke-width="3" stroke-dasharray="7 7"/>
+  <text class="text" x="890" y="435">Eₙ=n²π²ℏ²/(2ma²)</text>
+</svg>

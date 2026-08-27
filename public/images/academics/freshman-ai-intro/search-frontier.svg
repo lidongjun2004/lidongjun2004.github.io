@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
+  <title id="title">搜索树与边界集合</title>
+  <desc id="desc">已展开节点、边界节点与尚未生成节点的关系</desc>
+  <rect width="960" height="400" rx="28" fill="#f8fafc"/>
+  <g stroke="#94a3b8" stroke-width="4">
+    <line x1="480" y1="65" x2="270" y2="165"/><line x1="480" y1="65" x2="690" y2="165"/>
+    <line x1="270" y1="165" x2="150" y2="285"/><line x1="270" y1="165" x2="365" y2="285"/>
+    <line x1="690" y1="165" x2="600" y2="285"/><line x1="690" y1="165" x2="810" y2="285"/>
+  </g>
+  <g font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" text-anchor="middle">
+    <g fill="#dbeafe" stroke="#2563eb" stroke-width="4">
+      <circle cx="480" cy="65" r="35"/><circle cx="270" cy="165" r="35"/>
+    </g>
+    <g fill="#fef3c7" stroke="#d97706" stroke-width="5">
+      <circle cx="690" cy="165" r="35"/><circle cx="150" cy="285" r="35"/><circle cx="365" cy="285" r="35"/>
+    </g>
+    <g fill="#f1f5f9" stroke="#94a3b8" stroke-width="3" stroke-dasharray="7 6">
+      <circle cx="600" cy="285" r="35"/><circle cx="810" cy="285" r="35"/>
+    </g>
+    <g font-size="23" font-weight="700" fill="#0f172a">
+      <text x="480" y="73">S</text><text x="270" y="173">A</text><text x="690" y="173">B</text>
+      <text x="150" y="293">C</text><text x="365" y="293">D</text><text x="600" y="293">E</text><text x="810" y="293">G</text>
+    </g>
+    <rect x="95" y="340" width="215" height="43" rx="20" fill="#dbeafe"/><text x="203" y="369" font-size="21" fill="#1e3a8a">蓝：已经展开</text>
+    <rect x="370" y="340" width="215" height="43" rx="20" fill="#fef3c7"/><text x="478" y="369" font-size="21" fill="#78350f">黄：frontier</text>
+    <rect x="645" y="340" width="215" height="43" rx="20" fill="#f1f5f9"/><text x="753" y="369" font-size="21" fill="#475569">灰：尚未生成</text>
+  </g>
+</svg>
