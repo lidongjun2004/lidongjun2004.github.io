@@ -28,7 +28,7 @@ export const SECTION_META: Record<Section, { label: string; description: string;
   },
   'plan-think': {
     label: 'Plan & Think',
-    description: 'Goals in mind, Step on feet.',
+    description: 'Goals in mind, feet on the ground.',
     color: '#a78bfa',
     icon: '🧭',
   },
