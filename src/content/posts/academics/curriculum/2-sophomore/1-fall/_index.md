@@ -1,6 +1,5 @@
 ---
 title: "大二上 · Sophomore Fall"
-description: "大二上学期的课程，待整理"
+description: "喜欢我们只学数学不写代码的 AI 专业吗"
 ---
 
-WIP：大二上的课程还没开始整理。

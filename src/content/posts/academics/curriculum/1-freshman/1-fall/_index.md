@@ -1,6 +1,5 @@
 ---
 title: "大一上 · Freshman Fall"
-description: "大一上学期的课程，待整理"
+description: "最无忧无虑的一学期"
 ---
 
-WIP：大一上的课程还没开始整理。
