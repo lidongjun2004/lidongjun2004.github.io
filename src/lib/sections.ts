@@ -10,7 +10,7 @@ export const SECTION_META: Record<Section, { label: string; description: string;
   },
   career: {
     label: 'Career',
-    description: '<s>About self-discipline and teamwork</s><br>Money money and more money',
+    description: '上班的目的是退休',
     color: '#fb923c',
     icon: '🚀',
   },

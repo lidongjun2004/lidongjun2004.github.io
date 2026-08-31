@@ -1,4 +1,4 @@
 ---
 title: "Career"
-description: "~~About self-discipline and teamwork~~\n\nMoney money and more money"
+description: "上班的目的是退休"
 ---
