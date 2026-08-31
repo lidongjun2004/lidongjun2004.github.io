@@ -1,6 +1,6 @@
 ---
 title: "操作系统理论作业 4：进程同步"
-description: "操作系统理论作业 4 原题与原提交，包含写者优先的读者—写者问题、寿司店、进门和搜索—插入—删除问题。"
+description: "操作系统理论作业 4 原题与我当时的提交，包含写者优先的读者—写者问题、寿司店、进门和搜索—插入—删除问题。"
 date: 2026-08-27
 tags: ["作业"]
 ---
@@ -10,7 +10,7 @@ tags: ["作业"]
 满足以下约束：共享读；互斥写；读写互斥；写者优先于读者——一旦有写者等待，后续读者必须等待，唤醒时优先考虑写者。
 
 <details class="exam-answer">
-<summary>查看原提交代码</summary>
+<summary>查看我当时提交的代码</summary>
 
 ```cpp
 #include <pthread.h>
@@ -117,7 +117,7 @@ int main(void) {
 一个寿司店有 5 个座位。若顾客到达时还有空位，可以立刻就坐；若到达时 5 个座位全满，则当前就坐者被视为同一批顾客，新顾客必须等待这一批人全部离开后才能就坐。编写同步原语实现该约束。
 
 <details class="exam-answer">
-<summary>查看原提交代码</summary>
+<summary>查看我当时提交的代码</summary>
 
 ```cpp
 #include <pthread.h>
@@ -190,7 +190,7 @@ void leave_seat(SushiBar *bar) {
 2. 一个软件公司有 5 名员工，每人刷卡后等待，直到所有员工都刷卡后才能进入公司。员工要逐个通过大门；所有员工进入后，最后进入者负责关门。请用 P、V 操作实现同步。
 
 <details class="exam-answer">
-<summary>查看原提交答案与代码</summary>
+<summary>查看我当时提交的答案与代码</summary>
 
 信号量是表示可用资源数量的整型计数器。P 操作用于申请资源或进入临界区，V 操作用于释放资源或退出临界区。
 
@@ -269,7 +269,7 @@ int main(void) {
 请编写三类线程的同步互斥代码。
 
 <details class="exam-answer">
-<summary>查看原提交代码</summary>
+<summary>查看我当时提交的代码</summary>
 
 ```cpp
 #include <pthread.h>

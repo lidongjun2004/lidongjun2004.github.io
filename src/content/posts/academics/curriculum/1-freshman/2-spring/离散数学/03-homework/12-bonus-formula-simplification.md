@@ -64,7 +64,7 @@ $$
 <details class="exam-answer">
 <summary>查看提交边界</summary>
 
-源目录的 `answer.json` 在五变量字段中仍是占位内容，没有有效答案。这里不替提交者编造公式。
+源目录的 `answer.json` 在五变量字段中仍是占位内容，没有有效答案，因此我不补造公式。
 
 </details>
 

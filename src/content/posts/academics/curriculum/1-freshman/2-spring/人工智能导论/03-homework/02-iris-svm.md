@@ -14,7 +14,7 @@ tags: ["作业"]
 源目录保留了报告、数据集、两个 Notebook 和实验结果 Excel。下面的实现与数值从这些提交文件还原。
 
 <details class="exam-answer">
-<summary>查看李东骏的实现、结果与复盘</summary>
+<summary>查看我的实现、结果与复盘</summary>
 
 ## 实验方法
 

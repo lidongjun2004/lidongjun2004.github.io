@@ -1,11 +1,11 @@
 ---
 title: "第 12 周作业：线性微分方程组"
-description: "线性齐次与非齐次方程组、矩阵指数、稳定性和指数型特解；题面按手写提交还原"
+description: "线性齐次与非齐次方程组、矩阵指数、稳定性和指数型特解；题面按我当时的手写提交还原"
 date: 2026-08-27
 tags: ["作业"]
 ---
 
-源文件是一份手写提交，没有单独附上印刷题面。下面凡标注“根据作答还原”的地方，只整理提交中能够唯一辨认的题目，不补猜缺失条件。
+源文件是我当时的手写提交，没有单独附上印刷题面。下面凡标注“根据作答还原”的地方，我只整理提交中能够唯一辨认的题目，不补猜缺失条件。
 
 ## 1. 三个齐次线性方程组（根据作答还原）
 
@@ -35,7 +35,7 @@ $$
 $$
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 第一组的特征值为 $-2,7$，可取对应特征向量 $(4,-5)^\mathsf T$、$(1,1)^\mathsf T$，所以
 
@@ -87,7 +87,7 @@ x(0)=y(0)=z(0)=0.
 $$
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 消去 $y,z$ 得
 
@@ -117,7 +117,7 @@ x(0)=-1,\quad y(0)=0,\quad z(0)=1.
 $$
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 用 $x=-y'$ 消元，可化成
 
@@ -125,7 +125,7 @@ $$
 y'''-y''+y'-y=1+3t.
 $$
 
-代入初值后，提交中的结果可整理为
+代入初值后，我当时提交的结果可整理为
 
 $$
 \begin{aligned}
@@ -144,7 +144,7 @@ $$
 证明 $\boldsymbol X'=A\boldsymbol X$ 的所有解都满足 $\boldsymbol X(t)\to0$，当且仅当 $A$ 的全部特征值实部都小于零。
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 把 $A$ 化到 Jordan 标准形后，每个解分量都是
 
@@ -167,7 +167,7 @@ e^{At}e^{As}=e^{A(t+s)}.
 $$
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 由幂级数定义逐项求导，
 
@@ -196,7 +196,7 @@ $$
 有形如 $\boldsymbol p e^{mt}$ 的特解。
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 代入 $\boldsymbol X_p=\boldsymbol p e^{mt}$，约去 $e^{mt}$ 后得到
 

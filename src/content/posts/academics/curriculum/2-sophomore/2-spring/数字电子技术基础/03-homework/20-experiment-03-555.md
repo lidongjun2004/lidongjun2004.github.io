@@ -5,7 +5,7 @@ date: 2026-08-27
 tags: ["作业"]
 ---
 
-本篇整理自实验 3 的课件要求，以及我当时提交的 PDF、Markdown 和实验图片。
+我根据实验 3 的课件要求和自己当时提交的 PDF、Markdown 与实验图片，整理了这篇作业。
 
 ## 实验任务
 
@@ -15,11 +15,11 @@ tags: ["作业"]
 4. 555 的供电电压控制在 $5$～$10\text{ V}$。
 
 <details class="exam-answer">
-<summary>查看提交内容与实验结果</summary>
+<summary>查看我当时的提交与实验结果</summary>
 
 ### 五秒单稳态定时
 
-报告采用单稳态近似公式
+我在报告中采用单稳态近似公式
 
 $$
 t_w\approx1.1RC,
@@ -35,7 +35,7 @@ $$
 
 ### 多谐振荡器
 
-报告使用的周期近似关系为
+我在报告中使用的周期近似关系为
 
 $$
 T\approx0.7(R_1+2R_2)C,
@@ -49,7 +49,7 @@ $$
 
 ### 简易电容测量
 
-报告以单稳态脉宽反推被测电容。选取 $R=1\text{ k}\Omega$、标称电容约 $0.1\mu\text{F}$ 的一次记录中，反算结果与标称值接近。
+我在报告中以单稳态脉宽反推被测电容。选取 $R=1\text{ k}\Omega$、标称电容约 $0.1\mu\text{F}$ 的一次记录中，反算结果与标称值接近。
 
 ![简易电容测量原理电路](/images/academics/digital-electronics/experiments/experiment-03-figure-04.png)
 

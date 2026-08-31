@@ -1,6 +1,6 @@
 ---
 title: "操作系统 Lab 2：物理内存、页表与 TLB"
-description: "OS 2025 Lab 2 的实验要求与原实验报告，涉及页控制块、链表、两级页表、ASID 和软件管理 TLB。"
+description: "OS 2025 Lab 2 的实验要求与我当时的实验报告，涉及页控制块、链表、两级页表、ASID 和软件管理 TLB。"
 date: 2026-08-27
 tags: ["作业"]
 ---
@@ -20,7 +20,7 @@ tags: ["作业"]
 C 指针中保存的地址，以及 LA32R 的 `ld.*`、`st.*` 指令使用的地址，是虚拟地址还是物理地址？
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
 两者都是虚拟地址。
 
@@ -32,7 +32,7 @@ C 指针中保存的地址，以及 LA32R 的 `ld.*`、`st.*` 指令使用的地
 2. 比较单向链表、循环链表与本实验双向链表的插入和删除性能。
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
 宏可以封装链表操作，减少重复代码并提高可读性。
 
@@ -47,7 +47,7 @@ C 指针中保存的地址，以及 LA32R 的 `ld.*`、`st.*` 指令使用的地
 阅读 `include/queue.h` 与 `include/pmap.h`，选择 `Page_list` 的正确展开结构。
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
 选择 C。
 
@@ -59,7 +59,7 @@ C 指针中保存的地址，以及 LA32R 的 `ld.*`、`st.*` 指令使用的地
 2. 根据 LA32R ASID 字段位数，说明最多能容纳多少个不同地址空间。
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
 不同进程拥有不同页表。同一个虚拟地址在不同进程中可能映射到不同物理地址；若没有 ASID，TLB 项可能被错误复用。
 
@@ -72,7 +72,7 @@ ASID 占 10 位，最多区分 1024 个地址空间。
 用一句话概括 `tlb_invalidate` 的作用，并逐行解释其中的汇编代码。
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
 它在页表内容改变后，使对应 TLB 项及时失效。
 
@@ -90,7 +90,7 @@ END(tlb_invalidate)
 简述 x86 内存管理，并比较 x86 与 LA32R。
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
 x86 传统上把分段和分页结合起来：段选择子经 GDT/LDT 把逻辑地址变为线性地址，再由多级页表把线性地址转换成物理地址；现代系统主要依赖分页，并由硬件遍历页表、TLB 加速转换。
 
@@ -98,11 +98,11 @@ LA32R 主要依赖分页，不使用 x86 式分段。实验中的页表和地址
 
 </details>
 
-## 原报告的难点与体会
+## 我当时记录的难点与体会
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
-主要难点是理解实验代码的封装关系，以及真正建立页式管理的完整图景。完成实验后，对物理页管理、两级页表和 TLB 的联系有了明显更具体的认识。
+我当时的主要难点是理解实验代码的封装关系，以及真正建立页式管理的完整图景。完成实验后，我对物理页管理、两级页表和 TLB 的联系有了明显更具体的认识。
 
 </details>

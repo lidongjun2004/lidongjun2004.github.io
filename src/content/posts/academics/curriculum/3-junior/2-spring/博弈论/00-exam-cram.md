@@ -301,4 +301,4 @@ PBE 对路径外信念仍可能比较宽松。直观标准会排除那些无论�
 - [第九讲：PBE 与信号博弈](/academics/curriculum/3-junior/2-spring/博弈论/10-lesson-09-pbe-and-signaling/)
 - [第十讲：信号应用与再精炼](/academics/curriculum/3-junior/2-spring/博弈论/11-lesson-10-signaling-applications-and-refinements/)
 
-如果时间有限，先用这篇建立判断顺序，再回到对应分讲补完整例题。每遇到一个新模型，都重新检查三件事：信息结构是什么、谁在什么时候做最优反应、这个反应是否可信。
+我把最重要的判断顺序集中在这里；时间有限时，可以先看这一篇，再回到对应分讲补完整例题。每遇到一个新模型，都重新检查三件事：信息结构是什么、谁在什么时候做最优反应、这个反应是否可信。

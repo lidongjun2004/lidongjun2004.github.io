@@ -5,7 +5,7 @@ date: 2026-08-27
 tags: ["作业"]
 ---
 
-本篇整理自实验 2 的课件要求，以及我当时提交的 PDF、Markdown、图片和 Logisim 电路文件。
+我根据实验 2 的课件要求和自己当时提交的 PDF、Markdown、图片与 Logisim 电路文件，整理了这篇作业。
 
 ## 实验任务
 
@@ -16,11 +16,11 @@ tags: ["作业"]
 5. 用与非门和 CD4027 搭接带清零端的十六进制同步加法计数器。单脉冲作用下，四位输出应从 $0000$ 依次计到 $1111$，再回到 $0000$。
 
 <details class="exam-answer">
-<summary>查看提交内容与实现</summary>
+<summary>查看我当时的提交与实现</summary>
 
 ### 三人表决电路
 
-报告采用的多数表决函数是
+我在报告中采用的多数表决函数是
 
 $$
 F=AB+BC+CA.
@@ -28,7 +28,7 @@ $$
 
 ![74LS00 实现三人表决](/images/academics/digital-electronics/experiments/experiment-02-figure-01.png)
 
-用 74LS138 实现时，报告把表决通过的输入写成
+用 74LS138 实现时，我在报告中把表决通过的输入写成
 
 $$
 F=m_3+m_5+m_6+m_7,
@@ -38,7 +38,7 @@ $$
 
 ![74LS138 实现三人表决](/images/academics/digital-electronics/experiments/experiment-02-figure-02.png)
 
-使用 74LS153 时，报告写出的数据选择关系为
+使用 74LS153 时，我在报告中写出的数据选择关系为
 
 $$
 F=m_1C+m_2C+m_3.
@@ -48,7 +48,7 @@ $$
 
 ### 74LS283 余三码与标志电路
 
-余三码电路利用四位加法器给 8421 码加 $0011$。报告中的标志函数为
+余三码电路利用四位加法器给 8421 码加 $0011$。我在报告中使用的标志函数为
 
 $$
 Y=A_3A_4+A_4A_2.
@@ -60,7 +60,7 @@ $$
 
 ### 十六进制同步加法计数器
 
-报告用 CD4027 的四个 JK 触发器构成从 $0000$ 到 $1111$ 的同步加法计数器，并记录了实际波形和 Logisim 仿真。
+我在报告中用 CD4027 的四个 JK 触发器构成从 $0000$ 到 $1111$ 的同步加法计数器，并记录了实际波形和 Logisim 仿真。
 
 ![CD4027 十六进制同步计数器](/images/academics/digital-electronics/experiments/experiment-02-figure-06.png)
 

@@ -1,6 +1,6 @@
 ---
 title: "操作系统 Lab 1：内核启动与 printk"
-description: "OS 2025 Lab 1 的实验要求与原实验报告，涉及 ELF、链接脚本、内核入口、启动汇编和 printk。"
+description: "OS 2025 Lab 1 的实验要求与我当时的实验报告，涉及 ELF、链接脚本、内核入口、启动汇编和 printk。"
 date: 2026-08-27
 tags: ["作业"]
 ---
@@ -19,9 +19,9 @@ tags: ["作业"]
 分别使用 x86 原生工具链和 LA32R 交叉工具链重复编译、链接与反汇编，比较结果并解释 `objdump` 参数。
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
-报告观察到：无论是 x86 还是 LA32R 工具链，编译但未链接时的反汇编结果中，`printf` 地址都为 0；链接后，二者的 `printf` 都得到地址，但数值不同。
+我在报告中观察到：无论是 x86 还是 LA32R 工具链，编译但未链接时的反汇编结果中，`printf` 地址都为 0；链接后，二者的 `printf` 都得到地址，但数值不同。
 
 - `-D`：反汇编所有 section。
 - `-S`：反汇编代码段时把反汇编结果与源代码交替显示。
@@ -33,7 +33,7 @@ tags: ["作业"]
 使用自己编写的 `readelf` 解析内核 ELF，再比较系统 `readelf -h` 的输出。为什么自制程序不能解析 `readelf` 自身，而系统工具可以？
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
 内核 `mos` 和测试程序 `hello` 与自制 `readelf` 的系统架构、文件类型和 ELF 类别不同。自制 `readelf` 只处理 32 位 ELF，而 `readelf` 可执行文件本身是 64 位 ELF，所以无法解析自身。
 
@@ -44,17 +44,17 @@ tags: ["作业"]
 LA32R 上电入口为 `0x1C000000`，实验内核入口却按内存布局放在别处。为什么仍能正确跳转？
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
 启动分为两个阶段：QEMU 先加载 ELF 格式内核，再跳转到 ELF 给出的入口。`kernel.lds` 指定 `.text`、`.data`、`.bss` 的位置，并通过 `ENTRY(_start)` 指定入口，因此 QEMU 可以把控制流转到正确位置。
 
 </details>
 
-## 原报告的难点与体会
+## 我当时记录的难点与体会
 
 <details class="exam-answer">
-<summary>查看原实验报告</summary>
+<summary>查看我当时的实验报告</summary>
 
-报告认为主要难点是内核启动过程的抽象性，以及在陌生语法环境中实现 `printk` 对 C 语言能力的要求。完成 Lab 1 后，对操作系统启动流程和 ELF 基本格式形成了更系统的认识，也第一次面对明显增加的内核代码阅读量。
+我当时认为，主要难点是内核启动过程的抽象性，以及在陌生语法环境中实现 `printk` 对 C 语言能力的要求。完成 Lab 1 后，我对操作系统启动流程和 ELF 基本格式形成了更系统的认识，也第一次面对明显增加的内核代码阅读量。
 
 </details>

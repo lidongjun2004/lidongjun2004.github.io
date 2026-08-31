@@ -7,7 +7,7 @@ tags: ["AI"]
 
 CNN 架构史不是“网络越来越深”的排行榜，而是围绕几个反复出现的问题演进：如何扩大感受野、如何控制参数和计算、如何让很深的网络仍能训练、如何让不同尺度的特征交流。
 
-课件从 AlexNet 展开，本篇先用 LeNet 补上历史起点，再沿 AlexNet、VGG、GoogLeNet/Inception、ResNet 与预激活残差网络整理设计逻辑。
+课件从 AlexNet 展开；我先用 LeNet 补上历史起点，再沿 AlexNet、VGG、GoogLeNet/Inception、ResNet 与预激活残差网络整理设计逻辑。
 
 ## 一、读架构先看四件事
 

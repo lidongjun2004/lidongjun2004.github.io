@@ -1,11 +1,11 @@
 ---
 title: "第 14 周作业：方向场与 Euler 折线"
-description: "方向场绘制与 Euler 法数值近似；去重后保留信息完整的提交"
+description: "方向场绘制与 Euler 法数值近似；去重后保留我当时更完整的一份提交"
 date: 2026-08-27
 tags: ["作业"]
 ---
 
-源目录中 `Week14.pdf` 与 `week14(1).pdf` 是同一组题的两份提交。这里去重，只按内容更完整、题面更清楚的 `Week14.pdf` 整理。
+源目录中 `Week14.pdf` 与 `week14(1).pdf` 是我对同一组题的两份提交。我在这里去重，只按内容更完整、题面更清楚的 `Week14.pdf` 整理。
 
 ## 第 1 题：画积分曲线
 
@@ -15,7 +15,7 @@ tags: ["作业"]
 2. $y'=x^2+y^2$。
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 对 $y'=x$，同一条竖线上的斜率相同，积分曲线就是
 
@@ -41,7 +41,7 @@ $$
 在 $x=1.4$ 处的近似值。
 
 <details class="exam-answer">
-<summary>查看提交内容与实现</summary>
+<summary>查看我当时的提交与实现</summary>
 
 Euler 递推为
 
@@ -68,6 +68,6 @@ $$
 y(1.4)\approx1.11724.
 $$
 
-提交中还用 Python 循环实现了同一递推；程序的关键不是绘图库，而是每一步严格使用旧的 $(x_k,y_k)$ 计算新值。
+我当时还在提交中用 Python 循环实现了同一递推；程序的关键不是绘图库，而是每一步严格使用旧的 $(x_k,y_k)$ 计算新值。
 
 </details>

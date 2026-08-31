@@ -1,6 +1,6 @@
 ---
 title: "操作系统理论作业 5：调度、死锁与 I/O"
-description: "操作系统理论作业 5 原题与原提交，涉及 CPU 调度、动态优先级、银行家算法、磁盘调度和缓冲。"
+description: "操作系统理论作业 5 原题与我当时的提交，涉及 CPU 调度、动态优先级、银行家算法、磁盘调度和缓冲。"
 date: 2026-08-27
 tags: ["作业"]
 ---
@@ -23,7 +23,7 @@ tags: ["作业"]
 2. 分别计算各进程的周转时间、等待时间和平均周转时间。
 
 <details class="exam-answer">
-<summary>查看原提交答案</summary>
+<summary>查看我当时提交的答案</summary>
 
 执行次序：
 
@@ -83,7 +83,7 @@ tags: ["作业"]
 某系统使用时间片轮转算法，时间片为 5 ms。系统共有 10 个进程，初始时都在就绪队列中，结束前只处于执行态或就绪态。队尾进程 P 所需的 CPU 时间最短，为 25 ms。不考虑系统开销，求 P 的周转时间。
 
 <details class="exam-answer">
-<summary>查看原提交答案</summary>
+<summary>查看我当时提交的答案</summary>
 
 250 ms。
 
@@ -97,11 +97,11 @@ tags: ["作业"]
 2. 使用三个量设计一种避免饥饿的动态优先数，并说明 `waitTime` 的作用。
 
 <details class="exam-answer">
-<summary>查看原提交答案</summary>
+<summary>查看我当时提交的答案</summary>
 
 若只使用静态 `nice`，高优先级进程持续就绪时总会先被调度；低优先级进程的优先数不会随等待时间改善，因此可能无限期等待。
 
-原提交给出的动态优先数为：
+我当时提交的动态优先数为：
 
 $$
 priority = nice + \beta \times cpuTime - \alpha \times waitTime
@@ -118,7 +118,7 @@ $$
 3. 某系统有 $n$ 台互斥使用的同类设备，三个并发进程分别需要 3、4、5 台。求保证不发生死锁的最小 $n$。
 
 <details class="exam-answer">
-<summary>查看原提交答案</summary>
+<summary>查看我当时提交的答案</summary>
 
 条件为：
 
@@ -156,7 +156,7 @@ $$
 2. 若改为 `Available = (0, 6, 2)`，系统是否安全？若安全，给出安全序列；否则说明原因。
 
 <details class="exam-answer">
-<summary>查看原提交答案</summary>
+<summary>查看我当时提交的答案</summary>
 
 1. 系统安全。
 2. 系统安全，安全序列为 P0、P2、P1、P3、P4。
@@ -173,7 +173,7 @@ $$
 4. C-SCAN，且始终从小柱面号向大柱面号扫描。
 
 <details class="exam-answer">
-<summary>查看原提交答案</summary>
+<summary>查看我当时提交的答案</summary>
 
 - 先来先服务：995 ms。
 - 最短寻道时间优先：405 ms。
@@ -187,7 +187,7 @@ $$
 在 I/O 系统中引入缓冲区的主要目标是什么？某文件占 8 个磁盘块，要把磁盘块逐个读入主存缓冲区，再送入用户区分析。缓冲区与磁盘块等大；读一块到缓冲区用时 100 μs，从缓冲区送入用户区用时 50 μs，CPU 分析一块用时 50 μs。分别计算单缓冲和双缓冲下处理完整个文件的时间。
 
 <details class="exam-answer">
-<summary>查看原提交答案</summary>
+<summary>查看我当时提交的答案</summary>
 
 引入缓冲区的主要目标包括：
 

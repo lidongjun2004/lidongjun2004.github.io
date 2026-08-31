@@ -23,7 +23,7 @@ tags: ["作业"]
 <details class="exam-answer">
 <summary>查看所选分支与提交结果</summary>
 
-源提交选择了**分支 A：曲线曲面**，没有提交 bunny 网格与 Loop 细分结果。
+我当时选择了**分支 A：曲线曲面**，没有提交 bunny 网格与 Loop 细分结果。
 
 ## 1. 分段 Bezier 近似圆
 

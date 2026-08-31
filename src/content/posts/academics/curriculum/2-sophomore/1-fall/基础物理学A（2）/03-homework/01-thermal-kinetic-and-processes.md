@@ -1,6 +1,6 @@
 ---
 title: "第 1 次作业：分子碰撞与理想气体过程"
-description: "原作业中的平均自由程、碰撞频率与三类准静态过程计算；题目在外，提交答案默认折叠。"
+description: "我当时提交的作业：平均自由程、碰撞频率与三类准静态过程计算；题目在外，答案默认折叠。"
 date: 2026-08-27
 tags: ["作业"]
 ---
@@ -10,7 +10,7 @@ tags: ["作业"]
 电子管的真空度为 $1.333\times10^{-3}\ \mathrm{Pa}$。设空气分子的有效直径为 $3.0\times10^{-10}\ \mathrm m$，求 $27\ ^\circ\mathrm C$ 时单位体积内的分子数 $n$、平均自由程 $\lambda$ 和平均碰撞频率 $Z$。
 
 <details class="exam-answer">
-<summary>展开原提交解答</summary>
+<summary>展开我当时提交的解答</summary>
 
 由理想气体的微观状态方程，
 
@@ -59,7 +59,7 @@ $$
 其中 $k$ 为常数。并计算当系统体积由 $V_1$ 变至 $V_2$ 时，三个过程中系统对外界所作的功。
 
 <details class="exam-answer">
-<summary>展开原提交解答</summary>
+<summary>展开我当时提交的解答</summary>
 
 1. $p=kV$ 在 $p$-$V$ 图上是一条过原点的直线，
 

@@ -58,7 +58,7 @@ $$
 
 ## 1. 基础函数
 
-提交代码用
+我提交的代码用
 
 $$
 \mathbf f=\frac{\mathbf{center}-\mathbf{eye}}
@@ -84,7 +84,7 @@ inside 先由 $(B-A)\times(C-A)$ 求法线，检查点是否在三角形平面�
 
 ## 2. 颜色插值
 
-提交按
+我的提交按
 
 $$
 \mathbf c(P)
@@ -99,11 +99,11 @@ $$
 
 ## 3. 遮挡实验输出
 
-源报告给出的红绿三角形结果如下：
+我当时在报告中给出的红绿三角形结果如下：
 
 ![作业一遮挡实验输出](/images/academics/computer-graphics/homework-1-depth-test.png)
 
-不过复核最终代码后要特别说明：Rasterization 虽然创建了 depth_buf，但 rasterize_triangle 把屏幕顶点深度统一写成 $0$，也没有读写深度缓冲。该图来自先画绿色 $T_2$、再画红色 $T_1$ 的覆盖顺序，**不能证明源提交真正完成了深度测试**。
+不过复核最终代码后要特别说明：Rasterization 虽然创建了 depth_buf，但 rasterize_triangle 把屏幕顶点深度统一写成 $0$，也没有读写深度缓冲。该图来自先画绿色 $T_2$、再画红色 $T_1$ 的覆盖顺序，**不能证明我当时真正完成了深度测试**。
 
 正确实现应保留投影后的深度，并在每个覆盖样本处比较：
 

@@ -1,6 +1,6 @@
 ---
 title: "第 3 次作业：物质波与不确定关系"
-description: "原作业中的 de Broglie 波长、光子与电子能量、不确定关系和能级寿命计算；题目在外，提交答案默认折叠。"
+description: "我当时提交的作业：de Broglie 波长、光子与电子能量、不确定关系和能级寿命计算；题目在外，答案默认折叠。"
 date: 2026-08-27
 tags: ["作业"]
 ---
@@ -10,7 +10,7 @@ tags: ["作业"]
 设电子动能为 $1.00\times10^4\ \mathrm{eV}$，中子动能为 $1.00\times10^5\ \mathrm{eV}$，求相应的 de Broglie 波长。忽略相对论效应。
 
 <details class="exam-answer">
-<summary>展开原提交解答</summary>
+<summary>展开我当时提交的解答</summary>
 
 非相对论粒子的动量和波长为
 
@@ -20,7 +20,7 @@ p=\sqrt{2mE_k},
 \lambda=\frac{h}{p}.
 $$
 
-代入电子和中子的质量，原提交得到
+代入电子和中子的质量，我当时得到
 
 $$
 \lambda_e\approx0.123\ \mathring{\mathrm A},
@@ -35,7 +35,7 @@ $$
 已知电子和光子的波长均为 $2.0\ \mathring{\mathrm A}$，它们的动量是多少？动能各是多少？
 
 <details class="exam-answer">
-<summary>展开原提交解答</summary>
+<summary>展开我当时提交的解答</summary>
 
 两者具有相同波长，所以动量相同：
 
@@ -66,9 +66,9 @@ $$
 2. 粒子是电子，速度为 $1.8\times10^8\ \mathrm{m/s}$。速度已可与光速相比，必须考虑相对论效应。
 
 <details class="exam-answer">
-<summary>展开原提交解答</summary>
+<summary>展开我当时提交的解答</summary>
 
-原提交采用数量级关系
+我当时采用数量级关系
 
 $$
 \Delta x\gtrsim\frac{h}{\Delta p},
@@ -91,7 +91,7 @@ p=\gamma m_ev,
 \gamma=\frac{1}{\sqrt{1-v^2/c^2}}
 $$
 
-计入相对论修正，再代入动量不确定度，原提交得到
+计入相对论修正，再代入动量不确定度，我当时得到
 
 $$
 \Delta x\gtrsim32\ \mathring{\mathrm A}.
@@ -104,7 +104,7 @@ $$
 波长为 $3000\ \mathring{\mathrm A}$ 的光子，其波长的测量精度为十万分之一。测量其位置的绝对误差不能小于多少？
 
 <details class="exam-answer">
-<summary>展开原提交解答</summary>
+<summary>展开我当时提交的解答</summary>
 
 由 $p=h/\lambda$，小量近似给出
 
@@ -112,7 +112,7 @@ $$
 \Delta p\approx\frac{h}{\lambda^2}\Delta\lambda.
 $$
 
-再代入原提交采用的 $\Delta x\gtrsim h/\Delta p$：
+再代入我当时采用的 $\Delta x\gtrsim h/\Delta p$：
 
 $$
 \Delta x\gtrsim\frac{\lambda^2}{\Delta\lambda}
@@ -127,7 +127,7 @@ $$
 电子从某激发态跃迁到基态时发出波长为 $4000\ \mathring{\mathrm A}$ 的光谱线。由于激发能级有一定宽度，该谱线有 $1.0\times10^{-4}\ \mathring{\mathrm A}$ 的宽度。问该激发态能级的平均寿命是多少？
 
 <details class="exam-answer">
-<summary>展开原提交解答</summary>
+<summary>展开我当时提交的解答</summary>
 
 由 $E=hc/\lambda$，谱线宽度对应的能量宽度为
 

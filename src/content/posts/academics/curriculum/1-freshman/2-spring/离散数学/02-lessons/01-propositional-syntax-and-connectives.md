@@ -88,7 +88,7 @@ $$
 \neg,\quad\land,\quad\lor,\quad\oplus,\quad\to,\quad\leftrightarrow.
 $$
 
-但写证明或试卷答案时，不要靠读者猜优先级；关键位置保留括号。
+但写证明或试卷答案时，不要让运算顺序依赖默认优先级；关键位置保留括号。
 
 ## 代换和替换
 

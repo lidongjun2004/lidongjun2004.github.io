@@ -5,7 +5,7 @@ date: 2026-08-27
 tags: ["作业"]
 ---
 
-本篇整理自 `实验1` 中的实验要求和我当时提交的《TTL 和 CMOS 门电路》报告。
+我根据 `实验1` 中的实验要求和当时提交的《TTL 和 CMOS 门电路》报告整理了这篇作业。
 
 ## 实验任务
 
@@ -20,11 +20,11 @@ tags: ["作业"]
 ![TTL 驱动 CMOS](/images/academics/digital-electronics/experiments/experiment-01-figure-10.png)
 
 <details class="exam-answer">
-<summary>查看提交内容与实验结果</summary>
+<summary>查看我当时的提交与实验结果</summary>
 
 ### 74LS00 静态参数
 
-报告记录的测量结果为：
+我在报告中记录的测量结果为：
 
 - 空载时 $U_{OH}=4.463\text{ V}$，$U_{OL}=0.1631\text{ V}$；
 - 接入 $5100\Omega$ 上拉电阻时，$U_{OH}=3.1918\text{ V}$；
@@ -34,13 +34,13 @@ tags: ["作业"]
 
 ### TTL 与 CMOS 互连
 
-TTL 驱动 CMOS 时，报告测得 $U_{O1}$ 上升时间为 $18.20\text{ ns}$，$U_{O2}$ 上升时间为 $128.8\text{ ns}$。
+TTL 驱动 CMOS 时，我在报告中测得 $U_{O1}$ 上升时间为 $18.20\text{ ns}$，$U_{O2}$ 上升时间为 $128.8\text{ ns}$。
 
 ![TTL 驱动 CMOS 的 UO1](/images/academics/digital-electronics/experiments/experiment-01-figure-13.png)
 
 ![TTL 驱动 CMOS 的 UO2](/images/academics/digital-electronics/experiments/experiment-01-figure-14.png)
 
-CMOS 驱动 TTL 时，报告测得 $U_{O1}$ 上升时间为 $156.2\text{ ns}$，$U_{O2}$ 上升时间为 $22.0\text{ ns}$。
+CMOS 驱动 TTL 时，我在报告中测得 $U_{O1}$ 上升时间为 $156.2\text{ ns}$，$U_{O2}$ 上升时间为 $22.0\text{ ns}$。
 
 ![CMOS 驱动 TTL 的 UO1](/images/academics/digital-electronics/experiments/experiment-01-figure-15.png)
 
@@ -54,7 +54,7 @@ CMOS 驱动 TTL 时，报告测得 $U_{O1}$ 上升时间为 $156.2\text{ ns}$，
 
 ![CD4007 三输入或非电路](/images/academics/digital-electronics/experiments/experiment-01-figure-18.png)
 
-报告最后用完整波形作了对照，并据此总结：本次条件下 TTL 电路的传输延迟比 CMOS 电路短。
+我最后在报告中用完整波形作了对照，并据此总结：本次条件下 TTL 电路的传输延迟比 CMOS 电路短。
 
 ![第一组完整波形](/images/academics/digital-electronics/experiments/experiment-01-figure-19.png)
 

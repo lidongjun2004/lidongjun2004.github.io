@@ -1,11 +1,11 @@
 ---
 title: "第 13 周作业：用 Laplace 变换解方程组"
-description: "三组初值问题的 Laplace 变换解法；题面按手写提交还原"
+description: "三组初值问题的 Laplace 变换解法；题面按我当时的手写提交还原"
 date: 2026-08-27
 tags: ["作业"]
 ---
 
-源文件只有手写作答。下面按作答中清晰可辨的第 1、3、5 题还原题面。
+源文件只有我当时的手写作答。下面按作答中清晰可辨的第 1、3、5 题还原题面。
 
 ## 第 1 题
 
@@ -18,7 +18,7 @@ x(0)=y(0)=1.
 $$
 
 <details class="exam-answer">
-<summary>查看提交内容与实现</summary>
+<summary>查看我当时的提交与实现</summary>
 
 令 $X(s)=\mathcal L[x]$、$Y(s)=\mathcal L[y]$。代入初值后解二元代数方程组，得到
 
@@ -46,7 +46,7 @@ y(0)=y'(0)=0.
 $$
 
 <details class="exam-answer">
-<summary>查看提交内容与实现</summary>
+<summary>查看我当时的提交与实现</summary>
 
 两式相加、相减，可化为
 
@@ -77,7 +77,7 @@ x(0)=y(0)=z(0)=0.
 $$
 
 <details class="exam-answer">
-<summary>查看提交内容与实现</summary>
+<summary>查看我当时的提交与实现</summary>
 
 消元得
 
@@ -85,7 +85,7 @@ $$
 x'''+6x''+11x'+6x=e^t.
 $$
 
-作 Laplace 变换并部分分式分解，提交中的结果可整理为
+作 Laplace 变换并部分分式分解，我当时提交的结果可整理为
 
 $$
 x=-\frac18e^{-3t}+\frac13e^{-2t}-\frac14e^{-t}+\frac1{24}e^t.

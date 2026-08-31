@@ -1,13 +1,13 @@
 ---
 title: "计算机组成实验 6：Logisim Cache"
-description: "计算机组成实验 6 的提交记录，梳理四路组相联 Cache、RAM、LRU 与调试输入。"
+description: "我在计算机组成实验 6 中提交的四路组相联 Cache、RAM、LRU 与调试输入。"
 date: 2026-08-27
 tags: ["作业"]
 ---
 
-> 本目录只有电路提交和调试说明，没有独立原题。课程介绍把这一阶段称为“Cache 模拟”；下面只采用 `.circ` 文件与同目录说明能够确认的结构。
+> 我保留的目录中只有电路提交和调试说明，没有独立原题。课程介绍把这一阶段称为“Cache 模拟”；下面只采用 `.circ` 文件与同目录说明能够确认的结构。
 
-## 根据提交文件还原的任务
+## 根据我提交的文件还原的任务
 
 - `Cache.circ`：主 Cache 电路。
 - `RAM.circ`：主存模拟。
@@ -15,7 +15,7 @@ tags: ["作业"]
 - `Cache入门&Debug文件/`：调试电路、测试数据转换脚本和操作说明。
 
 <details class="exam-answer">
-<summary>查看提交内容与实现结构</summary>
+<summary>查看我提交的内容与实现结构</summary>
 
 `Cache.circ` 保存了以下电路层级：
 

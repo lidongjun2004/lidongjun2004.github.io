@@ -1,18 +1,18 @@
 ---
 title: "第 15 周作业：存在唯一性与延拓"
-description: "非 Lipschitz 初值问题、Picard 迭代、误差估计和解的延拓；题面按手写提交还原"
+description: "非 Lipschitz 初值问题、Picard 迭代、误差估计和解的延拓；题面按我当时的手写提交还原"
 date: 2026-08-27
 tags: ["作业"]
 ---
 
-源文件是手写提交，题目来自习题 4.2、4.3。只整理能够从作答唯一恢复的题面。
+源文件是我当时的手写提交，题目来自习题 4.2、4.3。我只整理能够从作答唯一恢复的题面。
 
 ## 习题 4.2 第 1 题：唯一性失效在哪里
 
 讨论初值问题 $y'=\sqrt{|y|}$ 和 $y'=|y|^\alpha$（$\alpha>0$）的解及唯一性。
 
 <details class="exam-answer">
-<summary>查看提交内容与核对</summary>
+<summary>查看我当时的提交与核对</summary>
 
 $y'=\sqrt{|y|}$ 在 $y=0$ 附近不满足关于 $y$ 的 Lipschitz 条件。除零解外，还可以先沿 $y=0$ 停留任意时间，再接上平方曲线，所以过 $(x_0,0)$ 的解不唯一。
 
@@ -21,7 +21,7 @@ $y'=\sqrt{|y|}$ 在 $y=0$ 附近不满足关于 $y$ 的 Lipschitz 条件。除�
 - $0<\alpha<1$ 时不唯一，可以出现“等待后离开”的解；
 - $\alpha\ge1$ 时 $|y|^\alpha$ 在零点局部 Lipschitz，零解唯一。
 
-原提交把“$\alpha>1$”也写进了不唯一情形；这一步与唯一性定理不符，整理时已明确更正。
+我当时把“$\alpha>1$”也写进了不唯一情形；这一步与唯一性定理不符，整理时已明确更正。
 
 </details>
 
@@ -36,7 +36,7 @@ $$
 的第三次近似。
 
 <details class="exam-answer">
-<summary>查看提交内容与核对</summary>
+<summary>查看我当时的提交与核对</summary>
 
 取 $\varphi_0=0$，并递推
 
@@ -70,7 +70,7 @@ $$
 $$
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 先由积分方程得到第一步估计，再反复使用
 
@@ -105,7 +105,7 @@ $$
 的解在整个实轴上有定义。
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 $y=0$、$y=1$ 都是平衡解。由唯一性，初值落在两者之间的解不能穿过边界。直接分离变量还可得
 
@@ -122,7 +122,7 @@ $$
 求 $y'=y^2$ 分别通过 $(1,1)$、$(3,-1)$ 的解及其最大存在区间。
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 非零解满足
 
@@ -141,7 +141,7 @@ $$
 设 $f\in C^1(\mathbb R)$ 且 $yf(y)<0$（$y\ne0$）。证明 $y'=f(y)$ 的解向前全局存在，并且 $y(x)\to0$。
 
 <details class="exam-answer">
-<summary>查看提交内容与整理</summary>
+<summary>查看我当时的提交与整理</summary>
 
 沿解有
 

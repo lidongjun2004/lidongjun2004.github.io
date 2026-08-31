@@ -1,20 +1,20 @@
 ---
 title: "计算机组成实验 2：MIPS 汇编进阶"
-description: "计算机组成实验 2 的提交记录，包含冒泡排序、回文串判断和汉诺塔三个 MIPS 汇编程序。"
+description: "我在计算机组成实验 2 中提交的冒泡排序、回文串判断和汉诺塔三个 MIPS 汇编程序。"
 date: 2026-08-27
 tags: ["作业"]
 ---
 
-> 本实验目录没有独立题目文件。课程介绍只把这一阶段称为“汇编进阶”；下面的三个任务名称和内容均根据提交文件还原，不补写输入范围、输出格式或评测限制。
+> 我保留的实验目录中没有独立题目文件。课程介绍只把这一阶段称为“汇编进阶”；下面的三个任务名称和内容均根据我提交的文件还原，我不补写输入范围、输出格式或评测限制。
 
-## 提交文件
+## 我提交的文件
 
 - `冒泡排序.asm`
 - `回文串判断.asm`
 - `汉诺塔.asm`
 
 <details class="exam-answer">
-<summary>查看冒泡排序提交</summary>
+<summary>查看我提交的冒泡排序</summary>
 
 ```asm
 .macro exit()
@@ -112,7 +112,7 @@ loop2_end:
 </details>
 
 <details class="exam-answer">
-<summary>查看回文串判断提交</summary>
+<summary>查看我提交的回文串判断</summary>
 
 ```asm
 .macro exit()
@@ -168,7 +168,7 @@ yes:
 </details>
 
 <details class="exam-answer">
-<summary>查看汉诺塔提交</summary>
+<summary>查看我提交的汉诺塔</summary>
 
 ```asm
 .macro exit()

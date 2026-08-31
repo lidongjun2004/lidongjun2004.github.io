@@ -9,7 +9,7 @@ tags: ["数学"]
 <!-- markdownlint-disable MD031 MD032 MD034 MD040 -->
 
 > 对应 PPT：第6讲
-> 这一讲覆盖 NER 的 5 个扩展方向（Few/Zero-shot、Continual、Nested、Cross-Domain、Multi-Modal），以及课件所引论文对 LLM 知识抽取能力的实验结论。
+> 我在这一讲整理 NER 的 5 个扩展方向（Few/Zero-shot、Continual、Nested、Cross-Domain、Multi-Modal），以及课件所引论文对 LLM 知识抽取能力的实验结论。
 
 ---
 

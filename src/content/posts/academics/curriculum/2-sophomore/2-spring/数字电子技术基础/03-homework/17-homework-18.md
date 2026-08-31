@@ -5,7 +5,7 @@ date: 2026-08-27
 tags: ["作业"]
 ---
 
-本篇对应 `2025作业文件/作业18.doc`。`第十八章 作业.pdf` 是同一份题目的批注版，折叠处保留其中的源作答。
+本篇对应 `2025作业文件/作业18.doc`。`第十八章 作业.pdf` 是同一份题目的批注版，折叠处保留我当时的作答。
 
 ## 7.2 数字式峰值采样
 
@@ -14,7 +14,7 @@ tags: ["作业"]
 ![题 7.2 数字式峰值采样电路](/images/academics/digital-electronics/homework/hw-18-figure-01.png)
 
 <details class="exam-answer">
-<summary>查看源作答与整理</summary>
+<summary>查看我当时的作答与整理</summary>
 
 源批注给出的工作过程是：清零脉冲先令计数器输出为 0，D/A 输出也回到 0。只要输入 $u_i$ 高于当前 D/A 保持的电平，比较器就允许时钟脉冲通过，计数器继续加一，D/A 输出随之逐级上升。当 D/A 输出追到三角波峰值附近，比较器关闭控制门，计数停止，D/A 输出便保持峰值对应的量化电平。
 
@@ -31,9 +31,9 @@ tags: ["作业"]
 ![题 7.3 双积分型 A/D 转换器](/images/academics/digital-electronics/homework/hw-18-figure-02.png)
 
 <details class="exam-answer">
-<summary>查看源作答与核算</summary>
+<summary>查看我当时的作答与核算</summary>
 
-源作答先按满量程与分辨率求所需计数容量：
+我当时先按满量程与分辨率求所需计数容量：
 
 $$
 \frac{2\text{ V}}{0.1\text{ mV}}=20000.
@@ -41,7 +41,7 @@ $$
 
 因此容量应大于 20000；因为 $2^{14}<20000<2^{15}$，应选 15 位二进制计数器。
 
-固定积分阶段取满计数时长，源作答为
+固定积分阶段取满计数时长，我当时的作答为
 
 $$
 T_1=\frac{2^{15}}{200\text{ kHz}}=163.84\text{ ms}.
@@ -63,9 +63,9 @@ $$
 2. 求完成这次转换所需的时间 $t$。
 
 <details class="exam-answer">
-<summary>查看源作答与核算</summary>
+<summary>查看我当时的作答与核算</summary>
 
-源作答先求量化间隔：
+我当时先求量化间隔：
 
 $$
 \Delta=\frac{12.276}{2^{10}-1}=0.012\text{ V}.
