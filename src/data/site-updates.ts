@@ -7,6 +7,12 @@ export interface SiteUpdate {
 
 export const SITE_UPDATES: SiteUpdate[] = [
   {
+    date: '2026-09-10',
+    title: '访问量展示覆盖全站',
+    description: '首页、分类与目录、标签、About、更新足迹和文章页统一在页脚展示本页访问量，同时保留全站总访问量与访客数。',
+    icon: '📊',
+  },
+  {
     date: '2026-08-27',
     title: '补齐大一大二课程档案',
     description: '整理大一 10 门、大二 11 门非水课，统一提供速成、真题、知识点与作业入口；没有源材料的部分保持为空。',

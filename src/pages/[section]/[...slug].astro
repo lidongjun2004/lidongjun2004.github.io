@@ -136,7 +136,6 @@ const updatedStr = updated?.toLocaleDateString('zh-CN', { year: 'numeric', month
       <div class="flex flex-wrap items-center gap-3 text-sm text-[var(--color-text-light)] mb-6">
         {dateStr && <time datetime={date!.toISOString()}>{dateStr}</time>}
         {updatedStr && <span class="text-xs">(updated {updatedStr})</span>}
-        <span class="text-xs">Views: <span id="busuanzi_value_page_pv">--</span></span>
       </div>
 
       {tags && tags.length > 0 && (

@@ -189,6 +189,7 @@ schema 定义在 `src/content.config.ts`。字段：
 | `src/pages/[section]/[...slug].astro` | 文章页 / 文件夹页的渲染逻辑（含面包屑、上一/下一篇） |
 | `src/layouts/BaseLayout.astro` | 全站 HTML 骨架（含 KaTeX CSS 引入、评论区统一注入） |
 | `src/components/Comments.astro` | giscus 评论区组件 |
+| `src/components/Footer.astro` | 全站页脚与不蒜子访问统计 |
 | `src/pages/changelog.astro` | 更新足迹时间轴页 |
 | `src/data/site-updates.ts` | Changelog 的「站点演进」事件数据源（手写） |
 | `astro.config.mjs` | 站点配置、remark/rehype 插件 |
@@ -196,7 +197,13 @@ schema 定义在 `src/content.config.ts`。字段：
 
 ## 九、站点功能模块
 
-除了文章内容，站点有两个需要知道维护方式的功能模块。
+除了文章内容，站点有三个需要知道维护方式的功能模块。
+
+### 访问统计（不蒜子）
+
+- **挂载点**：所有路由模板通过 `BaseLayout` 的 `footer` slot 挂载一次 `src/components/Footer.astro`，由 Footer 统一展示本页访问量（`page_pv`）、全站总访问量（`site_pv`）与访客数（`site_uv`），并加载一次不蒜子脚本。
+- **唯一性**：每页只保留一组 `busuanzi_value_*` 节点，不在文章或其他页面另加同名 ID，也不重复加载统计脚本；新页面沿用同一个 Footer。
+- **加载状态**：数字由不蒜子服务异步返回，尚未返回或服务不可用时显示 `--`。
 
 ### 评论区（giscus）
 
