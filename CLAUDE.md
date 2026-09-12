@@ -30,10 +30,45 @@
 - **评论**：giscus（评论存 GitHub Discussions），由 `BaseLayout` 统一注入到每个页面，纯静态零后端（详见「九、站点功能模块」）
 - **更新足迹**：`/changelog` 时间轴页，合并「文章发布」与「站点演进」两类事件（详见「九、站点功能模块」）
 
-## 二、常用命令
+## 二、本地工作区与常用命令
+
+### 工作区布局（硬规则）
+
+本机 `~/workplace/personal/blog/lidongjun2004.github.io/` 是容器目录，实际 checkout 放在其下，与工作仓库的 `repos/<repo>/` 布局一致：
+
+```text
+lidongjun2004.github.io/
+├── AGENTS.md -> CLAUDE.md  # 本机容器入口，不纳入 Git
+├── CLAUDE.md
+├── main/                  # 固定 main 分支，只读取和同步远端
+└── <任务名>/              # 每个修改任务独立的 worktree
+```
+
+- **`main/` 只更新、不修改**：不在其中编辑内容、暂存、创建提交或切换到功能分支；只通过 `fetch` 和 `merge --ff-only` 同步远端 `main`。
+- **每个新修改任务先建 worktree**：先核对 `origin/HEAD`、`main/` 当前分支及干净状态，fetch 后确认没有领先远端的本地提交，再快进更新；随后从更新后的 `main` 新建同级目录，分支默认命名为 `codex/<任务名>`。若发现未提交修改、分支不符或本地提交，保留现场，不自动覆盖或重置。
+- **同一任务继续复用其 worktree**：后续修改、依赖安装、预览、构建、验证和提交都在该 worktree 内执行。每个 worktree 独立安装依赖，不把 `node_modules` 或生成目录软链到 `main/`。
+- **清理单独判断**：不随任务结束自动删除 worktree 或分支；先确认用户授权、工作区干净及合并状态。
+- **外层入口与仓库规则分别维护**：容器入口负责在任务启动时指明工作区约束，本文件随 Git 保存完整项目约定；每个 checkout 均保留 `AGENTS.md -> CLAUDE.md`。新机器建立同样布局时，也应创建外层入口。
+
+下面的命令在容器目录执行。先完成上述状态检查，再依次更新和创建；`example-task` 替换为本次任务名，不复用已有目录或分支名：
 
 ```bash
-pnpm install        # 安装依赖
+git -C main symbolic-ref refs/remotes/origin/HEAD
+git -C main status --short --branch
+git -C main fetch origin
+git -C main rev-list --left-right --count HEAD...origin/main
+# 确认当前分支是 main、工作区干净，且上一步左侧计数为 0 后继续
+git -C main merge --ff-only origin/main
+git -C main worktree add -b codex/example-task ../example-task main
+cd example-task
+```
+
+### 常用命令
+
+以下命令在任务 worktree 内执行；本地运行环境和预览步骤也可见 `README.md`。
+
+```bash
+pnpm install --frozen-lockfile # 按锁文件安装依赖
 pnpm dev            # 本地开发预览（改内容时实时看效果）
 pnpm build          # 生产构建（提交前必跑，验证无误）
 pnpm preview        # 预览构建产物
@@ -161,13 +196,14 @@ schema 定义在 `src/content.config.ts`。字段：
 3. **非正文字段必须先过 owner（硬规则）**：新增任何文章 / 文件夹，先把拟定的**全部非正文字段**（文件夹的 `title` / `description`；文章的 `title` / `description` / `date` / `tags` 等）逐项列给 owner 确认，符合预期后再落地，**不擅自定稿**。
 4. 叶子文章按要求写正文；目录页正文只有 owner 明确要求时才写，否则留空。初稿交付后若 owner 有意见，按反馈继续调整，直到认可。
 5. `pnpm dev` 或 `pnpm build` 本地验证渲染（尤其有公式 / 表格时）。
-6. commit + push（见下）。
+6. 在任务 worktree 中提交；需要发布时再合入远端 `main`（见下）。
 
 ## 六、提交与部署
 
 - **提交信息**：用 Conventional Commits（`feat:` / `fix:` / `docs:` / `refactor:` …），跟现有 git 历史保持一致。
-- **作者身份**：本仓 `.git/config` 的 local `user.name` / `user.email` 已配好，直接提交即可（个人 GitHub 仓，正确归属才会挂头像/计入贡献）。
-- **部署**：push 到 `main` 会自动触发 GitHub Actions 构建并发布到 Pages，无需手动操作；**push 后留意一下 Actions 是否绿**。
+- **提交位置**：只在任务 worktree 的工作分支创建提交，禁止直接在 `main/` 提交。
+- **作者身份**：涉及 Git 身份时先完整读取 `~/.codex/context/identities.md`，每次提交前在任务 worktree 执行 `git var GIT_AUTHOR_IDENT`，确认解析为登记的个人 GitHub 身份。linked worktree 的 `.git` 是指针文件，不按普通目录处理。
+- **部署**：需要发布时，将已验证的工作分支通过 PR 或快进推送合入远端 `main`，自动触发 GitHub Actions 构建并发布到 Pages；**发布后检查 Actions 是否绿**。随后在本机 `main/` 执行 `fetch` 和 `merge --ff-only origin/main` 同步，不切换或直接编辑该 checkout。
 - **不要提交**：`dist/`、`.astro/`、`node_modules/`、`.env*` 等（已在 `.gitignore`）。
 
 ## 七、和 Owner 协作的风格（接班重点）

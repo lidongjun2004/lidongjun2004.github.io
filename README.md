@@ -16,3 +16,14 @@ Tags 只使用少量稳定的跨内容主题，不用课程名或零散知识点
 每个页面的页脚都显示当前页面访问量、全站总访问量与访客数。
 
 站点用 [Astro](https://astro.build/) 构建，部署于 GitHub Pages。
+
+## 本地预览
+
+需要 Node.js ≥ 22.12 和 pnpm 10.33.0。在包含 `package.json` 的 checkout 目录中运行：
+
+```bash
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+运行 `pnpm build` 生成静态站点，再用 `pnpm preview` 查看构建结果。修改内容前的工作区准备与协作约定见 [CLAUDE.md](CLAUDE.md)。
