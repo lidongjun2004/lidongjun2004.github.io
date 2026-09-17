@@ -7,6 +7,12 @@ export interface SiteUpdate {
 
 export const SITE_UPDATES: SiteUpdate[] = [
   {
+    date: '2026-09-17',
+    title: '秋招面经板块上线',
+    description: '新增秋招面经栏目，与实习面经并列，按公司整理面试记录。',
+    icon: '💼',
+  },
+  {
     date: '2026-09-10',
     title: '访问量展示覆盖全站',
     description: '首页、分类与目录、标签、About、更新足迹和文章页统一在页脚展示本页访问量，同时保留全站总访问量与访客数。',
