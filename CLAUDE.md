@@ -104,8 +104,8 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
 下笔前先按「这篇是什么性质」对号入座，别让通用技术知识和课程笔记混放：
 
 - **已内化的技术知识 / 知识体系沉淀**（真正学过一遍、能脱离具体课程独立成立的知识单元，如「贝叶斯决策」「SVM」「Go 并发」）→ `tech-stack`，按**学科 / 主题**建目录（详见下「`tech-stack` 怎么写」）。
-- **学校事务：课程笔记 / 应试 / 竞赛 / 科研**（面向某门课、某场考试）→ `academics`；课程走 `curriculum/<年级>/<学期>/<课程名>/`，科研走 `research/`（详见下「`academics` 怎么写」）。
-- **职业相关**（实习、求职、职场反思、行业观察）→ `career`。实习面经与秋招面经分别放在并列的 `internship-interviews/`、`autumn-recruitment-interviews/` 中，每家公司一篇文章。
+- **学校事务：课程笔记 / 应试 / 竞赛 / 科研**（面向某门课、某场考试）→ `academics`；课程走 `curriculum/<年级>/<学期>/<课程名>/`，竞赛走 `contests/<赛事>/`（赛事目录用 kebab-case 英文 + 年份，如 `fengru-cup-2025`、`mathematical-modeling/cumcm`），科研走 `research/`（详见下「`academics` 怎么写」）。
+- **职业相关**（实习、求职、职场反思、行业观察、家教等有偿工作）→ `career`。实习面经与秋招面经分别放在并列的 `internship-interviews/`、`autumn-recruitment-interviews/` 中，每家公司一篇文章。家教讲义放在 `tutoring/`，按「高中 / 高考」→ 学科 → 专题逐层建目录（如 `tutoring/high-school/chinese/writing/`），这些是给学生用的应试材料，不是 owner 自己的课程笔记，所以不进 `academics`。
 - **生活 / 兴趣 / 情感**（爱好、随笔、体验）→ `love-interests`。
 - **目标 / 规划 / 长期思考**（计划、复盘、方法论）→ `plan-think`。
 - **健康 / 健身**（训练、饮食、身体管理）→ `health-fitness`。
@@ -114,7 +114,7 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
 
 ### `academics` 怎么写（学校视角）
 
-定位：记录 owner（在校生）在学校里的各项事务——**课程、竞赛、科研**。`research/`（与 `curriculum/` 并列）已起骨架、内容待写；竞赛暂未开始。课程是目前主体。
+定位：记录 owner（在校生）在学校里的各项事务——**课程、竞赛、科研**。`research/`（与 `curriculum/` 并列）已起骨架、内容待写；`contests/` 收录 CSP、数学竞赛、数学建模（美赛 / 国赛）、冯如杯、挑战杯的准备材料，均由幕布迁入。课程是目前主体。
 
 - **目录结构**：课程一律 `academics/curriculum/<年级>/<学期>/<课程名>/`。年级目录带数字前缀排序：`1-freshman` / `2-sophomore` / `3-junior` / `4-senior`；学期同理：`1-fall` / `2-spring`；**课程名用中文、与源目录同名、不带前缀**（如 `academics/curriculum/3-junior/2-spring/知识图谱/`）。四个年级 × fall/spring 的骨架（含各级 `_index.md`）已全部建好，新课直接放进对应 `<年级>/<学期>/` 即可。前缀只为排序与 URL，落地页展示名由各 `_index.md` 的 `title` 决定（中文双语，如「大三 · Junior」）。
 - **当前覆盖**：大一、大二的非水课与已经归档的大三课程均采用统一课程结构；源目录没有真题或作业时保留空文件夹，不补造材料。

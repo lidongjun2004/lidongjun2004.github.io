@@ -7,6 +7,12 @@ export interface SiteUpdate {
 
 export const SITE_UPDATES: SiteUpdate[] = [
   {
+    date: '2026-10-27',
+    title: '幕布笔记整体迁入',
+    description: '把幕布里的 95 篇笔记搬进博客：家教讲义进 Career，竞赛材料开了 Academics 的竞赛板块，C 语言笔记、秋招面经与若干思考随笔各归其位。',
+    icon: '📦',
+  },
+  {
     date: '2026-09-17',
     title: '秋招面经板块上线',
     description: '新增秋招面经栏目，与实习面经并列，按公司整理面试记录。',
