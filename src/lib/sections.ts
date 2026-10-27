@@ -3,7 +3,7 @@ export type Section = (typeof SECTIONS)[number];
 
 export const SECTION_META: Record<Section, { label: string; description: string; color: string; icon: string }> = {
   'tech-stack': {
-    label: 'Tech Stack',
+    label: 'Tech Map',
     description: 'Math · Code · Design · Philosophy',
     color: '#60a5fa',
     icon: '💻',

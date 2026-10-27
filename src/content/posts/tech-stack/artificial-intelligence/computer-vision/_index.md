@@ -1,5 +1,5 @@
 ---
-title: "Computer Vision · 计算机视觉"
+title: "计算机视觉 · Computer Vision"
 description: "计算机视觉 · 让机器看懂图像 · 从图像分类到检测、分割与视觉 Transformer"
 ---
 

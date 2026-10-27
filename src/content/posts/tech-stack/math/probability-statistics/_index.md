@@ -1,5 +1,5 @@
 ---
-title: "Probability & Statistics · 概率统计"
+title: "概率统计 · Probability & Statistics"
 description: "概率论与统计推断 · 机器学习的不确定性语言 · 从随机变量到贝叶斯估计"
 ---
 

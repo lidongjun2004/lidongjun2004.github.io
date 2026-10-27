@@ -1,5 +1,5 @@
 ---
-title: "Computer Architecture"
+title: "计算机体系结构 · Computer Architecture"
 description: "Computer Architecture"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Optimization · 最优化"
+title: "最优化 · Optimization"
 description: "最优化方法 · 机器学习的训练机制 · 从凸优化到梯度下降"
 ---
 

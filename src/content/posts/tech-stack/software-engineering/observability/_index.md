@@ -1,5 +1,5 @@
 ---
-title: "Observability"
+title: "可观测性 · Observability"
 description: "Observability"
 ---
 

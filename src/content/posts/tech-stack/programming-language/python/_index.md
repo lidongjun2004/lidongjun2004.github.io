@@ -1,5 +1,5 @@
 ---
-title: "Python"
+title: "Python 语言 · Python"
 description: "Python"
 ---
 

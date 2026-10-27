@@ -1,5 +1,5 @@
 ---
-title: "Linear Algebra · 线性代数"
+title: "线性代数 · Linear Algebra"
 description: "线性代数 · 机器学习的几何与计算引擎 · 从向量空间到矩阵分解"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "AI Infra"
+title: "AI 基础设施 · AI Infra"
 description: "AI Infra"
 ---
 

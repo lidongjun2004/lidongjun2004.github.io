@@ -92,7 +92,7 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
 
 | section | 展示名 | 用途 |
 |---|---|---|
-| `tech-stack` | Tech Stack | **已内化**的技术栈 / 知识库，按**知识体系**沉淀（Math · Code · Design · Philosophy）；按学科 / 主题分类，**不是课程目录**（详见专节） |
+| `tech-stack` | Tech Map | **已内化**的技术 / 知识地图，按**知识体系**沉淀（Math · Code · Design · Philosophy）；按学科 / 主题分类，**不是课程目录**（详见专节）。路径 id 仍是 `tech-stack`，只有展示名改为 Tech Map |
 | `career` | Career | 职业相关 |
 | `academics` | Academics | 学校相关（课程 / 竞赛 / 科研）；课程笔记**对应 `curriculum/` 源目录**、应试向（详见专节） |
 | `love-interests` | Love & Interests | 生活与兴趣 |
@@ -105,7 +105,7 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
 
 - **已内化的技术知识 / 知识体系沉淀**（真正学过一遍、能脱离具体课程独立成立的知识单元，如「贝叶斯决策」「SVM」「Go 并发」）→ `tech-stack`，按**学科 / 主题**建目录（详见下「`tech-stack` 怎么写」）。
 - **学校事务：课程笔记 / 应试 / 竞赛 / 科研**（面向某门课、某场考试）→ `academics`；课程走 `curriculum/<年级>/<学期>/<课程名>/`，竞赛走 `contests/<赛事>/`（赛事目录用 kebab-case 英文 + 年份，如 `fengru-cup-2025`、`mathematical-modeling/cumcm`），科研走 `research/`（详见下「`academics` 怎么写」）。
-- **职业相关**（实习、求职、职场反思、行业观察、家教等有偿工作）→ `career`。实习面经与秋招面经分别放在并列的 `internship-interviews/`、`autumn-recruitment-interviews/` 中，每家公司一篇文章。家教讲义放在 `tutoring/`，按「高中 / 高考」→ 学科 → 专题逐层建目录（如 `tutoring/high-school/chinese/writing/`），这些是给学生用的应试材料，不是 owner 自己的课程笔记，所以不进 `academics`。
+- **职业相关**（实习、求职、职场反思、行业观察、家教等有偿工作）→ `career`。实习面经与秋招面经分别放在并列的 `internship-interviews/`、`autumn-recruitment-interviews/` 中，每家公司一篇文章。家教简历放在 `career/tutor-resume.md`；家教讲义本身属于已内化的高中知识，放在 `tech-stack/high-school-knowledge/`（见下「`tech-stack` 怎么写」）。
 - **生活 / 兴趣 / 情感**（爱好、随笔、体验）→ `love-interests`。
 - **目标 / 规划 / 长期思考**（计划、复盘、方法论）→ `plan-think`。
 - **健康 / 健身**（训练、饮食、身体管理）→ `health-fitness`。
@@ -131,7 +131,8 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
 
 - **准入门槛（关键约束）**：只放**已内化**的内容——哪怕 owner 现在 point of view 不深、或日后遗忘了，也得是当初真学懂、消化过的知识单元。**没真正掌握的，不往这里放**（那种属于 academics 的应试记录，或根本还没学）。
 - **发布门槛（硬规则）**：`tech-stack` 叶子文章必须经过 owner 亲自打磨或逐篇 review，并得到明确认可后才能发布；agent 不得把未经认可的草稿直接发布到这里。此限制不套用于 `academics`。
-- **目录按学科 / 主题切分**，不按课程：如 `artificial-intelligence/computer-vision/`、`math/`、`computer-science/`。文章是「贝叶斯决策」「SVM」这种**知识单元**，能脱离任何具体课程独立成立。**不要**出现 `pattern-recognition/`、`第几讲` 这类课程结构，也**不要**带「课程笔记」语气 / 标签。
+- **目录按学科 / 主题切分**，不按课程：如 `artificial-intelligence/computer-vision/`、`math/`、`computer-science/`。高中阶段的知识统一放 `high-school-knowledge/<学科>/<专题>/`（含 `gaokao/` 强基面试），由家教讲义迁入，owner 已认可发布。
+- **目录页标题格式（硬规则）**：`tech-stack` 下所有 `_index.md` 的 `title` 统一为 `中文 · English`（如 `线性代数 · Linear Algebra`、`高中知识 · High School Knowledge`），新建目录照此写。文章是「贝叶斯决策」「SVM」这种**知识单元**，能脱离任何具体课程独立成立。**不要**出现 `pattern-recognition/`、`第几讲` 这类课程结构，也**不要**带「课程笔记」语气 / 标签。
 - **目标**：owner 自己重读能**快速重建对这一模块的认知与 insight**；别人读完也能**掌握**这个知识单元。所以按清晰的逻辑链重组、讲全、给完整算例，写成能独立成立的知识沉淀。
 - 即使内容**来源**是某门课，也要**重写**成通用知识沉淀后再归入对应学科主题，剥掉课程外壳（讲次、考点、应试套路）。那些应试外壳留给 `academics`。
 

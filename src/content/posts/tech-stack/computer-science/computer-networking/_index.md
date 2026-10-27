@@ -1,5 +1,5 @@
 ---
-title: "Computer Networking"
+title: "计算机网络 · Computer Networking"
 description: "自底向上重建计算机网络的认知：从一个看不懂的服务链接出发，一层一层把地基补起来"
 ---
 

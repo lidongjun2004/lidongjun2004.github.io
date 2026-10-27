@@ -1,5 +1,5 @@
 ---
-title: "Generative Models · 生成模型"
+title: "生成模型 · Generative Models"
 description: "生成模型 · 让机器从无到有造内容 · VAE / GAN / Flow / Diffusion"
 ---
 

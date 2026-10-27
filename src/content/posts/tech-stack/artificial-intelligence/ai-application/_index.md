@@ -1,5 +1,5 @@
 ---
-title: "AI Application"
+title: "AI 应用 · AI Application"
 description: "AI Application"
 ---
 

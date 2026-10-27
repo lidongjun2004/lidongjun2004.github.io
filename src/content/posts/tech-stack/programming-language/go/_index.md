@@ -1,5 +1,5 @@
 ---
-title: "Go"
+title: "Go 语言 · Go"
 description: "Go"
 ---
 
