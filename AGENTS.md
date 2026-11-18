@@ -98,7 +98,7 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
   - 科研：`research/`
   - 学生工作：`student-affair/`，下分助教 `ta/` 和社会实践 `social-practice/`
 - **职业相关** → `career`。实习面经和秋招面经分别放在 `internship-interviews/`、`autumn-recruitment-interviews/`，每家公司一篇；家教简历是 `career/tutor-resume.md`，家教讲义属于高中知识，放 `tech-stack/high-school-knowledge/`。
-- 生活、兴趣、情感 → `love-interests`；目标、规划、复盘、学习经验总结 → `plan-think`；健康、健身 → `health-fitness`。
+- 生活、兴趣、情感 → `love-interests`；目标、规划、复盘、学习经验总结 → `plan-think`；健康、健身 → `health-fitness`，下分饮食 `diet/`、健身 `workout/`、篮球 `basketball/`。
 
 `academics` 是学校课程体系的投影：这门课讲了什么、会考什么。`tech-stack` 是已内化知识的投影：按知识体系重新组织、能独立成立。同一份课程材料可以两边各有产物，但放进 `tech-stack` 前必须剥掉课程外壳，并经过 owner 打磨或 review。
 
