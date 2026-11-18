@@ -1,5 +1,5 @@
 ---
-title: "智能控制与机器人"
+title: "智能控制与机器人 · Intelligent Control and Robotics"
 description: "具身智能/机器人的入门"
 ---
 

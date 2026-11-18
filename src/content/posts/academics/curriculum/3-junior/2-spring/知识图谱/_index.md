@@ -1,5 +1,5 @@
 ---
-title: "知识图谱"
+title: "知识图谱 · Knowledge Graphs"
 description: "其实不知道这门课作用是啥，不评价"
 ---
 

@@ -1,3 +1,3 @@
 ---
-title: "集合论与图论"
+title: "集合论与图论 · Set Theory and Graph Theory"
 ---

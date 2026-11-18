@@ -1,4 +1,4 @@
 ---
-title: "实习面经"
+title: "实习面经 · Internship Interviews"
 description: "十分草率的实习面试，没敢投大厂"
 ---

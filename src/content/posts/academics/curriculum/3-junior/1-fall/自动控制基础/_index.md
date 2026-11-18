@@ -1,3 +1,3 @@
 ---
-title: "自动控制基础"
+title: "自动控制基础 · Fundamentals of Automatic Control"
 ---

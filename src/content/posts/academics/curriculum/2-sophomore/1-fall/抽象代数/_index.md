@@ -1,3 +1,3 @@
 ---
-title: "抽象代数"
+title: "抽象代数 · Abstract Algebra"
 ---

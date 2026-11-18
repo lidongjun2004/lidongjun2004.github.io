@@ -1,5 +1,5 @@
 ---
-title: "模式识别与机器视觉"
+title: "模式识别与机器视觉 · Pattern Recognition and Machine Vision"
 description: "CV 领域专精的 ML"
 ---
 

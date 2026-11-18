@@ -1,3 +1,3 @@
 ---
-title: "知识点"
+title: "知识点 · Lessons"
 ---

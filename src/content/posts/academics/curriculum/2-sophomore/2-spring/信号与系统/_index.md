@@ -1,3 +1,3 @@
 ---
-title: "信号与系统"
+title: "信号与系统 · Signals and Systems"
 ---

@@ -1,3 +1,3 @@
 ---
-title: "机器学习"
+title: "机器学习 · Machine Learning"
 ---

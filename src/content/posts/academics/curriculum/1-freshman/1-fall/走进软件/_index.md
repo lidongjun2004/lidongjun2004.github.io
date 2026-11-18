@@ -1,3 +1,3 @@
 ---
-title: "走进软件"
+title: "走进软件 · Introduction to Software"
 ---

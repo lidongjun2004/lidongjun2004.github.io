@@ -1,3 +1,3 @@
 ---
-title: "工科高等代数"
+title: "工科高等代数 · Advanced Algebra for Engineering"
 ---

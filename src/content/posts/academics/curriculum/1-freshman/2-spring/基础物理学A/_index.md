@@ -1,3 +1,3 @@
 ---
-title: "基础物理学 A"
+title: "基础物理学 A · Fundamental Physics A"
 ---
