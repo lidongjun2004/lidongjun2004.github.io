@@ -1,5 +1,5 @@
 ---
-title: "Plan & Think"
+title: "思考 · Thoughts"
 description: "Goals in mind, feet on the ground."
 ---
 

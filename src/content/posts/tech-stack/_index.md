@@ -1,4 +1,4 @@
 ---
-title: "技术地图 · Tech Map"
+title: "技术栈 · Tech Map"
 description: "Math · Code · Design · Philosophy"
 ---

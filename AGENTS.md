@@ -78,16 +78,16 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
         → https://lidongjun.com/tech-stack/foreign-languages/english/ielts/ielts-notes/
 ```
 
-六个顶级 section 定义在 `src/lib/sections.ts`，展示名取自其中的 `SECTION_META.label`。新增 section 先改 `SECTIONS` 数组。
+六个顶级 section 定义在 `src/lib/sections.ts`，`SECTION_META.label` 是完整展示名（`中文 · English`，用于分类页标题、首页卡片、面包屑），`nav` 是导航栏用的中文短名。新增 section 先改 `SECTIONS` 数组。各 section 的 `_index.md` 标题与 `label` 保持一致。路径 id 与展示名解耦：改名只改 `label` / `nav` / `_index.md`，不改目录，避免 URL 变化。
 
-| section | 展示名 | 用途 |
+| section | 展示名（导航） | 用途 |
 |---|---|---|
-| `tech-stack` | Tech Map | 已内化的技术与知识，按学科 / 主题组织，不是课程目录 |
-| `career` | Career | 实习、求职、职场思考、家教等有偿工作 |
-| `academics` | Academics | 学校事务：课程、竞赛、科研、学生工作 |
-| `love-interests` | Love & Interests | 生活、爱好与情感 |
-| `plan-think` | Plan & Think | 目标、规划、复盘与方法论 |
-| `health-fitness` | Health & Fitness | 训练、饮食与身体管理 |
+| `tech-stack` | 技术栈 · Tech Map（技术栈） | 已内化的技术与知识，按学科 / 主题组织，不是课程目录 |
+| `career` | 事业 · Career（事业） | 实习、求职、职场思考、家教等有偿工作 |
+| `academics` | 学业 · Academics（学业） | 学校事务：课程、竞赛、科研、学生工作 |
+| `love-interests` | 生活 · Love & Interests（生活） | 生活、爱好与情感 |
+| `plan-think` | 思考 · Thoughts（思考） | 目标、规划、复盘、方法论与学习经验 |
+| `health-fitness` | 健康 · Health & Fitness（健康） | 训练、饮食与身体管理 |
 
 ### 归类决策
 
@@ -98,7 +98,7 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
   - 科研：`research/`
   - 学生工作：`student-affair/`，下分助教 `ta/` 和社会实践 `social-practice/`
 - **职业相关** → `career`。实习面经和秋招面经分别放在 `internship-interviews/`、`autumn-recruitment-interviews/`，每家公司一篇；家教简历是 `career/tutor-resume.md`，家教讲义属于高中知识，放 `tech-stack/high-school-knowledge/`。
-- 生活、兴趣、情感 → `love-interests`；目标、规划、复盘 → `plan-think`；健康、健身 → `health-fitness`。
+- 生活、兴趣、情感 → `love-interests`；目标、规划、复盘、学习经验总结 → `plan-think`；健康、健身 → `health-fitness`。
 
 `academics` 是学校课程体系的投影：这门课讲了什么、会考什么。`tech-stack` 是已内化知识的投影：按知识体系重新组织、能独立成立。同一份课程材料可以两边各有产物，但放进 `tech-stack` 前必须剥掉课程外壳，并经过 owner 打磨或 review。
 
@@ -145,7 +145,7 @@ schema 定义在 `src/content.config.ts`：
 ## 六、写作约定
 
 - **文件名**：kebab-case、纯 ASCII。例外是课程目录名，用中文。
-- **目录页标题**：所有 `_index.md` 的 `title` 统一为 `中文 · English`（如「线性代数 · Linear Algebra」「大三下 · Junior Spring」），新建目录照此写。顶级 section 的 `_index.md` 目前只有英文，命名待 owner 决定，未经要求不改。
+- **目录页标题**：所有 `_index.md` 的 `title` 统一为 `中文 · English`（如「线性代数 · Linear Algebra」「大三下 · Junior Spring」），新建目录照此写。
 - **目录页保护（硬规则）**：除非 owner 明确要求，不改已有 `_index.md` 的 frontmatter 或正文。新建文件夹时只写 `title`，owner 没指定就不写 `description` 和正文。
 - **owner 的目录页文案习惯**（仅在 owner 要求撰写或更新目录页时适用）：`description` 写真实定位或主观态度，不写空洞套话；正文写「定位 + 进度」，进度用 `目前进度：…` 或 `WIP：…` 标出；不要把 owner 自嘲、口语的原文案改成「更规范」的措辞，只在内容过时时修改并沿用原语气。
 - **语言**：正文以中文为主。

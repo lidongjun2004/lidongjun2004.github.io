@@ -8,6 +8,12 @@ export interface SiteUpdate {
 export const SITE_UPDATES: SiteUpdate[] = [
   {
     date: '2026-11-18',
+    title: '六大板块改用中文名',
+    description: '导航栏改为技术栈、事业、学业、生活、思考、健康；分类页标题统一为中英双语，Plan & Think 更名为「思考 · Thoughts」。学习经验总结从学业移到思考，旧地址自动跳转。',
+    icon: '🏷️',
+  },
+  {
+    date: '2026-11-18',
     title: '学业新增学生工作板块',
     description: 'Academics 新增学生工作板块，下设助教与社会实践，助教注意事项移入其中；课程、真题、知识点、作业与面经目录的标题统一为中英双语。',
     icon: '🎓',

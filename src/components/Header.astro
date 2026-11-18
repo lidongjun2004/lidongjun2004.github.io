@@ -24,7 +24,7 @@ const currentPath = Astro.url.pathname;
                 : "text-[var(--color-text-light)] hover:text-[var(--color-heading)] hover:bg-[var(--color-card)]/60",
             ]}
           >
-            {meta.label}
+            {meta.nav}
           </a>
         </li>
       ))}
@@ -95,7 +95,7 @@ const currentPath = Astro.url.pathname;
                 : "text-[var(--color-text-light)] hover:text-[var(--color-heading)]",
             ]}
           >
-            <span class="mr-2">{meta.icon}</span>{meta.label}
+            <span class="mr-2">{meta.icon}</span>{meta.nav}
           </a>
         </li>
       ))}
