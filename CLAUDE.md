@@ -34,38 +34,28 @@
 
 ### 工作区布局（硬规则）
 
-本机 `~/workplace/personal/blog/lidongjun2004.github.io/` 是容器目录，实际 checkout 放在其下，与工作仓库的 `repos/<repo>/` 布局一致：
+本机 `~/workplace/personal/blog/lidongjun2004.github.io/` 是容器目录，唯一的 checkout 放在其下的 `main/`：
 
 ```text
 lidongjun2004.github.io/
-├── AGENTS.md -> CLAUDE.md  # 本机容器入口，不纳入 Git
-├── CLAUDE.md
-├── main/                  # 固定 main 分支，只读取和同步远端
-└── <任务名>/              # 每个修改任务独立的 worktree
+└── main/                  # main 分支，直接在这里修改、提交、推送
 ```
 
-- **`main/` 只更新、不修改**：不在其中编辑内容、暂存、创建提交或切换到功能分支；只通过 `fetch` 和 `merge --ff-only` 同步远端 `main`。
-- **每个新修改任务先建 worktree**：先核对 `origin/HEAD`、`main/` 当前分支及干净状态，fetch 后确认没有领先远端的本地提交，再快进更新；随后从更新后的 `main` 新建同级目录，分支默认命名为 `codex/<任务名>`。若发现未提交修改、分支不符或本地提交，保留现场，不自动覆盖或重置。
-- **同一任务继续复用其 worktree**：后续修改、依赖安装、预览、构建、验证和提交都在该 worktree 内执行。每个 worktree 独立安装依赖，不把 `node_modules` 或生成目录软链到 `main/`。
-- **清理单独判断**：不随任务结束自动删除 worktree 或分支；先确认用户授权、工作区干净及合并状态。
-- **外层入口与仓库规则分别维护**：容器入口负责在任务启动时指明工作区约束，本文件随 Git 保存完整项目约定；每个 checkout 均保留 `AGENTS.md -> CLAUDE.md`。新机器建立同样布局时，也应创建外层入口。
-
-下面的命令在容器目录执行。先完成上述状态检查，再依次更新和创建；`example-task` 替换为本次任务名，不复用已有目录或分支名：
+- **直接在 `main/` 上工作**：本仓库是个人博客，不开 worktree 和功能分支，修改、构建、验证、提交和推送都在 `main/` 内完成。这一点有别于 `~/workplace/work/repos/` 下的工作仓库，后者仍按各自的 worktree 规则执行。
+- **开始前先同步**：核对当前分支是 `main`，fetch 后确认本地与远端没有分叉，再快进更新。若发现无法解释的未提交修改或分叉，保留现场并报告，不自动覆盖或重置。
+- 每个 checkout 均保留 `AGENTS.md -> CLAUDE.md`。
 
 ```bash
-git -C main symbolic-ref refs/remotes/origin/HEAD
 git -C main status --short --branch
 git -C main fetch origin
 git -C main rev-list --left-right --count HEAD...origin/main
-# 确认当前分支是 main、工作区干净，且上一步左侧计数为 0 后继续
+# 输出为「本地领先 远端领先」；本地领先为 0 时可直接快进
 git -C main merge --ff-only origin/main
-git -C main worktree add -b codex/example-task ../example-task main
-cd example-task
 ```
 
 ### 常用命令
 
-以下命令在任务 worktree 内执行；本地运行环境和预览步骤也可见 `README.md`。
+以下命令在 `main/` 内执行；本地运行环境和预览步骤也可见 `README.md`。
 
 ```bash
 pnpm install --frozen-lockfile # 按锁文件安装依赖
@@ -94,7 +84,7 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
 |---|---|---|
 | `tech-stack` | Tech Map | **已内化**的技术 / 知识地图，按**知识体系**沉淀（Math · Code · Design · Philosophy）；按学科 / 主题分类，**不是课程目录**（详见专节）。路径 id 仍是 `tech-stack`，只有展示名改为 Tech Map |
 | `career` | Career | 职业相关 |
-| `academics` | Academics | 学校相关（课程 / 竞赛 / 科研）；课程笔记**对应 `curriculum/` 源目录**、应试向（详见专节） |
+| `academics` | Academics | 学校相关（课程 / 竞赛 / 科研 / 学生工作）；课程笔记**对应 `curriculum/` 源目录**、应试向（详见专节） |
 | `love-interests` | Love & Interests | 生活与兴趣 |
 | `plan-think` | Plan & Think | 计划与思考 |
 | `health-fitness` | Health & Fitness | 健康与健身 |
@@ -104,7 +94,7 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
 下笔前先按「这篇是什么性质」对号入座，别让通用技术知识和课程笔记混放：
 
 - **已内化的技术知识 / 知识体系沉淀**（真正学过一遍、能脱离具体课程独立成立的知识单元，如「贝叶斯决策」「SVM」「Go 并发」）→ `tech-stack`，按**学科 / 主题**建目录（详见下「`tech-stack` 怎么写」）。
-- **学校事务：课程笔记 / 应试 / 竞赛 / 科研**（面向某门课、某场考试）→ `academics`；课程走 `curriculum/<年级>/<学期>/<课程名>/`，竞赛走 `contests/<赛事>/`（赛事目录用 kebab-case 英文 + 年份，如 `fengru-cup-2025`、`mathematical-modeling/cumcm`），科研走 `research/`（详见下「`academics` 怎么写」）。
+- **学校事务：课程笔记 / 应试 / 竞赛 / 科研 / 学生工作**（面向某门课、某场考试，或助教、社会实践等校内工作）→ `academics`；课程走 `curriculum/<年级>/<学期>/<课程名>/`，竞赛走 `contests/<赛事>/`（赛事目录用 kebab-case 英文 + 年份，如 `fengru-cup-2025`、`mathematical-modeling/cumcm`），科研走 `research/`，学生工作走 `student-affair/`（助教 `ta/`、社会实践 `social-practice/`）（详见下「`academics` 怎么写」）。
 - **职业相关**（实习、求职、职场反思、行业观察、家教等有偿工作）→ `career`。实习面经与秋招面经分别放在并列的 `internship-interviews/`、`autumn-recruitment-interviews/` 中，每家公司一篇文章。家教简历放在 `career/tutor-resume.md`；家教讲义本身属于已内化的高中知识，放在 `tech-stack/high-school-knowledge/`（见下「`tech-stack` 怎么写」）。
 - **生活 / 兴趣 / 情感**（爱好、随笔、体验）→ `love-interests`。
 - **目标 / 规划 / 长期思考**（计划、复盘、方法论）→ `plan-think`。
@@ -114,11 +104,11 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
 
 ### `academics` 怎么写（学校视角）
 
-定位：记录 owner（在校生）在学校里的各项事务——**课程、竞赛、科研**。`research/`（与 `curriculum/` 并列）已起骨架、内容待写；`contests/` 收录 CSP、数学竞赛、数学建模（美赛 / 国赛）、冯如杯、挑战杯的准备材料，均由幕布迁入。课程是目前主体。
+定位：记录 owner（在校生）在学校里的各项事务——**课程、竞赛、科研、学生工作**。`research/`（与 `curriculum/` 并列）已起骨架、内容待写；`student-affair/` 下分 `ta/`（助教，现有程序设计助教的注意事项）和 `social-practice/`（社会实践，待写）；`contests/` 收录 CSP、数学竞赛、数学建模（美赛 / 国赛）、冯如杯、挑战杯的准备材料，均由幕布迁入。课程是目前主体。
 
-- **目录结构**：课程一律 `academics/curriculum/<年级>/<学期>/<课程名>/`。年级目录带数字前缀排序：`1-freshman` / `2-sophomore` / `3-junior` / `4-senior`；学期同理：`1-fall` / `2-spring`；**课程名用中文、与源目录同名、不带前缀**（如 `academics/curriculum/3-junior/2-spring/知识图谱/`）。四个年级 × fall/spring 的骨架（含各级 `_index.md`）已全部建好，新课直接放进对应 `<年级>/<学期>/` 即可。前缀只为排序与 URL，落地页展示名由各 `_index.md` 的 `title` 决定（中文双语，如「大三 · Junior」）。
+- **目录结构**：课程一律 `academics/curriculum/<年级>/<学期>/<课程名>/`。年级目录带数字前缀排序：`1-freshman` / `2-sophomore` / `3-junior` / `4-senior`；学期同理：`1-fall` / `2-spring`；**课程名用中文、与源目录同名、不带前缀**（如 `academics/curriculum/3-junior/2-spring/知识图谱/`）。四个年级 × fall/spring 的骨架（含各级 `_index.md`）已全部建好，新课直接放进对应 `<年级>/<学期>/` 即可。前缀只为排序与 URL，落地页展示名由各 `_index.md` 的 `title` 决定，统一为 `中文 · English`（如「大三 · Junior」「知识图谱 · Knowledge Graphs」）；课程目录名仍只用中文。
 - **当前覆盖**：大一、大二的非水课与已经归档的大三课程均采用统一课程结构；源目录没有真题或作业时保留空文件夹，不补造材料。
-- **课程内阅读顺序**：统一为「速成 → 真题 → 知识点 → 作业」。速成稿固定为课程根目录的 `00-exam-cram.md`；其余内容分别放入 `01-past-exams/`、`02-lessons/`、`03-homework/`，三个文件夹的 `_index.md` 只写对应展示标题「真题」「知识点」「作业」，正文留空。真题卷内按时间从新到旧编号；知识点和作业沿用文章自身编号。没有源材料的类别只保留空目录，不补造文章（包括速成稿）。
+- **课程内阅读顺序**：统一为「速成 → 真题 → 知识点 → 作业」。速成稿固定为课程根目录的 `00-exam-cram.md`；其余内容分别放入 `01-past-exams/`、`02-lessons/`、`03-homework/`，三个文件夹的 `_index.md` 只写对应展示标题「真题 · Past Exams」「知识点 · Lessons」「作业 · Homework」，正文留空。真题卷内按时间从新到旧编号；知识点和作业沿用文章自身编号。没有源材料的类别只保留空目录，不补造文章（包括速成稿）。
 - **源目录绑定（关键约束）**：每门课的事实来源是本机 `~/workplace/personal/college/curriculum/<年级>/<课程名>/`（PPT、作业、大作业、讲义都在那里）。写 / 改文章前**先去对应源目录核对材料**，别凭空写。
 - **目录对应（注意层级差与前缀差）**：源目录是 `<年级>/<课程名>`（年级如 `junior`，**无数字前缀、无学期层**），blog 是 `<数字->年级>/<数字->学期>/<课程名>`（如 `3-junior/2-spring/知识图谱`，年级 / 学期带前缀、多一层学期）。所以对应关系是**最末一层「课程名」同名、内容一致**，而非两边目录树逐层全等——核对时认「课程名」这一层，别被前缀和学期层绊住。源目录有的课程章节，blog 文章应覆盖到；课程范围变了，两边同步。
 - **发布门槛**：`academics` 内容允许在 owner 尚未逐篇 review 的情况下暂时发布，但必须忠实于课程源材料并完成现有校验。
@@ -197,14 +187,14 @@ schema 定义在 `src/content.config.ts`。字段：
 3. **非正文字段必须先过 owner（硬规则）**：新增任何文章 / 文件夹，先把拟定的**全部非正文字段**（文件夹的 `title` / `description`；文章的 `title` / `description` / `date` / `tags` 等）逐项列给 owner 确认，符合预期后再落地，**不擅自定稿**。
 4. 叶子文章按要求写正文；目录页正文只有 owner 明确要求时才写，否则留空。初稿交付后若 owner 有意见，按反馈继续调整，直到认可。
 5. `pnpm dev` 或 `pnpm build` 本地验证渲染（尤其有公式 / 表格时）。
-6. 在任务 worktree 中提交；需要发布时再合入远端 `main`（见下）。
+6. 在 `main/` 中提交并推送（见下）。
 
 ## 六、提交与部署
 
 - **提交信息**：用 Conventional Commits（`feat:` / `fix:` / `docs:` / `refactor:` …），跟现有 git 历史保持一致。
-- **提交位置**：只在任务 worktree 的工作分支创建提交，禁止直接在 `main/` 提交。
-- **作者身份**：涉及 Git 身份时先完整读取 `~/.codex/context/identities.md`，每次提交前在任务 worktree 执行 `git var GIT_AUTHOR_IDENT`，确认解析为登记的个人 GitHub 身份。linked worktree 的 `.git` 是指针文件，不按普通目录处理。
-- **部署**：需要发布时，将已验证的工作分支通过 PR 或快进推送合入远端 `main`，自动触发 GitHub Actions 构建并发布到 Pages；**发布后检查 Actions 是否绿**。随后在本机 `main/` 执行 `fetch` 和 `merge --ff-only origin/main` 同步，不切换或直接编辑该 checkout。
+- **提交位置**：直接在 `main/` 的 `main` 分支提交。
+- **作者身份**：涉及 Git 身份时先完整读取 `~/.codex/context/identities.md`，每次提交前在 `main/` 执行 `git var GIT_AUTHOR_IDENT`，确认解析为登记的个人 GitHub 身份。
+- **部署**：验证后直接 `git push origin main`，自动触发 GitHub Actions 构建并发布到 Pages；**发布后检查 Actions 是否绿**。
 - **不要提交**：`dist/`、`.astro/`、`node_modules/`、`.env*` 等（已在 `.gitignore`）。
 
 ## 七、和 Owner 协作的风格（接班重点）
