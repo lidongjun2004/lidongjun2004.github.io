@@ -397,6 +397,8 @@ export default defineConfig({
       `${juniorSpringBase}/知识图谱/03-homework`,
     [`${juniorSpringBase}/知识图谱/13-final-exam-review`]:
       `${juniorSpringBase}/知识图谱/00-exam-cram`,
+    '/academics/programming-ta-notes':
+      '/academics/student-affair/ta/programming-ta-notes',
   },
   vite: {
     plugins: [tailwindcss()],
