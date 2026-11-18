@@ -399,6 +399,7 @@ export default defineConfig({
       `${juniorSpringBase}/知识图谱/00-exam-cram`,
     '/academics/programming-ta-notes':
       '/academics/student-affair/ta/programming-ta-notes',
+    '/academics/helpful-document': '/plan-think/helpful-document',
   },
   vite: {
     plugins: [tailwindcss()],
