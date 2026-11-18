@@ -26,4 +26,4 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-运行 `pnpm build` 生成静态站点，再用 `pnpm preview` 查看构建结果。修改内容前的工作区准备与协作约定见 [CLAUDE.md](CLAUDE.md)。
+运行 `pnpm build` 生成静态站点，再用 `pnpm preview` 查看构建结果。开发与协作约定见 [AGENTS.md](AGENTS.md)。
