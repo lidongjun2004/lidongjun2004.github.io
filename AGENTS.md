@@ -78,16 +78,16 @@ src/content/posts/tech-stack/foreign-languages/english/ielts/ielts-notes.md
         → https://lidongjun.com/tech-stack/foreign-languages/english/ielts/ielts-notes/
 ```
 
-六个顶级 section 定义在 `src/lib/sections.ts`，`SECTION_META.label` 是完整展示名（`中文 · English`，用于分类页标题、首页卡片、面包屑），`nav` 是导航栏用的中文短名。新增 section 先改 `SECTIONS` 数组。各 section 的 `_index.md` 标题与 `label` 保持一致。路径 id 与展示名解耦：改名只改 `label` / `nav` / `_index.md`，不改目录，避免 URL 变化。
+六个顶级 section 定义在 `src/lib/sections.ts`，`SECTION_META.label` 是完整展示名（`中文 · English`，用于分类页标题、首页卡片、面包屑），`nav` 是顶部导航栏用的英文短名。新增 section 先改 `SECTIONS` 数组。各 section 的 `_index.md` 标题与 `label` 保持一致。路径 id 与展示名解耦：改名只改 `label` / `nav` / `_index.md`，不改目录，避免 URL 变化。
 
 | section | 展示名（导航） | 用途 |
 |---|---|---|
-| `tech-stack` | 技术栈 · Tech Map（技术栈） | 已内化的技术与知识，按学科 / 主题组织，不是课程目录 |
-| `career` | 事业 · Career（事业） | 实习、求职、职场思考、家教等有偿工作 |
-| `academics` | 学业 · Academics（学业） | 学校事务：课程、竞赛、科研、学生工作 |
-| `love-interests` | 生活 · Love & Interests（生活） | 生活、爱好与情感 |
-| `plan-think` | 思考 · Thoughts（思考） | 目标、规划、复盘、方法论与学习经验 |
-| `health-fitness` | 健康 · Health & Fitness（健康） | 训练、饮食与身体管理 |
+| `tech-stack` | 技术栈 · Tech Map（Tech Map） | 已内化的技术与知识，按学科 / 主题组织，不是课程目录 |
+| `career` | 事业 · Career（Career） | 实习、求职、职场思考、家教等有偿工作 |
+| `academics` | 学业 · Academics（Academics） | 学校事务：课程、竞赛、科研、学生工作 |
+| `love-interests` | 生活 · Love & Interests（Love & Interests） | 生活、爱好与情感 |
+| `plan-think` | 思考 · Thoughts（Thoughts） | 目标、规划、复盘、方法论与学习经验 |
+| `health-fitness` | 健康 · Health & Fitness（Health & Fitness） | 训练、饮食与身体管理 |
 
 ### 归类决策
 
